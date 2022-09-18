@@ -1,4 +1,4 @@
 package com.TDA367group15.app.view;
 
-public class HUDView {
+public class HUDView extends GameView{
 }
