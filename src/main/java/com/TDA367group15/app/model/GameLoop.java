@@ -9,8 +9,7 @@ import java.util.List;
 
 public class GameLoop implements Runnable {
     private int FPS = 60;
-    private GameView gameView = new GameView();
-    private List<ViewInterface> gameViews = new ArrayList<>();
+    public List<ViewInterface> gameViews;
 
 
     // InitialiseView initialiseView = new InitialiseView();
@@ -20,7 +19,7 @@ public class GameLoop implements Runnable {
     Thread gameThread;
 
     public GameLoop(){
-        gameViews.add(gameView);
+
     }
     public void startGameThread(){
         gameThread = new Thread(this);
@@ -45,7 +44,7 @@ public class GameLoop implements Runnable {
 
             if (delta >= 1){
                 //update
-                gameView.repaint();
+                update();
                 delta--;
                 drawCount++;
             }
@@ -59,6 +58,6 @@ public class GameLoop implements Runnable {
 
     }
     private void update(){
-
+        gameViews.get(0).update();
     }
 }
