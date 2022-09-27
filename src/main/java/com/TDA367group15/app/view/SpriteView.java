@@ -14,10 +14,8 @@ public class SpriteView extends WorldView {
 
     @Override
     public void draw(Graphics2D g2){
-        int sizeWidth = 100;
-        int sizeHeight = 100;
         int xPos = GameView.SCREEN_WIDTH /2;
         int yPos = GameView.SCREEN_ROW /2;
-        g2.drawImage(player.getImage(), xPos, yPos,sizeWidth,sizeHeight, null);
+        g2.drawImage(player.getImage(), xPos, yPos,tileSize,tileSize, null);
     }
 }
