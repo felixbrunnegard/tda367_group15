@@ -37,7 +37,7 @@ public abstract class Entity {
     }
 
     public void imageURL(String path) throws IOException {
-        image = ImageIO.read(new File(path));
+        image = ImageIO.read(getClass().getResourceAsStream(path));
     }
     public BufferedImage getImage() {
         return image;

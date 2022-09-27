@@ -12,7 +12,7 @@ public class Player extends Combatable{
 
     public Player(){
         try {
-            imageURL("src/images/Player/boy_down_1.png");
+            imageURL("/boy_down_1.png");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
