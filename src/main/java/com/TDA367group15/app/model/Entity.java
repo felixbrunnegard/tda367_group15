@@ -1,15 +1,18 @@
 package com.TDA367group15.app.model;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Random;
 
 public abstract class Entity {
-    // TODO: Do vi need name for entities?
-    private String name;
 
     //current position for an entity
     private Vector2 position;
 
-    private BufferedImage image;
+    BufferedImage image;
 
     private final static int MOVEMENT_SPEED = 4;
 
@@ -31,6 +34,13 @@ public abstract class Entity {
 
     public Vector2 getPosition() {
         return position;
+    }
+
+    public void imageURL(String path) throws IOException {
+        image = ImageIO.read(new File(path));
+    }
+    public BufferedImage getImage() {
+        return image;
     }
 
     //TODO: one method instead of 4 as described in uml?
@@ -64,6 +74,15 @@ public abstract class Entity {
             return true;
         }
         return false;
+    }
+    public static String generateName(int len) {
+        String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
+                + "lmnopqrstuvwxyz!@#$%&";
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder(len);
+        for (int i = 0; i < len; i++)
+            sb.append(chars.charAt(rnd.nextInt(chars.length())));
+        return sb.toString();
     }
 
 }
