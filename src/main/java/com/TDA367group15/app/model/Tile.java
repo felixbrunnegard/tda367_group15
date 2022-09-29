@@ -12,11 +12,11 @@ public class Tile {
                 break;
             case 2: this.fileName = "water.png";
                 break;
-            case 3: this.fileName = "sand.png";
+            case 3: this.fileName = "floor.png";
                 break;
             case 4: this.fileName = "wall.png";
                 break;
-            case 5: this.fileName = "wall.png";
+            case 5: this.fileName = "log.png";
                 break;
             case 6: this.fileName = "sand.png";
                 break;
