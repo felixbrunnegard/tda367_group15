@@ -5,12 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.TDA367group15.app</groupId>
-  <artifactId>tda365_grupp15</artifactId>
+  <artifactId>tda367_group15</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>tda365_grupp15</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <name>tda367_group15</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
