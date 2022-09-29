@@ -11,16 +11,12 @@ public class GameLoop implements Runnable {
     private int FPS = 60;
     public List<ViewInterface> gameViews;
 
-
-    // InitialiseView initialiseView = new InitialiseView();
-
-
-
     Thread gameThread;
 
     public GameLoop(){
 
     }
+
     public void startGameThread(){
         gameThread = new Thread(this);
         gameThread.start();
@@ -43,7 +39,6 @@ public class GameLoop implements Runnable {
             lastTime = currentTime;
 
             if (delta >= 1){
-                //update
                 update();
                 delta--;
                 drawCount++;
@@ -55,7 +50,6 @@ public class GameLoop implements Runnable {
                 timer = 0;
             }
         }
-
     }
     private void update(){
         gameViews.get(0).update();
