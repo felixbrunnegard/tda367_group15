@@ -2,9 +2,7 @@ package com.TDA367group15.app.model;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Random;
 
 public abstract class Entity {
@@ -51,7 +49,7 @@ public abstract class Entity {
         else if (d == Direction.DOWN){
             position.moveY(MOVEMENT_SPEED);
         }
-        else if (d == Direction.LEfT){
+        else if (d == Direction.LEFT){
             position.moveX(-MOVEMENT_SPEED);
         }
         else if (d == Direction.RIGHT){
