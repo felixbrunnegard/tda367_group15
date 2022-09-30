@@ -2,6 +2,7 @@ package com.TDA367group15.app.model;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
@@ -35,7 +36,8 @@ public abstract class Entity {
     }
 
     public void imageURL(String path) throws IOException {
-        image = ImageIO.read(getClass().getResourceAsStream(path));
+        //image = ImageIO.read(getClass().getResourceAsStream(path));
+        image = ImageIO.read(new File(path));
     }
     public BufferedImage getImage() {
         return image;
