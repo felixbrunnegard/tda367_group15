@@ -16,6 +16,7 @@ public class App
 {
     public static void main( String[] args )
     {
+        GameLoop gameLoop = new GameLoop();
         JFrame window = new JFrame();
         GameView gameView = new GameView();
         List<ViewInterface> gameViews = new ArrayList<>();

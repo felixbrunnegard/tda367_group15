@@ -5,11 +5,8 @@ import com.TDA367group15.app.model.Player;
 
 import javax.swing.*;
 import java.awt.*;
-
+import java.util.List;
 public class GameView extends JPanel implements ViewInterface {
-    private Player player = new Player();
-    private Enemy enemy = new Enemy();
-    //Screen settings
     public static final int SCREEN_WIDTH = 768;
     public static final int SCREEN_ROW = 576;
 
@@ -21,7 +18,7 @@ public class GameView extends JPanel implements ViewInterface {
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
 
-        spriteView = new SpriteView(player, enemy);
+        spriteView = new SpriteView(player, enemies);
     }
 
     public void paintComponent(Graphics g){
