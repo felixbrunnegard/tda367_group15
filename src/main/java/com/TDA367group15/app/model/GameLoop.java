@@ -18,12 +18,13 @@ public class GameLoop implements Runnable {
     Thread gameThread;
 
     public GameLoop(){
-        this.player = new Player();
-        this.enemies = new ArrayList<>(5);
+        GameLoop.player = new Player();
+        GameLoop.enemies = new ArrayList<>(5);
+
         for (int i = 0; i<5; i++ ){
             Random ran = new Random();
-            int randomX = ran.nextInt(500) + 1;
-            int randomY = ran.nextInt(700) + 1;
+            int randomX = ran.nextInt(567);
+            int randomY = ran.nextInt(792);
             Enemy enemy = new Enemy(randomX,randomY);
             this.enemies.add(enemy);
         }

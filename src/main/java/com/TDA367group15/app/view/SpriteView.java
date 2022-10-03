@@ -10,11 +10,7 @@ import java.util.List;
 
 public class SpriteView extends WorldView {
 
-    private Player player;
-    private Enemy enemy;
-    public SpriteView(Player player, Enemy enemy){
-        this.player = player;
-        this.enemy = enemy;
+    public SpriteView(){
 
     }
 

@@ -23,7 +23,7 @@ public class Enemy extends Combatable {
     }
 
     public int getPosY(){
-        return x;
+        return y;
     }
     public void attack(){
 
