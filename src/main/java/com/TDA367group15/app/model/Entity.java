@@ -10,6 +10,7 @@ public abstract class Entity {
 
     //current position for an entity
     private Vector2 position;
+    private String name;
 
     BufferedImage image;
 
@@ -85,5 +86,8 @@ public abstract class Entity {
         return sb.toString();
     }
 
+    public String getName(){
+        return generateName(5);
+    }
 }
 
