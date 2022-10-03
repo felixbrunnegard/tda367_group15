@@ -1,6 +1,5 @@
 package com.TDA367group15.app.model;
 
-import com.TDA367group15.app.view.GameView;
 import com.TDA367group15.app.view.ViewInterface;
 
 
@@ -10,8 +9,8 @@ import java.util.Random;
 
 public class GameLoop implements Runnable {
 
-    private Player player;
-    private List<Enemy> enemies ;
+    private static Player player; // only one instance, everyone share it.
+    private static List<Enemy> enemies;
     private int FPS = 60;
     public List<ViewInterface> gameViews;
 
@@ -26,15 +25,16 @@ public class GameLoop implements Runnable {
             int randomX = ran.nextInt(567);
             int randomY = ran.nextInt(792);
             Enemy enemy = new Enemy(randomX,randomY);
-            this.enemies.add(enemy);
+            GameLoop.enemies.add(enemy);
         }
     }
-    public Player getPlayer(){
-        return this.player;
+
+    public static Player getPlayer(){
+        return GameLoop.player;
     }
 
-    public List<Enemy> getEnemy(){
-        return this.enemies;
+    public static List<Enemy> getEnemies(){
+        return GameLoop.enemies;
     }
 
     public void startGameThread(){
