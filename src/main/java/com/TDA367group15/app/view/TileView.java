@@ -26,11 +26,44 @@ public class TileView extends WorldView {
         loadMap("/map.csv");
     }
 
+    public String getTileImageFilePath(Tile tile){
+        String fileName;
+
+        switch (tile.tileID) {
+            case 1:
+                fileName = "grass.png";
+                break;
+            case 2:
+                fileName = "water.png";
+                break;
+            case 3:
+                fileName = "floor.png";
+                break;
+            case 4:
+                fileName = "wall.png";
+                break;
+            case 5:
+                fileName = "log.png";
+                break;
+            case 6:
+                fileName = "sand.png";
+                break;
+            case 7:
+                fileName = "tree.png";
+                break;
+            default:
+                fileName = null;
+                break;
+        }
+
+        return fileName;
+    }
+
     public BufferedImage getTileImage(Tile tile){
         BufferedImage image;
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/"+ tile.fileName));
+            image = ImageIO.read(getClass().getResourceAsStream("/" + getTileImageFilePath(tile)));
             return image;
         } catch (Exception e) {
             e.printStackTrace();
@@ -38,10 +71,9 @@ public class TileView extends WorldView {
         return null;
     }
 
-    public void loadMap(String filePath){
+    public List<int[]> getWorld(String filePath){
         String line;
-        int row = 0;
-        int col = 0;
+        int col;
         List<int[]> world = new ArrayList<>();
 
         InputStream is = getClass().getResourceAsStream(filePath);
@@ -55,16 +87,21 @@ public class TileView extends WorldView {
                     numberArray[col] = num;
                 }
                 world.add(numberArray);
-                row += 1;
             }
 
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
 
+        return world;
+
+    }
+
+    public void loadMap(String filePath){
+        List<int[]> world = getWorld(filePath);
         mapTileNum = new int[world.get(0).length][world.size()];
-        col = 0;
-        row = 0;
+        int col = 0;
+        int row = 0;
 
         while ( col < world.get(row).length && row < world.size()-1){
             while (col < world.get(0).length){
@@ -77,7 +114,6 @@ public class TileView extends WorldView {
                 row += 1;
             }
         }
-
     }
 
     @Override
