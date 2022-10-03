@@ -22,6 +22,7 @@ public class App
         List<ViewInterface> gameViews = new ArrayList<>();
         gameViews.add(gameView);
 
+
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("Blue Boy Adventure");
@@ -30,7 +31,7 @@ public class App
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
-        GameLoop gameLoop = new GameLoop();
+        //GameLoop gameLoop = new GameLoop();
         gameLoop.gameViews = gameViews;
         gameLoop.startGameThread();
         gameLoop.run();
