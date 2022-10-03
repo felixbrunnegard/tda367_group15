@@ -10,10 +10,6 @@ import java.util.List;
 
 public class SpriteView extends WorldView {
 
-    public SpriteView(){
-
-    }
-
     @Override
     public void draw(Graphics2D g2){
         int xPos = GameView.SCREEN_WIDTH /2;

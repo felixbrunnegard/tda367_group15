@@ -6,6 +6,5 @@ import com.TDA367group15.app.model.Player;
 import java.util.List;
 
 public class CombatSpriteView extends CombatView {
-    public CombatSpriteView() {
-    }
+
 }
