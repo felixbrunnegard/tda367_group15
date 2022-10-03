@@ -9,8 +9,7 @@ import java.util.Random;
 public abstract class Entity {
 
     //current position for an entity
-    private Vector2 position;
-    private String name;
+    private Position position;
 
     BufferedImage image;
 
@@ -29,10 +28,10 @@ public abstract class Entity {
     }
 
     public Entity(int posX, int posY){
-        position = new Vector2(posX,posY);
+        position = new Position(posX,posY);
     }
 
-    public Vector2 getPosition() {
+    public Position getPosition() {
         return position;
     }
 
@@ -66,8 +65,8 @@ public abstract class Entity {
      */
     public boolean collide(Entity otherEntity){
 
-        Vector2 otherPos = otherEntity.getPosition();
-        Vector2 thisPos = getPosition();
+        Position otherPos = otherEntity.getPosition();
+        Position thisPos = getPosition();
 
         int xDiff = otherPos.getX() - thisPos.getX();
         int yDiff = otherPos.getY() - thisPos.getY();
