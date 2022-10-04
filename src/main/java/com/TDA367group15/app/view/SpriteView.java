@@ -20,7 +20,7 @@ public class SpriteView extends WorldView {
 
         g2.drawImage(player.getImage(), xPos, yPos,tileSize,tileSize, null);
         for (int i = 0; i<5; i++ ){
-            g2.drawImage(enemies.get(i).getImage(), enemies.get(i).getPosX(), enemies.get(i).getPosY(), tileSize,tileSize, null);
+            g2.drawImage(enemies.get(i).getImage(), enemies.get(i).getPosition().getX(), enemies.get(i).getPosition().getY(), tileSize,tileSize, null);
         }
     }
 }

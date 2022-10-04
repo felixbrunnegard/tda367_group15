@@ -11,16 +11,18 @@ public class Player extends Combatable{
     //JFrame frame = ;
 
     public Player(){
+        this(0,0);
+    }
+    public Player(int x, int y){
+        super(x, y);
         try {
             imageURL("src/images/Player/boy_down_1.png");
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
+        }//TODO:hur ska man test den här när det är i constructor? vi ska väl inte ha image här sen?
     }
+
     public void attack(Enemy e){
 
     }
-
-
-
 }

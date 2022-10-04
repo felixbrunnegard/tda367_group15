@@ -6,11 +6,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Enemy extends Combatable {
-    int x ;
-    int y ;
+
     public Enemy(Integer randomPosX,Integer randomPosY ){
-        this.x = randomPosX;
-        this.y = randomPosY;
+        super(randomPosX,randomPosY);
 
         try {
             imageURL("src/images/Enemy/enemy_down_1.png");
@@ -18,14 +16,13 @@ public class Enemy extends Combatable {
             throw new RuntimeException(e);
         }
     }
-    public int getPosX(){
-        return x;
-    }
-
-    public int getPosY(){
-        return y;
-    }
     public void attack(){
 
+    }
+
+    @Override
+    public boolean collide(Entity player) {
+
+        return false;
     }
 }

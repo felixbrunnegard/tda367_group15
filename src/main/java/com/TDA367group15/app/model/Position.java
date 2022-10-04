@@ -7,9 +7,9 @@ public class Position {
     private int x;
     private int y;
 
-    public Position() {
-        this(0,0);
-    }
+    //public Position() {
+    //    this(0,0);
+    //}
 
     public Position(int posX, int posY){
         this.x = posX;

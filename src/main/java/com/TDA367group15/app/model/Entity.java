@@ -1,26 +1,26 @@
 package com.TDA367group15.app.model;
 
+import com.TDA367group15.app.view.GameView;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
-public abstract class Entity {
+public abstract class Entity implements ICollidable {
 
     //current position for an entity
     private Position position;
 
     BufferedImage image;
 
-    private final static int MOVEMENT_SPEED = 4;
+    public final static int MOVEMENT_SPEED = 4;
 
     //TODO: Do we need size of entity or width and height
-    private final static int SIZE = 1;
 
-    //TODO: CHECK WHY WE WILL USE position class
-//    private Position position;
     private Direction lookingDirection;  // direction player looks at
+    private boolean collideWithEnemies;
 
     // entity starts at position 0 or a certain position
     public Entity(){
@@ -33,6 +33,10 @@ public abstract class Entity {
 
     public Position getPosition() {
         return position;
+    }
+
+    public boolean isCollideWithEnemies() {
+        return collideWithEnemies;
     }
 
     public void imageURL(String path) throws IOException {
@@ -63,6 +67,7 @@ public abstract class Entity {
     /**
      * Calculates if this entity collides with another
      */
+    @Override
     public boolean collide(Entity otherEntity){
 
         Position otherPos = otherEntity.getPosition();
@@ -70,11 +75,12 @@ public abstract class Entity {
 
         int xDiff = otherPos.getX() - thisPos.getX();
         int yDiff = otherPos.getY() - thisPos.getY();
-        if(xDiff <= SIZE && yDiff <= SIZE){
-            return true;
+        if(xDiff <= 0 || yDiff <= 0){
+            return collideWithEnemies = true;
         }
-        return false;
+        return collideWithEnemies = true;
     }
+
     public static String generateName(int len) {
         String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
                 + "lmnopqrstuvwxyz!@#$%&";

@@ -5,4 +5,9 @@ public class Friendly extends Entity {
 
     public void interact(Player p){
     }
+
+    @Override
+    public boolean collide(Entity player) {
+        return false;
+    }
 }
