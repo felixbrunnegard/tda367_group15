@@ -11,6 +11,5 @@ public abstract class WorldView {
     final int maxScreenColumn = 16;
     final int maxScreenRow = 12;
 
-    public void draw(Graphics2D g2){
-    }
+    public abstract void draw(Graphics2D g2); //say to all others to hava draw method.
 }

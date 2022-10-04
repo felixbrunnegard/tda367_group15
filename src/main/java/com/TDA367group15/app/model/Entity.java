@@ -13,8 +13,6 @@ public abstract class Entity implements ICollidable {
     //current position for an entity
     private Position position;
 
-    BufferedImage image;
-
     public final static int MOVEMENT_SPEED = 4;
 
     //TODO: Do we need size of entity or width and height
@@ -37,14 +35,6 @@ public abstract class Entity implements ICollidable {
 
     public boolean isCollideWithEnemies() {
         return collideWithEnemies;
-    }
-
-    public void imageURL(String path) throws IOException {
-        //image = ImageIO.read(getClass().getResourceAsStream(path));
-        image = ImageIO.read(new File(path));
-    }
-    public BufferedImage getImage() {
-        return image;
     }
 
     //TODO: one method instead of 4 as described in uml?

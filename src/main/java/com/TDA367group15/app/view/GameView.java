@@ -1,6 +1,7 @@
 package com.TDA367group15.app.view;
 
 import com.TDA367group15.app.model.Enemy;
+import com.TDA367group15.app.model.GameLoop;
 import com.TDA367group15.app.model.Player;
 
 import javax.swing.*;
@@ -12,12 +13,15 @@ public class GameView extends JPanel implements ViewInterface {
     TileView tileView = new TileView();
     SpriteView spriteView;
 
+    HPView hpView;
+
     public GameView(){
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_ROW));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
 
         spriteView = new SpriteView();
+        hpView = new HPView();
     }
 
     public void paintComponent(Graphics g){
@@ -26,6 +30,7 @@ public class GameView extends JPanel implements ViewInterface {
         Graphics2D g2 = (Graphics2D) g;
         tileView.draw(g2);
         spriteView.draw(g2);
+        hpView.draw(g2);
 
 
 
