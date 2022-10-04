@@ -6,6 +6,7 @@ public class Tile implements ICollidable {
 
     private boolean collision;
     public int tileID;
+    private boolean collideWithTile;
 
     public Tile(int tileID){
         this.tileID = tileID;
@@ -13,6 +14,10 @@ public class Tile implements ICollidable {
 
     public int getTileNr(){
         return tileID;
+    }
+
+    public boolean isCollideWithTile() {
+        return collideWithTile;
     }
 
     @Override
@@ -23,10 +28,10 @@ public class Tile implements ICollidable {
 
         int xDiff = playerPos.getX() - tileNr;
         int yDiff = playerPos.getY() - tileNr;
-        if(xDiff <= 0 && yDiff <= 0){
-            return true;
+        if(xDiff <= 0 || yDiff <= 0){
+            return collideWithTile = true;
         }
-        return false;
+        return collideWithTile = false;
     }
 
 }

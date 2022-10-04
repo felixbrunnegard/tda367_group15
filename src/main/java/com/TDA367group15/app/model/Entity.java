@@ -78,7 +78,7 @@ public abstract class Entity implements ICollidable {
         if(xDiff <= 0 || yDiff <= 0){
             return collideWithEnemies = true;
         }
-        return collideWithEnemies = true;
+        return collideWithEnemies = false;
     }
 
     public static String generateName(int len) {
@@ -91,8 +91,8 @@ public abstract class Entity implements ICollidable {
         return sb.toString();
     }
 
-    public String getName(){
-        return generateName(5);
+    public String getName(int a){
+        return generateName(a);
     }
 }
 
