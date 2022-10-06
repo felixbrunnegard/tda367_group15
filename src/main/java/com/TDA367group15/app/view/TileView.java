@@ -1,5 +1,6 @@
 package com.TDA367group15.app.view;
 
+import com.TDA367group15.app.model.Map;
 import com.TDA367group15.app.model.Tile;
 
 import javax.imageio.ImageIO;
@@ -12,6 +13,7 @@ import java.util.List;
 public class TileView extends WorldView {
     private List<Tile> tiles = new ArrayList<>();
     int mapTileNum[][];
+    private Map map = new Map();
 
     public TileView(){
 
@@ -23,7 +25,7 @@ public class TileView extends WorldView {
         this.tiles.add(new Tile(6));
         this.tiles.add(new Tile(7));
 
-        loadMap("/map.csv");
+        mapTileNum = map.loadMap("/map.csv");
     }
 
     public String getTileImageFilePath(Tile tile){
@@ -69,51 +71,6 @@ public class TileView extends WorldView {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public List<int[]> getWorld(String filePath){
-        String line;
-        int col;
-        List<int[]> world = new ArrayList<>();
-
-        InputStream is = getClass().getResourceAsStream(filePath);
-
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(is))){
-            while ( (line = br.readLine()) != null){
-                String[] numbers = line.split(",");
-                int numberArray[] = new int[numbers.length];
-                for (col = 0; col < numbers.length; col++){
-                    int num = Integer.parseInt(numbers[col]);
-                    numberArray[col] = num;
-                }
-                world.add(numberArray);
-            }
-
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-        return world;
-
-    }
-
-    public void loadMap(String filePath){
-        List<int[]> world = getWorld(filePath);
-        mapTileNum = new int[world.get(0).length][world.size()];
-        int col = 0;
-        int row = 0;
-
-        while ( col < world.get(row).length && row < world.size()-1){
-            while (col < world.get(0).length){
-                int num = world.get(row)[col];
-                mapTileNum[col][row] = num;
-                col += 1;
-            }
-            if (col == world.get(row).length){
-                col = 0;
-                row += 1;
-            }
-        }
     }
 
     @Override

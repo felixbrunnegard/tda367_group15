@@ -9,20 +9,6 @@ import static org.junit.Assert.*;
 public class TileViewTest {
 
     @Test
-    public void testWorldRows(){
-        TileView tileView = new TileView();
-
-        assertEquals(tileView.getWorld("/map.csv").size(), 203);
-    }
-
-    @Test
-    public void testWorldColumns(){
-        TileView tileView = new TileView();
-
-        assertEquals(tileView.getWorld("/map.csv").get(0).length, 115);
-    }
-
-    @Test
     public void testGrassImage(){
         TileView tileView = new TileView();
 
