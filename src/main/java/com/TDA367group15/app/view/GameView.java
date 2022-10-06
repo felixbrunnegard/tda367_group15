@@ -10,9 +10,10 @@ public class GameView extends JPanel implements ViewInterface {
     public static final int SCREEN_WIDTH = 768;
     public static final int SCREEN_ROW = 576;
 
+    GameLoop gameLoop = GameLoop.getInstance();
+
     TileView tileView = new TileView();
     SpriteView spriteView;
-
     HPView hpView;
 
     public GameView(){
@@ -28,12 +29,14 @@ public class GameView extends JPanel implements ViewInterface {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
-        tileView.draw(g2);
-        spriteView.draw(g2);
-        hpView.draw(g2);
-
-
-
+        if (!gameLoop.isCombat()){
+            tileView.draw(g2);
+            spriteView.draw(g2);
+            hpView.draw(g2);
+        }
+        else {
+            //Fyll med kod som ska visa combaten
+        }
     }
 
     @Override

@@ -16,7 +16,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        GameLoop gameLoop = new GameLoop();
+        GameLoop gameLoop = GameLoop.getInstance();
         JFrame window = new JFrame();
         GameView gameView = new GameView();
         List<ViewInterface> gameViews = new ArrayList<>();
@@ -33,7 +33,6 @@ public class App
 
         //GameLoop gameLoop = new GameLoop();
         gameLoop.gameViews = gameViews;
-        gameLoop.startGameThread();
-        gameLoop.run();
+        GameLoop.getInstance().run();
     }
 }

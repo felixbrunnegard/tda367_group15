@@ -1,25 +1,31 @@
 package com.TDA367group15.app.model;
 
 import com.TDA367group15.app.view.ViewInterface;
+import org.ajbrown.namemachine.NameGenerator;
 
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class GameLoop implements Runnable {
+public final class GameLoop implements Runnable {
 
     private static Player player; // only one instance, everyone share it.
     private static List<Enemy> enemies;
+    private static GameLoop instance;
     private int FPS = 60;
     public List<ViewInterface> gameViews;
 
+    //True if player is in combat
+    private boolean combat = false;
+
     Thread gameThread;
 
-    public GameLoop(){
+
+    private GameLoop(){
         GameLoop.player = new Player();
         GameLoop.enemies = new ArrayList<>(5);
-
+        this.startGameThread();
         for (int i = 0; i<5; i++ ){
             Random ran = new Random();
             int randomX = ran.nextInt(567);
@@ -37,6 +43,13 @@ public class GameLoop implements Runnable {
         return GameLoop.enemies;
     }
 
+    public static GameLoop getInstance() {
+        if (instance == null){
+            instance  = new GameLoop();
+        }
+        return instance;
+    }
+
     public void startGameThread(){
         gameThread = new Thread(this);
         gameThread.start();
@@ -50,6 +63,8 @@ public class GameLoop implements Runnable {
         long currentTime;
         long timer = 0;
         int drawCount = 0;
+        int i = 0;
+
 
         while (gameThread != null){
             currentTime = System.nanoTime();
@@ -64,8 +79,8 @@ public class GameLoop implements Runnable {
                 drawCount++;
             }
 
+            //System.out.println(timer);
             if(timer >= 1000000000){
-                System.out.println("FPS: "+ drawCount);
                 drawCount = 0;
                 timer = 0;
             }
@@ -73,5 +88,13 @@ public class GameLoop implements Runnable {
     }
     private void update(){
         gameViews.get(0).update();
+    }
+
+    public boolean isCombat() {
+        return combat;
+    }
+
+    public void setCombat(boolean combat) {
+        this.combat = combat;
     }
 }
