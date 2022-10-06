@@ -27,6 +27,7 @@ public class App
         window.setResizable(false);
         window.setTitle("Blue Boy Adventure");
         window.add(gameView);
+        window.setFocusable(true);
         window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);
