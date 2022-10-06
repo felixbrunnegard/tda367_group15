@@ -9,58 +9,10 @@ import static org.junit.Assert.*;
 public class TileViewTest {
 
     @Test
-    public void testGrassImage(){
+    public void testTotalImages(){
         TileView tileView = new TileView();
 
-        assertNotNull(tileView.getTileImage(new Tile(1)));
+        assertEquals(7, tileView.images.size());
     }
 
-    @Test
-    public void testWaterImage(){
-        TileView tileView = new TileView();
-
-        assertNotNull(tileView.getTileImage(new Tile(2)));
-    }
-
-    @Test
-    public void testFloorImage(){
-        TileView tileView = new TileView();
-
-        assertNotNull(tileView.getTileImage(new Tile(3)));
-    }
-
-    @Test
-    public void testWallImage(){
-        TileView tileView = new TileView();
-
-        assertNotNull(tileView.getTileImage(new Tile(4)));
-    }
-
-    @Test
-    public void testLogImage(){
-        TileView tileView = new TileView();
-
-        assertNotNull(tileView.getTileImage(new Tile(5)));
-    }
-
-    @Test
-    public void testSandImage(){
-        TileView tileView = new TileView();
-
-        assertNotNull(tileView.getTileImage(new Tile(6)));
-    }
-
-    @Test
-    public void testTreeImage(){
-        TileView tileView = new TileView();
-
-        assertNotNull(tileView.getTileImage(new Tile(7)));
-    }
-
-    @Test
-    public void testNoImage(){
-        TileView tileView = new TileView();
-
-        assertNull(tileView.getTileImage(new Tile(8)));
-    }
 }

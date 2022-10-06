@@ -1,6 +1,8 @@
 package com.TDA367group15.app.view;
 
+import com.TDA367group15.app.model.GameLoop;
 import com.TDA367group15.app.model.Map;
+import com.TDA367group15.app.model.Player;
 import com.TDA367group15.app.model.Tile;
 
 import javax.imageio.ImageIO;
@@ -12,8 +14,10 @@ import java.util.List;
 
 public class TileView extends WorldView {
     private List<Tile> tiles = new ArrayList<>();
+    public List<BufferedImage> images = new ArrayList<>();
     int mapTileNum[][];
     private Map map = new Map();
+    private Player player;
 
     public TileView(){
 
@@ -25,7 +29,11 @@ public class TileView extends WorldView {
         this.tiles.add(new Tile(6));
         this.tiles.add(new Tile(7));
 
+        loadTileImage();
+
         mapTileNum = map.loadMap("/map.csv");
+
+        player = GameLoop.getPlayer();
     }
 
     public String getTileImageFilePath(Tile tile){
@@ -61,16 +69,17 @@ public class TileView extends WorldView {
         return fileName;
     }
 
-    public BufferedImage getTileImage(Tile tile){
+    public void loadTileImage(){
         BufferedImage image;
 
-        try {
-            image = ImageIO.read(getClass().getResourceAsStream("/" + getTileImageFilePath(tile)));
-            return image;
-        } catch (Exception e) {
-            e.printStackTrace();
+        for (int i = 0; i < tiles.size(); i++){
+            try {
+                image = ImageIO.read(getClass().getResourceAsStream("/" + getTileImageFilePath(tiles.get(i))));
+                images.add(image);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        return null;
     }
 
     @Override
@@ -78,22 +87,31 @@ public class TileView extends WorldView {
 
         int col = 0;
         int row = 0;
-        int x = 0;
-        int y = 0;
 
-        while(col < maxScreenColumn && row < maxScreenRow){
+        while(col < mapTileNum[0].length && row < mapTileNum.length){
 
-            int tileNum = mapTileNum[col][row];
+            int tileNum = mapTileNum[row][col];
 
-            g2.drawImage(getTileImage(tiles.get(tileNum-1)), x, y, tileSize, tileSize, null);
+            int x = col * tileSize;
+            int y = row * tileSize;
+            int screenX = x - player.getPosition().getX() + GameView.SCREEN_WIDTH/2;
+            int screenY = y - player.getPosition().getY() + GameView.SCREEN_ROW /2;
+
+            if (x + tileSize > player.getPosition().getX() - GameView.SCREEN_WIDTH/2 &&
+                x - tileSize < player.getPosition().getX() + GameView.SCREEN_WIDTH/2 &&
+                y + tileSize > player.getPosition().getY() - GameView.SCREEN_ROW/2 &&
+                y - tileSize < player.getPosition().getY() + GameView.SCREEN_ROW/2) {
+                if (tileNum == 0){
+                    System.out.println(row);
+                }
+                g2.drawImage(images.get(tileNum-1), screenX, screenY, tileSize, tileSize, null);
+            }
+
             col++;
-            x += tileSize;
 
-            if(col == maxScreenColumn){
+            if(col == mapTileNum[row].length){
                 col = 0;
-                x = 0;
                 row++;
-                y += tileSize;
             }
         }
     }

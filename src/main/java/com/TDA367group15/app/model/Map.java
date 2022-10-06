@@ -43,14 +43,14 @@ public class Map {
     public int[][] loadMap(String filePath){
         int mapTileNum[][];
         List<int[]> world = getWorld(filePath);
-        mapTileNum = new int[world.get(0).length][world.size()];
+        mapTileNum = new int[world.size()][world.get(0).length];
         int col = 0;
         int row = 0;
 
-        while ( col < world.get(row).length && row < world.size()-1){
-            while (col < world.get(0).length){
+        while ( col < world.get(0).length && row < world.size()){
+            while (col < world.get(row).length){
                 int num = world.get(row)[col];
-                mapTileNum[col][row] = num;
+                mapTileNum[row][col] = num;
                 col += 1;
             }
             if (col == world.get(row).length){
