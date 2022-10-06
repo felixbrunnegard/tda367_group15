@@ -10,6 +10,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class HPView extends HUDView {
+
+    private int xPos = GameView.SCREEN_WIDTH/2 - 75;
+    private int yPos = GameView.SCREEN_ROW - 50;
     private BufferedImage fullHealth;
     private BufferedImage halfHealth;
     private BufferedImage blankHealth;
@@ -26,14 +29,26 @@ public class HPView extends HUDView {
     }
     @Override
     public void draw(Graphics2D g2) {
-        int maxHP = GameLoop.getPlayer().getMaxHealth();
-        int hp = GameLoop.getPlayer().getHealth();
-        int xPos = GameView.SCREEN_WIDTH/2 - 75;
-        int yPos = GameView.SCREEN_ROW - 50;
-        RoundRectangle2D backgroundToHearts = new RoundRectangle2D.Float(xPos + 28,GameView.SCREEN_ROW - 50 , 145, 50, 25, 25);
+        drawRoundRectangle(g2);
+        drawHearts(g2);
+    }
+
+    private void drawRoundRectangle(Graphics2D g2) {
+        RoundRectangle2D roundRectangle2D = new RoundRectangle2D.Float(xPos + 26,GameView.SCREEN_ROW - 55 , 150, 55, 25, 25);
+        RoundRectangle2D backgroundToHearts = new RoundRectangle2D.Float(xPos + 28,GameView.SCREEN_ROW - 52 , 145, 50, 25, 25);
+
+        g2.setColor(Color.ORANGE);
+        g2.fill(roundRectangle2D);
+        g2.draw(roundRectangle2D);
+
         g2.setColor(Color.WHITE);
         g2.fill(backgroundToHearts);
         g2.draw(backgroundToHearts);
+    }
+
+    private void drawHearts(Graphics2D g2) {
+        int maxHP = GameLoop.getPlayer().getMaxHealth();
+        int hp = GameLoop.getPlayer().getHealth();
 
         for(int i = 1; i <= maxHP; i += 2){
             if (i < hp){
@@ -48,3 +63,4 @@ public class HPView extends HUDView {
         }
     }
 }
+
