@@ -1,9 +1,5 @@
 package com.TDA367group15.app.view;
 
-import com.TDA367group15.app.model.Enemy;
-import com.TDA367group15.app.model.GameLoop;
-import com.TDA367group15.app.model.Player;
-
 import javax.swing.*;
 import java.awt.*;
 public class GameView extends JPanel implements ViewInterface {
@@ -14,6 +10,7 @@ public class GameView extends JPanel implements ViewInterface {
     SpriteView spriteView;
 
     HPView hpView;
+    XPView xpView;
 
     public GameView(){
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_ROW));
@@ -22,6 +19,7 @@ public class GameView extends JPanel implements ViewInterface {
 
         spriteView = new SpriteView();
         hpView = new HPView();
+        xpView = new XPView();
     }
 
     public void paintComponent(Graphics g){
@@ -31,6 +29,7 @@ public class GameView extends JPanel implements ViewInterface {
         tileView.draw(g2);
         spriteView.draw(g2);
         hpView.draw(g2);
+        xpView.draw(g2);
 
 
 

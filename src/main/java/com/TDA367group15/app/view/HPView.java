@@ -4,6 +4,7 @@ import com.TDA367group15.app.model.GameLoop;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -29,6 +30,10 @@ public class HPView extends HUDView {
         int hp = GameLoop.getPlayer().getHealth();
         int xPos = GameView.SCREEN_WIDTH/2 - 75;
         int yPos = GameView.SCREEN_ROW - 50;
+        RoundRectangle2D backgroundToHearts = new RoundRectangle2D.Float(xPos + 28,GameView.SCREEN_ROW - 50 , 145, 50, 25, 25);
+        g2.setColor(Color.WHITE);
+        g2.fill(backgroundToHearts);
+        g2.draw(backgroundToHearts);
 
         for(int i = 1; i <= maxHP; i += 2){
             if (i < hp){

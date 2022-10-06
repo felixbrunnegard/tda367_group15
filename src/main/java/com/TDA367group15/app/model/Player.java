@@ -22,4 +22,8 @@ public class Player extends Combatable{
     public void attack(Enemy e){
 
     }
+
+    public int getLevel() {
+        return 1;
+    }
 }
