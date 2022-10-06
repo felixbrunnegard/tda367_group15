@@ -11,6 +11,7 @@ public class XPView extends HUDView {
         drawRoundRectangleEdge(g2);
         drawRoundRectangleBackground(g2);
         drawRoundRectangleXP(g2);
+        drawLevel(g2);
 
     }
 
@@ -19,6 +20,7 @@ public class XPView extends HUDView {
 
         g2.setColor(Color.ORANGE);
         g2.fill(roundRectangle2D);
+        g2.draw(roundRectangle2D);
         g2.draw(roundRectangle2D);
     }
     private static void drawRoundRectangleBackground(Graphics2D g2) {
@@ -36,4 +38,8 @@ public class XPView extends HUDView {
         g2.draw(roundRectangle2D2);
     }
 
+    private static void drawLevel(Graphics2D g2) {
+        g2.setColor(Color.WHITE);
+        g2.drawString("LV"+ GameLoop.getPlayer().getLevel(), GameView.SCREEN_WIDTH/2 + 120, 25);
+    }
 }
