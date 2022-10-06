@@ -1,5 +1,7 @@
 package com.TDA367group15.app.controller;
 
+import com.TDA367group15.app.model.Direction;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -63,4 +65,21 @@ public class KeyHandler implements KeyListener {
         }
 
     }
+
+    public Direction getDirectionPressed() {
+        if(upPressed) {
+            return Direction.UP;
+        }
+        if(downPressed) {
+            return Direction.DOWN;
+        }
+        if(leftPressed) {
+            return Direction.LEFT;
+        }
+        if(rightPressed) {
+            return Direction.RIGHT;
+        }
+        else return null;
+    }
+
 }
