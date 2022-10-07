@@ -1,5 +1,6 @@
 package com.TDA367group15.app;
 
+import com.TDA367group15.app.controller.KeyHandler;
 import com.TDA367group15.app.model.GameLoop;
 import com.TDA367group15.app.view.GameView;
 import com.TDA367group15.app.view.ViewInterface;
@@ -16,7 +17,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        GameLoop gameLoop = new GameLoop();
+        KeyHandler keyH = new KeyHandler();
+        GameLoop gameLoop = new GameLoop(keyH);
         JFrame window = new JFrame();
         GameView gameView = new GameView();
         List<ViewInterface> gameViews = new ArrayList<>();
@@ -28,6 +30,7 @@ public class App
         window.setTitle("Blue Boy Adventure");
         window.add(gameView);
         window.setFocusable(true);
+        window.addKeyListener(keyH);
         window.pack();
         window.setLocationRelativeTo(null);
         window.setVisible(true);

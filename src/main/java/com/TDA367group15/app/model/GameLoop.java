@@ -1,5 +1,7 @@
 package com.TDA367group15.app.model;
 
+import com.TDA367group15.app.controller.KeyHandler;
+import com.TDA367group15.app.controller.PlayerController;
 import com.TDA367group15.app.view.ViewInterface;
 
 
@@ -13,28 +15,32 @@ public class GameLoop implements Runnable {
     private static List<Enemy> enemies;
     private int FPS = 60;
     public List<ViewInterface> gameViews;
+    public KeyHandler keyH;
+    public PlayerController playerC;
 
-    Thread gameThread;
+     Thread gameThread;
 
-    public GameLoop(){
-        GameLoop.player = new Player();
-        GameLoop.enemies = new ArrayList<>(5);
+    public GameLoop(KeyHandler keyH){
+        this.player = new Player();
+        this.enemies = new ArrayList<>(5);
+        this.keyH = keyH;
+        this.playerC = new PlayerController(player);
 
         for (int i = 0; i<5; i++ ){
             Random ran = new Random();
             int randomX = ran.nextInt(567);
             int randomY = ran.nextInt(792);
             Enemy enemy = new Enemy(randomX,randomY);
-            GameLoop.enemies.add(enemy);
+            enemies.add(enemy);
         }
     }
 
     public static Player getPlayer(){
-        return GameLoop.player;
+        return player;
     }
 
     public static List<Enemy> getEnemies(){
-        return GameLoop.enemies;
+        return enemies;
     }
 
     public void startGameThread(){
@@ -65,7 +71,7 @@ public class GameLoop implements Runnable {
             }
 
             if(timer >= 1000000000){
-                System.out.println("FPS: "+ drawCount);
+                //System.out.println("FPS: "+ drawCount);
                 drawCount = 0;
                 timer = 0;
             }
@@ -73,5 +79,8 @@ public class GameLoop implements Runnable {
     }
     private void update(){
         gameViews.get(0).update();
+        if(keyH.getDirectionPressed() != null) {
+            playerC.actOnMovement(keyH.getDirectionPressed());
+        }
     }
 }

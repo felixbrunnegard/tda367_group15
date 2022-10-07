@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener {
 
     public Boolean downPressed, leftPressed, rightPressed, enterPressed, escapePressed;
-    Boolean upPressed = downPressed = leftPressed = rightPressed = enterPressed = escapePressed = false;
+    Boolean upPressed = downPressed = leftPressed = rightPressed = enterPressed = escapePressed = false; // default false
 
     @Override
     public void keyTyped(KeyEvent e) {
