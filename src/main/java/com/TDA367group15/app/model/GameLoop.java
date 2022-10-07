@@ -1,7 +1,6 @@
 package com.TDA367group15.app.model;
 
 import com.TDA367group15.app.view.ViewInterface;
-import org.ajbrown.namemachine.NameGenerator;
 
 
 import java.util.ArrayList;
@@ -14,6 +13,7 @@ public final class GameLoop implements Runnable {
     private static List<Enemy> enemies;
     private static GameLoop instance;
     private int FPS = 60;
+    private boolean restartingGame = false;
     public List<ViewInterface> gameViews;
 
     //True if player is in combat
@@ -96,5 +96,20 @@ public final class GameLoop implements Runnable {
 
     public void setCombat(boolean combat) {
         this.combat = combat;
+    }
+
+    public void restartGame(){
+        setRestartingGame(true);
+    }
+
+    public boolean isRestartingGame() {
+        return restartingGame;
+    }
+
+    private void setRestartingGame(boolean restartingGame) {
+        this.restartingGame = restartingGame;
+
+        //
+
     }
 }
