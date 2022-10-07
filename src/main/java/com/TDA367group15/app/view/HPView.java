@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class HPView extends HUDView {
 
-    private int xPos = GameView.SCREEN_WIDTH/2 - 75;
+    private int xPos = GameView.SCREEN_WIDTH/2 - 100;
     private int yPos = GameView.SCREEN_ROW - 50;
     private BufferedImage fullHealth;
     private BufferedImage halfHealth;

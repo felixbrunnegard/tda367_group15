@@ -25,8 +25,8 @@ public class SpriteView extends WorldView {
     }
     @Override
     public void draw(Graphics2D g2){
-        int xPos = GameView.SCREEN_WIDTH /2;
-        int yPos = GameView.SCREEN_ROW /2;
+        int xPos = GameView.SCREEN_WIDTH/2 - tileSize/2;
+        int yPos = GameView.SCREEN_ROW /2 - tileSize/2;
 
         List<Enemy> enemies = GameLoop.getEnemies();
 

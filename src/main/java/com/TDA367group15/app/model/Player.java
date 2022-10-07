@@ -11,7 +11,7 @@ public class Player extends Combatable{
     //JFrame frame = ;
 
     public Player(){
-        this(0,0);
+        this(1488,960);
     }
     public Player(int x, int y){
         super(x, y);
