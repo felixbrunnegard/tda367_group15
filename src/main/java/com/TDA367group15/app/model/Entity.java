@@ -1,12 +1,7 @@
 package com.TDA367group15.app.model;
 
-import com.TDA367group15.app.view.GameView;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Random;
+
 
 public abstract class Entity implements ICollidable {
 
@@ -25,17 +20,21 @@ public abstract class Entity implements ICollidable {
         this(0, 0);
     }
 
+
     public Entity(int posX, int posY){
         position = new Position(posX,posY);
     }
+
 
     public Position getPosition() {
         return position;
     }
 
+
     public boolean isCollideWithEnemies() {
         return collideWithEnemies;
     }
+
 
     //TODO: one method instead of 4 as described in uml?
     public void move(Direction d){
@@ -54,6 +53,7 @@ public abstract class Entity implements ICollidable {
 
     }
 
+
     /**
      * Calculates if this entity collides with another
      */
@@ -71,6 +71,7 @@ public abstract class Entity implements ICollidable {
         return collideWithEnemies = false;
     }
 
+
     public static String generateName(int len) {
         String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
                 + "lmnopqrstuvwxyz!@#$%&";
@@ -80,6 +81,7 @@ public abstract class Entity implements ICollidable {
             sb.append(chars.charAt(rnd.nextInt(chars.length())));
         return sb.toString();
     }
+
 
     public String getName(int a){
         return generateName(a);
