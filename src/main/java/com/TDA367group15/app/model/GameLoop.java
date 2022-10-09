@@ -11,8 +11,9 @@ import java.util.Random;
 
 public class GameLoop implements Runnable {
 
-    private static Player player; // only one instance, everyone share it.
-    private static List<Enemy> enemies;
+    private Player player; // only one instance, everyone share it.
+
+    private List<Enemy> enemies;
     private int FPS = 60;
     public List<ViewInterface> gameViews;
     public KeyHandler keyH;
@@ -20,26 +21,20 @@ public class GameLoop implements Runnable {
 
      Thread gameThread;
 
-    public GameLoop(KeyHandler keyH){
-        this.player = new Player();
+    public GameLoop(Player player, KeyHandler keyH){
+        this.player = player;
         this.enemies = new ArrayList<>(5);
         this.keyH = keyH;
         this.playerC = new PlayerController(player);
 
-        for (int i = 0; i<5; i++ ){
-            Random ran = new Random();
-            int randomX = ran.nextInt(567);
-            int randomY = ran.nextInt(792);
-            Enemy enemy = new Enemy(randomX,randomY);
-            enemies.add(enemy);
-        }
+
     }
 
-    public static Player getPlayer(){
+    /*public static Player getPlayer(){
         return player;
-    }
+    }*/
 
-    public static List<Enemy> getEnemies(){
+    public List<Enemy> getEnemies(){
         return enemies;
     }
 

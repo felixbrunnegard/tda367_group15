@@ -19,7 +19,7 @@ public class TileView extends WorldView {
     private Map map = new Map();
     private Player player;
 
-    public TileView(){
+    public TileView(Player player){
 
         this.tiles.add(new Tile(1));
         this.tiles.add(new Tile(2));
@@ -33,7 +33,7 @@ public class TileView extends WorldView {
 
         mapTileNum = map.loadMap("/map.csv");
 
-        player = GameLoop.getPlayer();
+        this.player = player;
     }
 
     public String getTileImageFilePath(Tile tile){

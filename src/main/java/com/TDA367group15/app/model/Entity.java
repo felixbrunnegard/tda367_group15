@@ -8,7 +8,7 @@ public abstract class Entity implements ICollidable {
     //current position for an entity
     private Position position;
 
-    public final static int MOVEMENT_SPEED = 2;
+    public final static int MOVEMENT_SPEED = 2; //denpendcy injection för static variabel
 
     //TODO: Do we need size of entity or width and height
 

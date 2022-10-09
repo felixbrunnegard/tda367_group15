@@ -7,4 +7,7 @@ import java.util.List;
 
 public class CombatSpriteView extends CombatView {
 
+    public CombatSpriteView(Player player,List<Enemy> enemies) {
+        super(player,enemies);
+    }
 }

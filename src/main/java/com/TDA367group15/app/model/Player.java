@@ -26,4 +26,5 @@ public class Player extends Combatable{
     public int getLevel(){
         return 1;
     }
+
 }

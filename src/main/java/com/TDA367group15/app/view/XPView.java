@@ -1,11 +1,16 @@
 package com.TDA367group15.app.view;
 
 import com.TDA367group15.app.model.GameLoop;
+import com.TDA367group15.app.model.Player;
 
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
 public class XPView extends HUDView {
+    private Player player;
+    public XPView(Player player){
+        this.player = player;
+    }
     @Override
     public void draw(Graphics2D g2) {
         drawRoundRectangleEdge(g2);
@@ -20,7 +25,6 @@ public class XPView extends HUDView {
 
         g2.setColor(Color.ORANGE);
         g2.fill(roundRectangle2D);
-        g2.draw(roundRectangle2D);
         g2.draw(roundRectangle2D);
     }
     private static void drawRoundRectangleBackground(Graphics2D g2) {
@@ -38,8 +42,8 @@ public class XPView extends HUDView {
         g2.draw(roundRectangle2D2);
     }
 
-    private static void drawLevel(Graphics2D g2) {
+    private void drawLevel(Graphics2D g2) {
         g2.setColor(Color.WHITE);
-        g2.drawString("LV"+ GameLoop.getPlayer().getLevel(), GameView.SCREEN_WIDTH/2 + 120, 25);
+        g2.drawString("LV"+ player.getLevel(), GameView.SCREEN_WIDTH/2 + 120, 25);
     }
 }
