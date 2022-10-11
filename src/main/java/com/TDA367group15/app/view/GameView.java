@@ -52,4 +52,9 @@ public class GameView extends JPanel implements ViewInterface {
         repaint();
     }
 
+    public TileView getTileView(){
+        return tileView;
+    }
+
+
 }

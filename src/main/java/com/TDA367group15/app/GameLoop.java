@@ -2,8 +2,10 @@ package com.TDA367group15.app;
 
 import com.TDA367group15.app.controller.KeyHandler;
 import com.TDA367group15.app.controller.PlayerController;
+import com.TDA367group15.app.model.Direction;
 import com.TDA367group15.app.model.Enemy;
 import com.TDA367group15.app.model.Player;
+import com.TDA367group15.app.model.Tile;
 import com.TDA367group15.app.view.ViewInterface;
 
 
@@ -75,8 +77,30 @@ public class GameLoop implements Runnable {
     }
     private void update(){
         gameViews.get(0).update();
-        if(keyH.getDirectionPressed() != null) {
+        int xPos = player.getPosition().getX();
+        int yPos = player.getPosition().getY();
+        int tilePosX = 1;//xPos / gameViews.get(0).getTileView().tileSize;
+        int tilePosY = 1;//yPos / gameViews.get(0).getTileView().tileSize;
+        if (keyH.getDirectionPressed() != null) {
+            if (keyH.getDirectionPressed() == Direction.UP) {
+                tilePosY--;
+            } else if (keyH.getDirectionPressed() == Direction.DOWN) {
+                tilePosY++;
+            } else if (keyH.getDirectionPressed() == Direction.LEFT) {
+                tilePosX--;
+            } else {
+                tilePosX++; //RIGHT
+            }
+        }
+
+
+        //MapTileNum and Tiles probably should not be in tileView?
+        int nextTile = 1;//gameViews.get(0).getTileView().getMapTileNum()[tilePosY][tilePosX];
+        Tile tileToCheckCollide = new Tile(nextTile);
+        if (tileToCheckCollide.collide(player)) {
+        } else {
             playerC.actOnMovement(keyH.getDirectionPressed());
         }
     }
+
 }
