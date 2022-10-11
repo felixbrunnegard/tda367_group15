@@ -1,6 +1,5 @@
 package com.TDA367group15.app.view;
 
-import com.TDA367group15.app.model.GameLoop;
 import com.TDA367group15.app.model.Map;
 import com.TDA367group15.app.model.Player;
 import com.TDA367group15.app.model.Tile;
@@ -101,9 +100,6 @@ public class TileView extends WorldView {
                 x - tileSize < player.getPosition().getX() + GameView.SCREEN_WIDTH/2 &&
                 y + tileSize > player.getPosition().getY() - GameView.SCREEN_ROW/2 &&
                 y - tileSize < player.getPosition().getY() + GameView.SCREEN_ROW/2) {
-                if (tileNum == 0){
-                    System.out.println(row);
-                }
                 g2.drawImage(images.get(tileNum-1), screenX, screenY, tileSize, tileSize, null);
             }
 
