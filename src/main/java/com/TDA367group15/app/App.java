@@ -26,11 +26,11 @@ public class App
         Player player = new Player();
         List<Enemy> enemies = new ArrayList<>(5);
 
-        enemies.add(new Enemy(21*tileSize, 234));
-        enemies.add(new Enemy(2*tileSize, 222));
-        enemies.add(new Enemy(32*tileSize, 534));
-        enemies.add(new Enemy(221, 35*tileSize));
-        enemies.add(new Enemy(45*tileSize, 132));
+        enemies.add(new Enemy(21*tileSize, 380));
+        enemies.add(new Enemy(15*tileSize, 900));
+        enemies.add(new Enemy(32*tileSize, 580));
+        enemies.add(new Enemy(221, 39*tileSize));
+        enemies.add(new Enemy(56*tileSize, 750));
 
         KeyHandler keyH = new KeyHandler();
         GameLoop gameLoop = new GameLoop(player,enemies, keyH);
