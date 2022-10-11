@@ -40,7 +40,15 @@ public class SpriteView extends WorldView {
 
 
         for (int i = 0; i<5; i++ ){
-            g2.drawImage(enemyDown, enemies.get(i).getPosition().getX(), enemies.get(i).getPosition().getY(), tileSize,tileSize, null);
+            int screenX = enemies.get(i).getPosition().getX() - player.getPosition().getX() + xPos;
+            int screenY = enemies.get(i).getPosition().getY() - player.getPosition().getY() + yPos;
+
+            if (enemies.get(i).getPosition().getX() + tileSize > player.getPosition().getX() - GameView.SCREEN_WIDTH/2 &&
+                    enemies.get(i).getPosition().getX() - tileSize < player.getPosition().getX() + GameView.SCREEN_WIDTH/2 &&
+                    enemies.get(i).getPosition().getY() + tileSize > player.getPosition().getY() - GameView.SCREEN_ROW/2 &&
+                    enemies.get(i).getPosition().getY() - tileSize < player.getPosition().getY() + GameView.SCREEN_ROW/2) {
+                g2.drawImage(enemyDown, screenX, screenY, tileSize,tileSize, null);
+            }
         }
     }
 }
