@@ -1,6 +1,5 @@
 package com.TDA367group15.app.view;
 
-import com.TDA367group15.app.model.GameLoop;
 import com.TDA367group15.app.model.Player;
 
 import javax.imageio.ImageIO;
