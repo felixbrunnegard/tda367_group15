@@ -6,7 +6,7 @@ import com.TDA367group15.app.model.Player;
 import com.TDA367group15.app.view.GameView;
 import com.TDA367group15.app.view.ViewInterface;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,7 +17,6 @@ import java.util.Random;
  */
 public class App
 {
-
     public static void main( String[] args )
     {
 
