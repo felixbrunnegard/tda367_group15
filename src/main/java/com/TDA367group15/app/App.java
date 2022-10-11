@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static com.TDA367group15.app.view.WorldView.tileSize;
+
 /**
  * Hello world!
  *
@@ -23,19 +25,18 @@ public class App
 
         Player player = new Player();
         List<Enemy> enemies = new ArrayList<>(5);
-        for (int i = 0; i<5; i++ ){
-            Random ran = new Random();
-            int randomX = ran.nextInt(567);
-            int randomY = ran.nextInt(792);
-            Enemy enemy = new Enemy(randomX,randomY);
-            enemies.add(enemy);
-        }
+
+        enemies.add(new Enemy(21*tileSize, 234));
+        enemies.add(new Enemy(2*tileSize, 222));
+        enemies.add(new Enemy(32*tileSize, 534));
+        enemies.add(new Enemy(221, 35*tileSize));
+        enemies.add(new Enemy(45*tileSize, 132));
 
         KeyHandler keyH = new KeyHandler();
-        GameLoop gameLoop = new GameLoop(player, keyH);
+        GameLoop gameLoop = new GameLoop(player,enemies, keyH);
         JFrame window = new JFrame();
         GameView gameView = new GameView(player, enemies);
-        List<ViewInterface> gameViews = new ArrayList<>();
+        List<GameView> gameViews = new ArrayList<>();
         gameViews.add(gameView);
 
 

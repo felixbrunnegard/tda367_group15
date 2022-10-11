@@ -6,7 +6,7 @@ import com.TDA367group15.app.model.Direction;
 import com.TDA367group15.app.model.Enemy;
 import com.TDA367group15.app.model.Player;
 import com.TDA367group15.app.model.Tile;
-import com.TDA367group15.app.view.ViewInterface;
+import com.TDA367group15.app.view.GameView;
 
 
 import java.util.ArrayList;
@@ -18,15 +18,15 @@ public class GameLoop implements Runnable {
 
     private List<Enemy> enemies;
     private int fps = 60;
-    public List<ViewInterface> gameViews;
+    public List<GameView> gameViews;
     public KeyHandler keyH;
     public PlayerController playerC;
 
     private Thread gameThread;
 
-    public GameLoop(Player player, KeyHandler keyH){
+    public GameLoop(Player player, List<Enemy> enemies, KeyHandler keyH){
         this.player = player;
-        this.enemies = new ArrayList<>(5);
+        this.enemies = enemies;
         this.keyH = keyH;
         this.playerC = new PlayerController(player);
 
@@ -79,8 +79,8 @@ public class GameLoop implements Runnable {
         gameViews.get(0).update();
         int xPos = player.getPosition().getX();
         int yPos = player.getPosition().getY();
-        int tilePosX = 1;//xPos / gameViews.get(0).getTileView().tileSize;
-        int tilePosY = 1;//yPos / gameViews.get(0).getTileView().tileSize;
+        int tilePosX = xPos / gameViews.get(0).getTileView().tileSize;
+        int tilePosY = yPos / gameViews.get(0).getTileView().tileSize;
         if (keyH.getDirectionPressed() != null) {
             if (keyH.getDirectionPressed() == Direction.UP) {
                 tilePosY--;
