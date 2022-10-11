@@ -1,25 +1,26 @@
-package com.TDA367group15.app.model;
+package com.TDA367group15.app;
 
 import com.TDA367group15.app.controller.KeyHandler;
 import com.TDA367group15.app.controller.PlayerController;
+import com.TDA367group15.app.model.Enemy;
+import com.TDA367group15.app.model.Player;
 import com.TDA367group15.app.view.ViewInterface;
 
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class GameLoop implements Runnable {
 
     private Player player; // only one instance, everyone share it.
 
     private List<Enemy> enemies;
-    private int FPS = 60;
+    private int fps = 60;
     public List<ViewInterface> gameViews;
     public KeyHandler keyH;
     public PlayerController playerC;
 
-     Thread gameThread;
+    private Thread gameThread;
 
     public GameLoop(Player player, KeyHandler keyH){
         this.player = player;
@@ -45,7 +46,7 @@ public class GameLoop implements Runnable {
 
     @Override
     public void run(){
-        double drawInterval = 1000000000/(double)FPS;
+        double drawInterval = 1000000000/(double) fps;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
