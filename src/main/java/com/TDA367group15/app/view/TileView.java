@@ -111,5 +111,8 @@ public class TileView extends WorldView {
             }
         }
     }
+    public int[][] getMapTileNum(){
+        return mapTileNum;
+    }
 
 }

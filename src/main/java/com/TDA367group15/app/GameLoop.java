@@ -93,9 +93,8 @@ public class GameLoop implements Runnable {
             }
         }
 
-
         //MapTileNum and Tiles probably should not be in tileView?
-        int nextTile = 1;//gameViews.get(0).getTileView().getMapTileNum()[tilePosY][tilePosX];
+        int nextTile = gameViews.get(0).getTileView().getMapTileNum()[tilePosY][tilePosX];
         Tile tileToCheckCollide = new Tile(nextTile);
         if (tileToCheckCollide.collide(player)) {
         } else {
