@@ -9,7 +9,6 @@ import com.TDA367group15.app.model.Tile;
 import com.TDA367group15.app.view.GameView;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameLoop implements Runnable {
@@ -77,6 +76,22 @@ public class GameLoop implements Runnable {
     }
     private void update(){
         gameViews.get(0).update();
+
+        if (!willPlayerCollideWithTile() && !willPlayerCollideWithEnemy()) {
+            playerC.actOnMovement(keyH.getDirectionPressed());
+        }
+    }
+
+    private boolean willPlayerCollideWithEnemy(){
+        for(Enemy e : enemies) {
+            if(player.willPlayerCollideWithEntityInCurrentDirection(e, keyH.getDirectionPressed())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean willPlayerCollideWithTile(){
         int xPos = player.getPosition().getX();
         int yPos = player.getPosition().getY();
         int tilePosX = xPos / gameViews.get(0).getTileView().tileSize;
@@ -96,10 +111,8 @@ public class GameLoop implements Runnable {
         //MapTileNum and Tiles probably should not be in tileView?
         int nextTile = gameViews.get(0).getTileView().getMapTileNum()[tilePosY][tilePosX];
         Tile tileToCheckCollide = new Tile(nextTile);
-        if (tileToCheckCollide.collide(player)) {
-        } else {
-            playerC.actOnMovement(keyH.getDirectionPressed());
-        }
+
+        return tileToCheckCollide.collide(player);
     }
 
 }

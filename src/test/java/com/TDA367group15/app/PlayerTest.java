@@ -36,7 +36,7 @@ public class PlayerTest {
         Player player = new Player();
     }
 
-    @Test
+    /*@Test
     public void testCollideWithEnemyTrue(){
         Enemy enemy = new Enemy(23,20);
         Player player = new Player(23, 15);
@@ -51,7 +51,7 @@ public class PlayerTest {
         player.collide(enemy);
         assertFalse(player.isCollideWithEnemies());
 
-    }
+    }*/
 
     @Test
     public void testGenerateName(){
