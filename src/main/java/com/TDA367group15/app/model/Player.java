@@ -1,22 +1,38 @@
 package com.TDA367group15.app.model;
 
-import javax.swing.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.nio.file.Path;
-
 public class Player extends Combatable{
     private int xp;
     private int overWorldHealth;
-    //JFrame frame = ;
+    private int maxHealth = 1;
+
 
     public Player(){
         this(1488,960);
     }
     public Player(int x, int y){
         super(x, y);
-        setMaxHealth(6);
-        setHealth(3);
+        setMaxOverWorldHealth(6);
+        setOverWorldHealth(5);
+    }
+
+    public int getOverWorldHealth() {
+        return overWorldHealth;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    protected void setOverWorldHealth(int health){
+        this.overWorldHealth = health;
+    }
+
+    protected void setMaxOverWorldHealth(int maxHealth){
+        this.maxHealth = maxHealth;
+    }
+
+    public void ReduceOverWorldHealth(int damage) {
+        overWorldHealth -= damage;
     }
 
     public void attack(Enemy e){
