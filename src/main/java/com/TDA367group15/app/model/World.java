@@ -24,7 +24,11 @@ public class World {
         return enemies;
     }
 
-    public void setEnemies(List<Enemy> enemies) {
-        this.enemies = enemies;
+    public void addEnemy(Enemy enemy) {
+        this.enemies.add(enemy);
+    }
+
+    public void addEnemies(List<Enemy> enemies){
+        this.enemies.addAll(enemies);
     }
 }
