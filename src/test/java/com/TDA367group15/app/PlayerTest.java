@@ -77,6 +77,4 @@ public class PlayerTest {
         assertEquals(player.getLevel(), 1);
     }
 
-
-
 }
