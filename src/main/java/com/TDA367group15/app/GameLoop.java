@@ -11,33 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameLoop implements Runnable {
-
-    private Player player; // only one instance, everyone share it.
-
-    private List<Enemy> enemies;
     private int fps = 60;
-    public List<ViewInterface> gameViews;
+    private List<ViewInterface> gameViews;
     public KeyHandler keyH;
     public PlayerController playerC;
 
     private Thread gameThread;
 
-    public GameLoop(Player player, KeyHandler keyH){
-        this.player = player;
-        this.enemies = new ArrayList<>(5);
+    public GameLoop(KeyHandler keyH, PlayerController playerC){
         this.keyH = keyH;
-        this.playerC = new PlayerController(player);
-
-
+        this.playerC = playerC;
     }
 
-    /*public static Player getPlayer(){
-        return player;
-    }*/
-
-    public List<Enemy> getEnemies(){
-        return enemies;
-    }
 
     public void startGameThread(){
         gameThread = new Thread(this);
@@ -78,5 +63,9 @@ public class GameLoop implements Runnable {
         if(keyH.getDirectionPressed() != null) {
             playerC.actOnMovement(keyH.getDirectionPressed());
         }
+    }
+
+    public void setGameViews(List<ViewInterface> gameViews) {
+        this.gameViews = gameViews;
     }
 }
