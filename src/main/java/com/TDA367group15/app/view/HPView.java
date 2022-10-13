@@ -49,7 +49,7 @@ public class HPView extends HUDView {
     }
 
     private void drawHearts(Graphics2D g2) {
-        int maxHP =player.getMaxHealth();
+        int maxHP =player.getMaxOverWorldHealth();
         int hp = player.getOverWorldHealth();
 
         for(int i = 1; i <= maxHP; i += 2){
