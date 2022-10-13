@@ -5,9 +5,8 @@ import com.TDA367group15.app.model.Player;
 
 import java.util.List;
 
-public class CombatHUDView extends CombatView {
+public class CombatHUDView {
 
-    public CombatHUDView(Player player, List<Enemy> enemies) {
-        super(player, enemies);
+    public CombatHUDView(Player player, Enemy enemy) {
     }
 }

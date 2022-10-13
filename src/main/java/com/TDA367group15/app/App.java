@@ -1,12 +1,14 @@
 package com.TDA367group15.app;
 
 import com.TDA367group15.app.controller.KeyHandler;
+import com.TDA367group15.app.controller.PlayerController;
 import com.TDA367group15.app.model.Enemy;
 import com.TDA367group15.app.model.Player;
+import com.TDA367group15.app.model.World;
 import com.TDA367group15.app.view.GameView;
 import com.TDA367group15.app.view.ViewInterface;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,7 +19,6 @@ import java.util.Random;
  */
 public class App
 {
-
     public static void main( String[] args )
     {
 
@@ -31,10 +32,12 @@ public class App
             enemies.add(enemy);
         }
 
+        World world = new World(player, enemies);
+        PlayerController playerC = new PlayerController(player);
         KeyHandler keyH = new KeyHandler();
-        GameLoop gameLoop = new GameLoop(player, keyH);
+        GameLoop gameLoop = new GameLoop(keyH, playerC);
         JFrame window = new JFrame();
-        GameView gameView = new GameView(player, enemies);
+        GameView gameView = new GameView(world);
         List<ViewInterface> gameViews = new ArrayList<>();
         gameViews.add(gameView);
 
@@ -49,7 +52,7 @@ public class App
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
-        gameLoop.gameViews = gameViews;
+        gameLoop.setGameViews(gameViews);
         gameLoop.startGameThread();
         gameLoop.run();
     }
