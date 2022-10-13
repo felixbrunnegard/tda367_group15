@@ -49,7 +49,6 @@ public class App
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
-        //GameLoop gameLoop = new GameLoop();
         gameLoop.gameViews = gameViews;
         gameLoop.startGameThread();
         gameLoop.run();
