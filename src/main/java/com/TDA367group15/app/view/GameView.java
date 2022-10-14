@@ -4,8 +4,11 @@ import com.TDA367group15.app.model.Enemy;
 import com.TDA367group15.app.model.Player;
 import com.TDA367group15.app.model.World;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.Graphics2D;
+import java.awt.Graphics;
+import java.awt.Dimension;
+import java.awt.Color;
 import java.util.List;
 
 public class GameView extends JPanel implements ViewInterface {
@@ -50,5 +53,10 @@ public class GameView extends JPanel implements ViewInterface {
     public void update(){
         repaint();
     }
+
+    public TileView getTileView(){
+        return tileView;
+    }
+
 
 }
