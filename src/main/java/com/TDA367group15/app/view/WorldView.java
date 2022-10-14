@@ -1,6 +1,6 @@
 package com.TDA367group15.app.view;
 
-import java.awt.*;
+import java.awt.Graphics2D;
 
 public abstract class WorldView {
 

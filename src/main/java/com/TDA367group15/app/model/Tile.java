@@ -1,6 +1,5 @@
 package com.TDA367group15.app.model;
 
-import com.TDA367group15.app.view.GameView;
 
 public class Tile implements ICollidable {
 

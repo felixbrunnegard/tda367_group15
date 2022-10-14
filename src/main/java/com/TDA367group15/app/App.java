@@ -4,12 +4,11 @@ import com.TDA367group15.app.controller.KeyHandler;
 import com.TDA367group15.app.model.Enemy;
 import com.TDA367group15.app.model.Player;
 import com.TDA367group15.app.view.GameView;
-import com.TDA367group15.app.view.ViewInterface;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import static com.TDA367group15.app.view.WorldView.tileSize;
 

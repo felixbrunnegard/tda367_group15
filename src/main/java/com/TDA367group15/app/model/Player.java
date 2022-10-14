@@ -1,10 +1,5 @@
 package com.TDA367group15.app.model;
 
-import javax.swing.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.nio.file.Path;
-
 public class Player extends Combatable{
     private int xp;
     private int overWorldHealth;
