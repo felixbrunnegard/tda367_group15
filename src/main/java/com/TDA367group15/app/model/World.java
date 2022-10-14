@@ -31,4 +31,13 @@ public class World {
     public void addEnemies(List<Enemy> enemies){
         this.enemies.addAll(enemies);
     }
+
+    //If enemy list is empty the game is won
+    public void removeEnemy(Enemy enemy){
+        this.enemies.remove(enemy);
+
+        if(this.enemies.isEmpty()){
+            System.out.println("You won!");
+        }
+    }
 }
