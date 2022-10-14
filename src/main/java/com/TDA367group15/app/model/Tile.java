@@ -1,5 +1,6 @@
 package com.TDA367group15.app.model;
 
+import com.TDA367group15.app.view.GameView;
 
 public class Tile implements ICollidable {
 
@@ -22,15 +23,12 @@ public class Tile implements ICollidable {
     @Override
     public boolean collide(Entity player) {
 
+        Position playerPos = player.getPosition();
         int tileNr = getTileNr();
 
-        if(tileNr == 7){
-            return collideWithTile = true;
-        }
-        if(tileNr == 2){
-            return collideWithTile = true;
-        }
-        if(tileNr == 5){
+        int xDiff = playerPos.getX() - tileNr;
+        int yDiff = playerPos.getY() - tileNr;
+        if(xDiff <= 0 || yDiff <= 0){
             return collideWithTile = true;
         }
         return collideWithTile = false;

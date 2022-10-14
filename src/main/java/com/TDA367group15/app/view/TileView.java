@@ -5,8 +5,9 @@ import com.TDA367group15.app.model.Player;
 import com.TDA367group15.app.model.Tile;
 
 import javax.imageio.ImageIO;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,9 +110,6 @@ public class TileView extends WorldView {
                 row++;
             }
         }
-    }
-    public int[][] getMapTileNum(){
-        return mapTileNum;
     }
 
 }

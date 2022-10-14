@@ -1,7 +1,5 @@
 package com.TDA367group15.app.model;
 
-import com.TDA367group15.app.view.WorldView;
-
 import java.util.Random;
 
 
@@ -15,6 +13,7 @@ public abstract class Entity implements ICollidable {
     //TODO: Do we need size of entity or width and height
 
     private Direction lookingDirection;  // direction player looks at
+    private boolean collideWithEnemies;
 
     // entity starts at position 0 or a certain position
     public Entity(){
@@ -31,6 +30,13 @@ public abstract class Entity implements ICollidable {
         return position;
     }
 
+
+    public boolean isCollideWithEnemies() {
+        return collideWithEnemies;
+    }
+
+
+    //TODO: one method instead of 4 as described in uml?
     public void move(Direction d){
         if (d == Direction.UP){
             position.moveY(-MOVEMENT_SPEED);
@@ -44,7 +50,9 @@ public abstract class Entity implements ICollidable {
         else if (d == Direction.RIGHT){
             position.moveX(MOVEMENT_SPEED);
         }
+
     }
+
 
     /**
      * Calculates if this entity collides with another
@@ -55,14 +63,14 @@ public abstract class Entity implements ICollidable {
         Position otherPos = otherEntity.getPosition();
         Position thisPos = getPosition();
 
-        int xDiff = otherPos.getX()- thisPos.getX();
-        int yDiff = otherPos.getY() -thisPos.getY();
-
-        if(Math.abs(xDiff) <= WorldView.tileSize && Math.abs(yDiff) <= WorldView.tileSize){
-            return true;
+        int xDiff = otherPos.getX() - thisPos.getX();
+        int yDiff = otherPos.getY() - thisPos.getY();
+        if(xDiff <= 0 || yDiff <= 0){
+            return collideWithEnemies = true;
         }
-        return false;
+        return collideWithEnemies = false;
     }
+
 
     public static String generateName(int len) {
         String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"

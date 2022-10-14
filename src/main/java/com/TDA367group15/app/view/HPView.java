@@ -3,8 +3,7 @@ package com.TDA367group15.app.view;
 import com.TDA367group15.app.model.Player;
 
 import javax.imageio.ImageIO;
-import java.awt.Graphics2D;
-import java.awt.Color;
+import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;

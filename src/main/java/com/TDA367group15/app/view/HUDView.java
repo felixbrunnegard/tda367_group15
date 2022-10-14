@@ -1,7 +1,6 @@
 package com.TDA367group15.app.view;
 
-
-import java.awt.Graphics2D;
+import java.awt.*;
 
 public class HUDView extends WorldView {
     @Override

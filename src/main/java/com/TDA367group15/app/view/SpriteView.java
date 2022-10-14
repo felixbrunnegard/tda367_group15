@@ -5,12 +5,12 @@ import com.TDA367group15.app.model.Enemy;
 import com.TDA367group15.app.model.Player;
 
 import javax.imageio.ImageIO;
-import java.awt.Graphics2D;
-
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 public class SpriteView extends WorldView {
 
