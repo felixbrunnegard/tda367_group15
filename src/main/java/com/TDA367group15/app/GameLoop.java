@@ -2,8 +2,8 @@ package com.TDA367group15.app;
 
 import com.TDA367group15.app.controller.KeyHandler;
 import com.TDA367group15.app.controller.PlayerController;
-import com.TDA367group15.app.model.Enemy;
-import com.TDA367group15.app.model.Player;
+import com.TDA367group15.app.model.*;
+import com.TDA367group15.app.view.GameView;
 import com.TDA367group15.app.view.ViewInterface;
 
 
@@ -12,15 +12,18 @@ import java.util.List;
 
 public class GameLoop implements Runnable {
     private int fps = 60;
-    private List<ViewInterface> gameViews;
+    private List<GameView> gameViews;
     public KeyHandler keyH;
     public PlayerController playerC;
 
+    private World world;
+
     private Thread gameThread;
 
-    public GameLoop(KeyHandler keyH, PlayerController playerC){
+    public GameLoop(KeyHandler keyH, PlayerController playerC, World world){
         this.keyH = keyH;
         this.playerC = playerC;
+        this.world = world;
     }
 
 
@@ -61,11 +64,52 @@ public class GameLoop implements Runnable {
     private void update(){
         gameViews.get(0).update();
         if(keyH.getDirectionPressed() != null) {
-            playerC.actOnMovement(keyH.getDirectionPressed());
+            if (!willPlayerCollideWithTile() && !willPlayerCollideWithEnemy()) {
+                playerC.actOnMovement(keyH.getDirectionPressed());
+            }
         }
     }
 
-    public void setGameViews(List<ViewInterface> gameViews) {
+    private boolean willPlayerCollideWithEnemy(){
+        Player player = world.getPlayer();
+        for(Enemy e : world.getEnemies()) {
+            if(player.willPlayerCollideWithEntityInCurrentDirection(e, keyH.getDirectionPressed())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean willPlayerCollideWithTile(){
+        Player player = world.getPlayer();
+        int xPos = player.getPosition().getX();
+        int yPos = player.getPosition().getY();
+        int tilePosX = xPos / gameViews.get(0).getTileView().tileSize;
+        int tilePosY = yPos / gameViews.get(0).getTileView().tileSize;
+        if (keyH.getDirectionPressed() != null) {
+            if (keyH.getDirectionPressed() == Direction.UP) {
+                tilePosY--;
+            } else if (keyH.getDirectionPressed() == Direction.DOWN) {
+                tilePosY++;
+            } else if (keyH.getDirectionPressed() == Direction.LEFT) {
+                tilePosX--;
+            } else {
+                tilePosX++; //RIGHT
+            }
+        }
+
+        //MapTileNum and Tiles probably should not be in tileView?
+        int nextTile = gameViews.get(0).getTileView().getMapTileNum()[tilePosY][tilePosX];
+        Tile tileToCheckCollide = new Tile(nextTile);
+        if (tileToCheckCollide.collide(player)) {
+        } else {
+            playerC.actOnMovement(keyH.getDirectionPressed());
+        }
+
+        return tileToCheckCollide.collide(player);
+    }
+
+    public void setGameViews(List<GameView> gameViews) {
         this.gameViews = gameViews;
     }
 }

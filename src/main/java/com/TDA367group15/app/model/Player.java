@@ -47,6 +47,7 @@ public class Player extends Combatable{
         if(collide(entity)){
             int xDiff = entity.getPosition().getX() - getPosition().getX();
             int yDiff = entity.getPosition().getY() - getPosition().getY();
+
             //Checks below so that it is still possible to walk away from the enemy
             if(xDiff < 0 && direction == Direction.LEFT){
                 return true;
