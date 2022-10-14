@@ -2,6 +2,7 @@ package com.TDA367group15.app.view;
 
 import com.TDA367group15.app.model.Enemy;
 import com.TDA367group15.app.model.Player;
+import com.TDA367group15.app.model.World;
 
 import javax.swing.JPanel;
 import java.awt.Graphics2D;
@@ -18,23 +19,21 @@ public class GameView extends JPanel implements ViewInterface {
     HPView hpView;
     XPView xpView;
 
-    Player player;
-    List<Enemy> enemies;
+    World world;
     TileView tileView;
 
 
-    public GameView(Player player, List<Enemy> enemies){
+    public GameView(World world){
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_ROW));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
-        this.player = player;
-        this.enemies = enemies;
+        this.world = world;
 
 
-        spriteView = new SpriteView(player,enemies);
-        hpView = new HPView(player);
-        xpView = new XPView(player);
-        tileView = new TileView(player);
+        spriteView = new SpriteView(world.getPlayer(),world.getEnemies());
+        hpView = new HPView(world.getPlayer());
+        xpView = new XPView(world.getPlayer());
+        tileView = new TileView(world.getPlayer());
     }
 
     public void paintComponent(Graphics g){
