@@ -23,9 +23,9 @@ public class HPView extends HUDView {
         this.player = player;
 
         try {
-            fullHealth = ImageIO.read(new File("src/images/Player/heart_full.png"));
-            halfHealth = ImageIO.read(new File("src/images/Player/heart_half.png"));
-            blankHealth = ImageIO.read(new File("src/images/Player/heart_blank.png"));
+            fullHealth = ImageIO.read(getClass().getResourceAsStream("/heart_full.png"));
+            halfHealth = ImageIO.read(getClass().getResourceAsStream("/heart_half.png"));
+            blankHealth = ImageIO.read(getClass().getResourceAsStream("/heart_blank.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

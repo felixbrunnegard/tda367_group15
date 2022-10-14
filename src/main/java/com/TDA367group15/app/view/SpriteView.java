@@ -25,8 +25,8 @@ public class SpriteView extends WorldView {
         this.player = player;
         this.enemies = enemies;
         try {
-            boyDown = ImageIO.read(new File("src/images/Player/boy_down_1.png"));
-            enemyDown = ImageIO.read(new File("src/images/Enemy/enemy_down_1.png"));
+            boyDown = ImageIO.read(getClass().getResourceAsStream("/boy_down_1.png"));
+            enemyDown = ImageIO.read(getClass().getResourceAsStream("/enemy_down_1.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
