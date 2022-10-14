@@ -1,10 +1,10 @@
 package com.TDA367group15.app;
 import com.TDA367group15.app.model.Direction;
-import com.TDA367group15.app.model.Enemy;
+
 import com.TDA367group15.app.model.Player;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class PlayerTest {
     @Test
@@ -36,22 +36,6 @@ public class PlayerTest {
         Player player = new Player();
     }
 
-    @Test
-    public void testCollideWithEnemyTrue(){
-        Enemy enemy = new Enemy(23,20);
-        Player player = new Player(23, 15);
-        player.collide(enemy);
-        assertTrue(player.isCollideWithEnemies());
-
-    }
-    @Test
-    public void testCollideWithEnemyFalse(){
-        Enemy enemy = new Enemy(23,20);
-        Player player = new Player(20, 15);
-        player.collide(enemy);
-        assertFalse(player.isCollideWithEnemies());
-
-    }
 
     @Test
     public void testGenerateName(){
