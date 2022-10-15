@@ -2,9 +2,12 @@ package com.TDA367group15.app;
 
 import com.TDA367group15.app.controller.KeyHandler;
 import com.TDA367group15.app.controller.PlayerController;
-import com.TDA367group15.app.model.*;
+import com.TDA367group15.app.model.Player;
+import com.TDA367group15.app.model.Enemy;
+import com.TDA367group15.app.model.World;
+import com.TDA367group15.app.model.Direction;
+import com.TDA367group15.app.model.Tile;
 import com.TDA367group15.app.view.GameView;
-import com.TDA367group15.app.view.ViewInterface;
 
 
 import java.util.ArrayList;
@@ -55,7 +58,6 @@ public class GameLoop implements Runnable {
             }
 
             if(timer >= 1000000000){
-                //System.out.println("FPS: "+ drawCount);
                 drawCount = 0;
                 timer = 0;
             }
@@ -64,16 +66,18 @@ public class GameLoop implements Runnable {
     private void update(){
         gameViews.get(0).update();
         if(keyH.getDirectionPressed() != null) {
-            if (!willPlayerCollideWithTile() && !willPlayerCollideWithEnemy()) {
+            if (!willPlayerCollideWithTile() && !willPlayerCollideWithEnemy(keyH.getDirectionPressed())) {
                 playerC.actOnMovement(keyH.getDirectionPressed());
             }
         }
     }
 
-    private boolean willPlayerCollideWithEnemy(){
+    private boolean willPlayerCollideWithEnemy(Direction direction){
         Player player = world.getPlayer();
+        Player copy = new Player(player.getPosition().getX(), player.getPosition().getY());
+        copy.move(direction);
         for(Enemy e : world.getEnemies()) {
-            if(player.willPlayerCollideWithEntityInCurrentDirection(e, keyH.getDirectionPressed())){
+            if(copy.collide(e)){
                 return true;
             }
         }
@@ -98,14 +102,8 @@ public class GameLoop implements Runnable {
             }
         }
 
-        //MapTileNum and Tiles probably should not be in tileView?
         int nextTile = gameViews.get(0).getTileView().getMapTileNum()[tilePosY][tilePosX];
         Tile tileToCheckCollide = new Tile(nextTile);
-        if (tileToCheckCollide.collide(player)) {
-        } else {
-            playerC.actOnMovement(keyH.getDirectionPressed());
-        }
-
         return tileToCheckCollide.collide(player);
     }
 
