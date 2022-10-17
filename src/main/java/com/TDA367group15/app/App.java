@@ -23,22 +23,15 @@ public class App
     {
 
         Player player = new Player();
-        List<Enemy> enemies = new ArrayList<>(5);
-        for (int i = 0; i<5; i++ ){
-            Random ran = new Random();
-            int randomX = ran.nextInt(567);
-            int randomY = ran.nextInt(792);
-            Enemy enemy = new Enemy(randomX,randomY);
-            enemies.add(enemy);
-        }
 
-        World world = new World(player, enemies);
+        World world = new World(player);
         PlayerController playerC = new PlayerController(player);
         KeyHandler keyH = new KeyHandler();
-        GameLoop gameLoop = new GameLoop(keyH, playerC);
+        GameLoop gameLoop = new GameLoop(keyH, playerC, world);
         JFrame window = new JFrame();
+
         GameView gameView = new GameView(world);
-        List<ViewInterface> gameViews = new ArrayList<>();
+        List<GameView> gameViews = new ArrayList<>();
         gameViews.add(gameView);
 
 
