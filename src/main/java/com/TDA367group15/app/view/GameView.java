@@ -11,7 +11,7 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.util.List;
 
-public class GameView extends JPanel implements ViewInterface {
+public class GameView extends JPanel {
     public static final int SCREEN_WIDTH = 768;
     public static final int SCREEN_ROW = 576;
     SpriteView spriteView;
@@ -49,7 +49,6 @@ public class GameView extends JPanel implements ViewInterface {
 
     }
 
-    @Override
     public void update(){
         repaint();
     }
