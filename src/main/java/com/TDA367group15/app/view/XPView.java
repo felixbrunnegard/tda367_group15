@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.geom.RoundRectangle2D;
 
-public class XPView extends HUDView {
+public class XPView extends WorldView {
     private Player player;
     private int baseXPRectanglePosX = GameView.SCREEN_WIDTH / 2 - 150;
     private int baseXPRectanglePosY = 10;

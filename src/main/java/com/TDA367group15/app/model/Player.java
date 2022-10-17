@@ -58,24 +58,4 @@ public class Player extends Combatable{
         return level*baseXPToNextLevel;
     }
 
-    public boolean willPlayerCollideWithEntityInCurrentDirection(Entity entity, Direction direction){
-        if(collide(entity)){
-            int xDiff = entity.getPosition().getX() - getPosition().getX();
-            int yDiff = entity.getPosition().getY() - getPosition().getY();
-            //Checks below so that it is still possible to walk away from the enemy
-            if(xDiff < 0 && direction == Direction.LEFT){
-                return true;
-            }
-            else if(xDiff > 0 && direction == Direction.RIGHT){
-                return true;
-            } else if(yDiff < 0 && direction == Direction.UP){
-                return true;
-            } else if(yDiff > 0 && direction == Direction.DOWN){
-                return true;
-            }
-        }
-        return false;
-
-    }
-
 }
