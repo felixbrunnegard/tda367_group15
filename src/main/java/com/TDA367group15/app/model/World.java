@@ -1,8 +1,5 @@
 package com.TDA367group15.app.model;
 
-import com.TDA367group15.app.view.WorldView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class World {
