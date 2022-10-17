@@ -5,6 +5,7 @@ import com.TDA367group15.app.model.Enemy;
 import com.TDA367group15.app.model.Player;
 import org.junit.Test;
 
+import static com.TDA367group15.app.model.Player.baseXPToNextLevel;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -56,7 +57,14 @@ public class PlayerTest {
     @Test
     public void TestGetLevel(){
         Player player = new Player();
-        assertEquals(player.getLevel(), 1);
+        assertEquals(player.getLevel(), 10);
+    }
+
+    @Test
+    public void TestGetXP(){
+        Player player = new Player();
+        int xP = (5000/ baseXPToNextLevel);
+        assertEquals(player.getXP(), xP);
     }
 
     @Test
