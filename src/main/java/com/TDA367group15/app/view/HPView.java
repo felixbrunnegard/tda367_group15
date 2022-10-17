@@ -7,10 +7,9 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
-public class HPView extends HUDView {
+public class HPView extends WorldView {
     private Player player;
 
     private int xPos = GameView.SCREEN_WIDTH/2 - 100;
