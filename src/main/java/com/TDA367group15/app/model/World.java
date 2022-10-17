@@ -10,14 +10,9 @@ public class World {
     private Player player;
     private List<Enemy> enemies;
 
-    public World(Player player){
+    public World(Player player, List<Enemy> enemies){
         this.player = player;
-        this.enemies = new ArrayList<>();
-        this.enemies.add(new Enemy(21* WorldView.tileSize, 380));
-        this.enemies.add(new Enemy(15*WorldView.tileSize, 900));
-        this.enemies.add(new Enemy(32*WorldView.tileSize, 580));
-        this.enemies.add(new Enemy(221, 39*WorldView.tileSize));
-        this.enemies.add(new Enemy(56*WorldView.tileSize, 750));
+        this.enemies = enemies;
     }
 
     public Player getPlayer() {
