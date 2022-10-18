@@ -6,6 +6,8 @@ public class World {
     // only one instance, everyone shares it.
     private Player player;
     private List<Enemy> enemies;
+    private boolean combat;
+    private boolean gameOver;
 
     public World(Player player, List<Enemy> enemies){
         this.player = player;
@@ -14,10 +16,6 @@ public class World {
 
     public Player getPlayer() {
         return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     public List<Enemy> getEnemies() {
@@ -37,7 +35,27 @@ public class World {
         this.enemies.remove(enemy);
 
         if(this.enemies.isEmpty()){
-            System.out.println("You won!");
+            setGameOver();
         }
+    }
+
+    public boolean isCombat() {
+        return combat;
+    }
+
+    public void toCombat() {
+        this.combat = true;
+    }
+
+    public void toWorld() {
+        this.combat = false;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver() {
+        this.gameOver = true;
     }
 }
