@@ -18,12 +18,15 @@ public class CombatHPView {
     private int enemyHPBoxPosY;
     private int HPBoxWidth;
     private int HPBoxHeight;
+
     private int playerHPBarPosX;
     private int playerHPBarPosY;
     private int enemyHPBarPosX;
     private int enemyHPBarPosY;
     private int HPBarWidth;
     private int HPBarHeight;
+
+    private int archSize = 10;
 
     public CombatHPView(Player player, Enemy enemy, int gameWidth, int gameHeight) {
         this.player = player;
@@ -57,7 +60,7 @@ public class CombatHPView {
     }
 
     public void drawEnemyHPBoxEdge(Graphics2D g2){
-        RoundRectangle2D HPBoxEdge = new RoundRectangle2D.Float(enemyHPBoxPosX-2, enemyHPBoxPosY-2, HPBoxWidth+4, HPBoxHeight+4, 10, 10);
+        RoundRectangle2D HPBoxEdge = new RoundRectangle2D.Float(enemyHPBoxPosX-2, enemyHPBoxPosY-2, HPBoxWidth+4, HPBoxHeight+4, archSize, archSize);
 
         g2.setColor(Color.BLACK);
         g2.fill(HPBoxEdge);
@@ -65,7 +68,7 @@ public class CombatHPView {
     }
 
     public void drawEnemyHPBox(Graphics2D g2){
-        RoundRectangle2D HPBox = new RoundRectangle2D.Float(enemyHPBoxPosX, enemyHPBoxPosY, HPBoxWidth, HPBoxHeight, 10, 10);
+        RoundRectangle2D HPBox = new RoundRectangle2D.Float(enemyHPBoxPosX, enemyHPBoxPosY, HPBoxWidth, HPBoxHeight, archSize, archSize);
 
         g2.setColor(Color.WHITE);
         g2.fill(HPBox);
@@ -77,7 +80,7 @@ public class CombatHPView {
     }
 
     public void drawEnemyHPEdge(Graphics2D g2){
-        RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(enemyHPBarPosX-2, enemyHPBarPosY-2, HPBarWidth+4, HPBarHeight+4, 10, 10);
+        RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(enemyHPBarPosX-2, enemyHPBarPosY-2, HPBarWidth+4, HPBarHeight+4, archSize, archSize);
 
         g2.setColor(Color.BLACK);
         g2.fill(HPBarEdge);
@@ -85,7 +88,7 @@ public class CombatHPView {
     }
 
     public void drawEnemyHP(Graphics2D g2){
-        RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(enemyHPBarPosX, enemyHPBarPosY, HPBarWidth, HPBarHeight, 10, 10);
+        RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(enemyHPBarPosX, enemyHPBarPosY, HPBarWidth, HPBarHeight, archSize, archSize);
 
         g2.setColor(Color.RED);
         g2.fill(HPBarEdge);
@@ -93,7 +96,7 @@ public class CombatHPView {
     }
 
     public void drawPlayerHPBoxEdge(Graphics2D g2){
-        RoundRectangle2D HPBoxEdge = new RoundRectangle2D.Float(playerHPBoxPosX-2, playerHPBoxPosY-2, HPBoxWidth+4, HPBoxHeight+4, 10, 10);
+        RoundRectangle2D HPBoxEdge = new RoundRectangle2D.Float(playerHPBoxPosX-2, playerHPBoxPosY-2, HPBoxWidth+4, HPBoxHeight+4, archSize, archSize);
 
         g2.setColor(Color.BLACK);
         g2.fill(HPBoxEdge);
@@ -101,7 +104,7 @@ public class CombatHPView {
     }
 
     public void drawPlayerHPBox(Graphics2D g2){
-        RoundRectangle2D HPBox = new RoundRectangle2D.Float(playerHPBoxPosX, playerHPBoxPosY, HPBoxWidth, HPBoxHeight, 10, 10);
+        RoundRectangle2D HPBox = new RoundRectangle2D.Float(playerHPBoxPosX, playerHPBoxPosY, HPBoxWidth, HPBoxHeight, archSize, archSize);
 
         g2.setColor(Color.WHITE);
         g2.fill(HPBox);
@@ -115,7 +118,7 @@ public class CombatHPView {
     }
 
     public void drawPlayerHPEdge(Graphics2D g2){
-        RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(playerHPBarPosX-2, playerHPBarPosY-2, HPBarWidth+4, HPBarHeight+4, 10, 10);
+        RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(playerHPBarPosX-2, playerHPBarPosY-2, HPBarWidth+4, HPBarHeight+4, archSize, archSize);
 
         g2.setColor(Color.BLACK);
         g2.fill(HPBarEdge);
@@ -123,7 +126,7 @@ public class CombatHPView {
     }
 
     public void drawPlayerHP(Graphics2D g2){
-        RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(playerHPBarPosX, playerHPBarPosY, HPBarWidth, HPBarHeight, 10, 10);
+        RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(playerHPBarPosX, playerHPBarPosY, HPBarWidth, HPBarHeight, archSize, archSize);
 
         g2.setColor(Color.RED);
         g2.fill(HPBarEdge);
