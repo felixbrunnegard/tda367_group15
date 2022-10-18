@@ -19,8 +19,6 @@ public class Enemy extends Combatable {
         newAbilityList.add(new Ability("pounces", 15, 0, 70));
 
         setAbilities(newAbilityList);
-    }
-        public void attack () {
 
     }
 
@@ -30,10 +28,16 @@ public class Enemy extends Combatable {
         return false;
     }
 
-    public void name(){}
-    public void setAbility(){}
-    public void setLevel(){}
-    public void addAbility(){
+    public void name() {
+    }
+
+    public void setAbility() {
+    }
+
+    public void setLevel() {
+    }
+
+    public void addAbility() {
 
     }
 

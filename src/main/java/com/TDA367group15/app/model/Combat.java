@@ -1,26 +1,35 @@
 package com.TDA367group15.app.model;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Combat {
 
-    private Player player;  //Since player will not be present in code we need to tell the programm that a plyer will be presetn
+      //Since player will not be present in code we need to tell the programm that a plyer will be presetn
     private boolean stop;
+    public List<IEnemyDeathListener> listeners;
 
+    public void combat(Combatable player, Combatable enemy, IEnemyDeathListener world){
 
-    public void combat(Combatable player, Combatable enemy){
-
-
+        this.listeners = new ArrayList<>();
 
         Random rand = new Random();
 
         int upperbound = 25;
         int int_random =rand.nextInt(upperbound);
 
+        addIEnemyDeathListener(world);
         fight(player, enemy);
 
     }
 
-    
+
+    // We also need to add World class to listerners. This is funky.
+    public void addIEnemyDeathListener(IEnemyDeathListener listener){
+        listeners.add(listener);
+    }
+
+
     public void fight(Combatable player, Combatable enemy){
 
         stop = false;
@@ -31,7 +40,7 @@ public class Combat {
 
             if (enemy.getHp() <= 0) {
                 stop = true;
-                playerWin(enemy);
+                playerWin(player, enemy);
                 break;
 
             }
@@ -40,7 +49,7 @@ public class Combat {
 
             if (player.getHp() < 0) {
                 stop = true;
-                enemyWin();
+                enemyWin(player, enemy);
                 break;
             }
 
@@ -49,22 +58,26 @@ public class Combat {
     }
 
 
-    public void playerWin(Combatable enemy){
+    public void playerWin(Combatable player, Combatable enemy){
 
-       player.setLevel(enemy.getLevel()/5 + player.getLevel());
+       player.setXp((enemy.getLevel()/5) + player.getXp());
+
+       player.setHp(player.getLevel()*100); //Resets hp
 
        //This should remove enemy from enemy list
        //Enemy should not interactable nor visable anymore
 
-    }
-
-
-    public void enemyWin(){
-
-       // This should subtract one heart from global player hearts.
+        for (IEnemyDeathListener listener : listeners){
+            listener.enemyWasKilled((Enemy) enemy);
+        }
 
     }
 
+
+    public void enemyWin( Combatable player, Combatable enemy){
+
+        //Reduce overworld health
+    }
 
 }
 
