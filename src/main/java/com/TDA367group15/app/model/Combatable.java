@@ -30,7 +30,7 @@ public abstract class Combatable extends Entity{
     public int getLevel(){return level;}
     public void setLevel(int level) {this.level = level;}
 
-    public float getXp() {return xp;}
+    public int getXp() {return xp;}
     public void setXp(int xp) {this.xp = xp;}
 
     public List<Ability> getAbilities() {return abilities;}

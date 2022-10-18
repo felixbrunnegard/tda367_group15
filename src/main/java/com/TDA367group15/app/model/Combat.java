@@ -60,6 +60,7 @@ public class Combat {
 
     public void playerWin(Combatable player, Combatable enemy){
 
+       // why do ypu calculate in this way? must you have float xp? are conflict.
        player.setXp((enemy.getLevel()/5) + player.getXp());
 
        player.setHp(player.getLevel()*100); //Resets hp
