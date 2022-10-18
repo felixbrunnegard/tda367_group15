@@ -7,7 +7,7 @@ public class Player extends Combatable{
 
     private int level = 1;
 
-    public  static int baseXPToNextLevel = 100;
+    private final int baseXPToNextLevel = 100;
 
 
     public Player(){
@@ -17,7 +17,6 @@ public class Player extends Combatable{
         super(x, y);
         setMaxOverWorldHealth(6);
         setOverWorldHealth(5);
-        setXP(5000);
     }
 
     public int getOverWorldHealth() {
