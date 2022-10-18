@@ -1,9 +1,13 @@
 package com.TDA367group15.app.model;
 
 public class Player extends Combatable{
-    private int xp;
+    private int xP;
     private int overWorldHealth;
     private int maxHealth = 1;
+
+    private int level = 1;
+
+    private final int baseXPToNextLevel = 100;
 
 
     public Player(){
@@ -35,12 +39,22 @@ public class Player extends Combatable{
         overWorldHealth -= damage;
     }
 
-    public void attack(Enemy e){
-
+    public int getXP(){
+        return this.xP;
+    }
+    protected void setXP(int xP){
+        this.xP = xP;
+        while(this.xP > getXPToNextLevel()){
+            this.xP -= getXPToNextLevel();
+            level ++;
+        }
+    }
+    public int getLevel(){
+        return this.level;
     }
 
-    public int getLevel(){
-        return 1;
+    public int getXPToNextLevel(){
+        return level*baseXPToNextLevel;
     }
 
 }

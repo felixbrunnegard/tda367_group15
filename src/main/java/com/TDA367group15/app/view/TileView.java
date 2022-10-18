@@ -12,8 +12,8 @@ import java.util.List;
 
 public class TileView extends WorldView {
     private List<Tile> tiles = new ArrayList<>();
-    public List<BufferedImage> images = new ArrayList<>();
-    int mapTileNum[][];
+    private List<BufferedImage> images = new ArrayList<>();
+    private int mapTileNum[][];
     private Map map = new Map();
     private Player player;
 
@@ -37,7 +37,7 @@ public class TileView extends WorldView {
     public String getTileImageFilePath(Tile tile){
         String fileName;
 
-        switch (tile.tileID) {
+        switch (tile.getTileNr()) {
             case 1:
                 fileName = "grass.png";
                 break;
