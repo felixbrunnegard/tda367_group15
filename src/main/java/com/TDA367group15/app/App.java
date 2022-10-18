@@ -1,15 +1,16 @@
 package com.TDA367group15.app;
 
 import com.TDA367group15.app.controller.KeyHandler;
+import com.TDA367group15.app.controller.PlayerController;
 import com.TDA367group15.app.model.Enemy;
 import com.TDA367group15.app.model.Player;
+import com.TDA367group15.app.model.World;
 import com.TDA367group15.app.view.GameView;
-import com.TDA367group15.app.view.ViewInterface;
+import com.TDA367group15.app.view.WorldView;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Hello world!
@@ -17,25 +18,25 @@ import java.util.Random;
  */
 public class App
 {
-
     public static void main( String[] args )
     {
-
         Player player = new Player();
-        List<Enemy> enemies = new ArrayList<>(5);
-        for (int i = 0; i<5; i++ ){
-            Random ran = new Random();
-            int randomX = ran.nextInt(567);
-            int randomY = ran.nextInt(792);
-            Enemy enemy = new Enemy(randomX,randomY);
-            enemies.add(enemy);
-        }
+        List<Enemy> enemies = new ArrayList<>();
+        enemies.add(new Enemy(21* WorldView.tileSize, 380));
+        enemies.add(new Enemy(15*WorldView.tileSize, 900));
+        enemies.add(new Enemy(32*WorldView.tileSize, 580));
+        enemies.add(new Enemy(221, 39*WorldView.tileSize));
+        enemies.add(new Enemy(56*WorldView.tileSize, 750));
 
+
+        World world = new World(player,enemies );
+        PlayerController playerC = new PlayerController(player);
         KeyHandler keyH = new KeyHandler();
-        GameLoop gameLoop = new GameLoop(player, keyH);
+        GameLoop gameLoop = new GameLoop(keyH, playerC, world);
         JFrame window = new JFrame();
-        GameView gameView = new GameView(player, enemies);
-        List<ViewInterface> gameViews = new ArrayList<>();
+
+        GameView gameView = new GameView(world);
+        List<GameView> gameViews = new ArrayList<>();
         gameViews.add(gameView);
 
 
@@ -49,7 +50,7 @@ public class App
         window.setLocationRelativeTo(null);
         window.setVisible(true);
 
-        gameLoop.gameViews = gameViews;
+        gameLoop.setGameViews(gameViews);
         gameLoop.startGameThread();
         gameLoop.run();
     }

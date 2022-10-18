@@ -2,10 +2,11 @@ package com.TDA367group15.app.view;
 
 import com.TDA367group15.app.model.Player;
 
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.awt.Color;
 import java.awt.geom.RoundRectangle2D;
 
-public class XPView extends HUDView {
+public class XPView extends WorldView {
     private Player player;
     public XPView(Player player){
         this.player = player;

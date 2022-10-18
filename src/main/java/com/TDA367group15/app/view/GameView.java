@@ -2,12 +2,16 @@ package com.TDA367group15.app.view;
 
 import com.TDA367group15.app.model.Enemy;
 import com.TDA367group15.app.model.Player;
+import com.TDA367group15.app.model.World;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.Graphics2D;
+import java.awt.Graphics;
+import java.awt.Dimension;
+import java.awt.Color;
 import java.util.List;
 
-public class GameView extends JPanel implements ViewInterface {
+public class GameView extends JPanel {
     public static final int SCREEN_WIDTH = 768;
     public static final int SCREEN_ROW = 576;
     SpriteView spriteView;
@@ -15,23 +19,21 @@ public class GameView extends JPanel implements ViewInterface {
     HPView hpView;
     XPView xpView;
 
-    Player player;
-    List<Enemy> enemies;
+    World world;
     TileView tileView;
 
 
-    public GameView(Player player, List<Enemy> enemies){
+    public GameView(World world){
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_ROW));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
-        this.player = player;
-        this.enemies = enemies;
+        this.world = world;
 
 
-        spriteView = new SpriteView(player,enemies);
-        hpView = new HPView(player);
-        xpView = new XPView(player);
-        tileView = new TileView(player);
+        spriteView = new SpriteView(world.getPlayer(),world.getEnemies());
+        hpView = new HPView(world.getPlayer());
+        xpView = new XPView(world.getPlayer());
+        tileView = new TileView(world.getPlayer());
     }
 
     public void paintComponent(Graphics g){
@@ -47,9 +49,13 @@ public class GameView extends JPanel implements ViewInterface {
 
     }
 
-    @Override
     public void update(){
         repaint();
     }
+
+    public TileView getTileView(){
+        return tileView;
+    }
+
 
 }

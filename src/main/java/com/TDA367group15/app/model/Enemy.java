@@ -1,16 +1,13 @@
 package com.TDA367group15.app.model;
 
-import javax.imageio.ImageIO;
-import java.io.IOException;
+
 import java.util.ArrayList;
-import java.util.Random;
+
 
 public class Enemy extends Combatable {
 
-    private int pointerP;
-
-    public Enemy(Integer randomPosX,Integer randomPosY ){
-        super(randomPosX,randomPosY);
+    public Enemy(Integer posX, Integer posY) {
+        super(posX,posY);
 
         //This creates a copy of the abilitylist in combatable then adds abilites to it then sets the list in combatible to the new lsit.
 
@@ -22,6 +19,8 @@ public class Enemy extends Combatable {
         newAbilityList.add(new Ability("pounces", 15, 0, 70));
 
         setAbilities(newAbilityList);
+    }
+        public void attack () {
 
     }
 
