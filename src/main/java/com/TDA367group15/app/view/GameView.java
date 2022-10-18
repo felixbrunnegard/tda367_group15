@@ -14,13 +14,13 @@ import java.util.List;
 public class GameView extends JPanel {
     public static final int SCREEN_WIDTH = 768;
     public static final int SCREEN_ROW = 576;
-    SpriteView spriteView;
+    private SpriteView spriteView;
 
-    HPView hpView;
-    XPView xpView;
+    private HPView hpView;
+    private  XPView xpView;
 
-    World world;
-    TileView tileView;
+    private final World world;
+    private TileView tileView;
 
 
     public GameView(World world){

@@ -4,7 +4,7 @@ package com.TDA367group15.app.model;
 public class Tile implements ICollidable {
 
     private boolean collision;
-    public int tileID;
+    private int tileID;
     private boolean collideWithTile;
 
     public Tile(int tileID){
