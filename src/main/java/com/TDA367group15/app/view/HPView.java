@@ -3,13 +3,13 @@ package com.TDA367group15.app.view;
 import com.TDA367group15.app.model.Player;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.awt.Color;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
-public class HPView extends HUDView {
+public class HPView extends WorldView {
     private Player player;
 
     private int xPos = GameView.SCREEN_WIDTH/2 - 100;
@@ -22,9 +22,9 @@ public class HPView extends HUDView {
         this.player = player;
 
         try {
-            fullHealth = ImageIO.read(new File("src/images/Player/heart_full.png"));
-            halfHealth = ImageIO.read(new File("src/images/Player/heart_half.png"));
-            blankHealth = ImageIO.read(new File("src/images/Player/heart_blank.png"));
+            fullHealth = ImageIO.read(getClass().getResourceAsStream("/heart_full.png"));
+            halfHealth = ImageIO.read(getClass().getResourceAsStream("/heart_half.png"));
+            blankHealth = ImageIO.read(getClass().getResourceAsStream("/heart_blank.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

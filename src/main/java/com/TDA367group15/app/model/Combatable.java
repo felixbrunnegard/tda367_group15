@@ -6,7 +6,7 @@ import java.util.Random;
 public abstract class Combatable extends Entity{
 
     private float hp;
-    private float level;
+    private int level;
     private Enemy enemy;
     private Player player;
 
@@ -25,8 +25,8 @@ public abstract class Combatable extends Entity{
     public float getHp(){ return hp; }
     public void setHp(float hp){this.hp = hp;}
 
-    public float getLevel(){return level;}
-    public void setLevel(float level) {this.level = level;}
+    public int getLevel(){return level;}
+    public void setLevel(int level) {this.level = level;}
 
     public List<Ability> getAbilities() {return abilities;
     }
