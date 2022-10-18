@@ -68,6 +68,10 @@ public class GameLoop implements Runnable {
         if(keyH.getDirectionPressed() != null) {
             if (!willPlayerCollideWithTile() && !willPlayerCollideWithEnemy(keyH.getDirectionPressed())) {
                 playerC.actOnMovement(keyH.getDirectionPressed());
+            }else if(willPlayerCollideWithEnemy(keyH.getDirectionPressed())){
+                //Combat(world.getPlayer(), world.getEnemies().get(1),world);
+                //Shift player position up again so it will not collide immediatly again.
+
             }
         }
     }

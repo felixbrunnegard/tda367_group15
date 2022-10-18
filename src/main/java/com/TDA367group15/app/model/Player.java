@@ -1,6 +1,5 @@
 package com.TDA367group15.app.model;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Player extends Combatable{
@@ -36,6 +35,25 @@ public class Player extends Combatable{
     }
 
 
+    public boolean willPlayerCollideWithEntityInCurrentDirection(Entity entity, Direction direction){
+        if(collide(entity)){
+            int xDiff = entity.getPosition().getX() - getPosition().getX();
+            int yDiff = entity.getPosition().getY() - getPosition().getY();
+            //Checks below so that it is still possible to walk away from the enemy
+            if(xDiff < 0 && direction == Direction.LEFT){
+                return true;
+            }
+            else if(xDiff > 0 && direction == Direction.RIGHT){
+                return true;
+            } else if(yDiff < 0 && direction == Direction.UP){
+                return true;
+            } else if(yDiff > 0 && direction == Direction.DOWN){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public int getXP(){
         return this.xP;
     }
@@ -52,7 +70,9 @@ public class Player extends Combatable{
 
     public int getXPToNextLevel(){
         return level*baseXPToNextLevel;
+
     }
+
 
     protected void setMaxOverWorldHealth(int maxHealth){this.maxHealth = maxHealth;}
     public int getMaxOverWorldHealth() {return maxHealth;}
@@ -61,5 +81,4 @@ public class Player extends Combatable{
     public int getOverWorldHealth() {return overWorldHealth;}
 
     public void ReduceOverWorldHealth(int damage) {overWorldHealth -= damage;}
-
 }

@@ -2,7 +2,7 @@ package com.TDA367group15.app.model;
 
 import java.util.List;
 
-public class World {
+public class World implements IEnemyDeathListener{
     // only one instance, everyone shares it.
     private Player player;
     private List<Enemy> enemies;
@@ -16,6 +16,10 @@ public class World {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public List<Enemy> getEnemies() {
@@ -38,6 +42,13 @@ public class World {
             setGameOver();
         }
     }
+
+    //This will be fired of when whe have gone through thelisternes which this class is in combat.
+    @Override
+    public void enemyWasKilled(Enemy enemy){
+        removeEnemy(enemy);
+    }
+
 
     public boolean isCombat() {
         return combat;

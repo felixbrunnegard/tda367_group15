@@ -7,12 +7,12 @@ public abstract class Combatable extends Entity{
 
     private float hp;
     private int level;
+    private int xp;
     private Enemy enemy;
     private Player player;
 
     //Make an array with ability objects.
     private List<Ability> abilities = new ArrayList<>();
-
 
     public Combatable(){
         super();
@@ -20,6 +20,8 @@ public abstract class Combatable extends Entity{
     public Combatable(int x, int y) {
         super(x, y);
 
+        level = 1;
+        hp = 100*level;
     }
 
     public float getHp(){ return hp; }
@@ -28,8 +30,12 @@ public abstract class Combatable extends Entity{
     public int getLevel(){return level;}
     public void setLevel(int level) {this.level = level;}
 
-    public List<Ability> getAbilities() {return abilities;
-    }
+    public float getXp() {return xp;}
+    public void setXp(int xp) {this.xp = xp;}
+
+    public List<Ability> getAbilities() {return abilities;}
+
+
     public void setAbilities(List<Ability> abilities) {
         this.abilities = abilities;
     }
@@ -75,9 +81,6 @@ public abstract class Combatable extends Entity{
         enemyOrPlayer.setHp(newHp);
 
     }
-
-
-
 
 
 }

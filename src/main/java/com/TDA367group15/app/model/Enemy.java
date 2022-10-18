@@ -3,10 +3,9 @@ package com.TDA367group15.app.model;
 import java.util.ArrayList;
 
 public class Enemy extends Combatable {
-
     private int pointerP;
 
-    public Enemy(Integer posX,Integer posY ){
+    public Enemy(Integer posX, Integer posY) {
         super(posX,posY);
 
         //This creates a copy of the abilitylist in combatable then adds abilites to it then sets the list in combatible to the new lsit.
@@ -27,7 +26,6 @@ public class Enemy extends Combatable {
 
         return false;
     }
-
     public void name(){}
     public void setAbility(){}
     public void setLevel(){}

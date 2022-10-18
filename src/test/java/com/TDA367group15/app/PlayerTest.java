@@ -50,7 +50,7 @@ public class PlayerTest {
     @Test
     public void TestGetMaxHealth(){
         Player player = new Player();
-        assertEquals(player.getMaxHealth(), 6);
+        assertEquals(player.getOverWorldHealth(), 6);
     }
 
     @Test
