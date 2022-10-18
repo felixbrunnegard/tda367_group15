@@ -1,7 +1,5 @@
 package com.TDA367group15.app.view;
 
-import com.TDA367group15.app.model.Enemy;
-import com.TDA367group15.app.model.Player;
 import com.TDA367group15.app.model.World;
 
 import javax.swing.JPanel;
@@ -9,7 +7,6 @@ import java.awt.Graphics2D;
 import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.Color;
-import java.util.List;
 
 public class GameView extends JPanel {
     public static final int SCREEN_WIDTH = 768;
@@ -21,6 +18,9 @@ public class GameView extends JPanel {
 
     private final World world;
     private TileView tileView;
+
+    private CombatView combatView;
+    private CombatHPView combatHPView;
 
 
     public GameView(World world){
@@ -34,6 +34,9 @@ public class GameView extends JPanel {
         hpView = new HPView(world.getPlayer());
         xpView = new XPView(world.getPlayer());
         tileView = new TileView(world.getPlayer());
+        combatView = new CombatView(SCREEN_WIDTH, SCREEN_ROW);
+        combatHPView = new CombatHPView(world.getPlayer(), world.getEnemies().get(0), SCREEN_WIDTH, SCREEN_ROW);
+
     }
 
     public void paintComponent(Graphics g){
@@ -44,6 +47,8 @@ public class GameView extends JPanel {
         spriteView.draw(g2);
         hpView.draw(g2);
         xpView.draw(g2);
+        combatView.draw(g2);
+        combatHPView.draw(g2);
 
 
 
