@@ -63,8 +63,7 @@ public class PlayerTest {
     @Test
     public void TestGetXP(){
         Player player = new Player();
-        int xP = (5000/ baseXPToNextLevel);
-        assertEquals(player.getXP(), xP);
+        assertEquals(player.getXP(), 500);
     }
 
     @Test
