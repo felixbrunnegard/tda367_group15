@@ -12,25 +12,25 @@ import static org.junit.Assert.assertTrue;
 public class PlayerTest {
     @Test
     public void testMoveRight(){
-        Player player = new Player(42, 54);
+        Player player = new Player(42, 54, 2);
         player.move(Direction.RIGHT);
         assertEquals(player.getPosition().getX(), 44 );
     }
     @Test
     public void testMoveLeft(){
-        Player player = new Player(42, 54);
+        Player player = new Player(42, 54, 2);
         player.move(Direction.LEFT);
         assertEquals(player.getPosition().getX(), 40);
     }
     @Test
     public void testMoveUp(){
-        Player player = new Player(42, 54);
+        Player player = new Player(42, 54, 2);
         player.move(Direction.UP);
         assertEquals(player.getPosition().getY(), 52 );
     }
     @Test
     public void testMoveDown(){
-        Player player = new Player(42, 54);
+        Player player = new Player(42, 54, 2);
         player.move(Direction.DOWN);
         assertEquals(player.getPosition().getY(), 56 );
     }
@@ -67,14 +67,14 @@ public class PlayerTest {
 
     @Test
     public void TestCollideWithEnemyTrue(){
-        Player player = new Player(321, 290);
+        Player player = new Player(321, 290, 2);
         Enemy enemy = new Enemy(320, 288);
         assertTrue( player.collide(enemy));
     }
 
     @Test
     public void TestCollideWithEnemyFalse(){
-        Player player = new Player(690, 320);
+        Player player = new Player(690, 320, 2);
         Enemy enemy = new Enemy(320, 288);
         assertFalse( player.collide(enemy));
     }

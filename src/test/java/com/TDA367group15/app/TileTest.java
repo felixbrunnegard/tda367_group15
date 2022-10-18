@@ -19,7 +19,7 @@ public class TileTest {
     @Test
     public void testCollideWithHouseTrue(){
         Tile tile = new Tile(5);
-        Player player = new Player(12,5);
+        Player player = new Player(12,5, 2);
         tile.collide(player);
         assertTrue(tile.isCollideWithTile());
     }
@@ -27,7 +27,7 @@ public class TileTest {
     @Test
     public void testCollideWithHouseFalse(){
         Tile tile = new Tile(1);
-        Player player = new Player(12,5);
+        Player player = new Player(12,5, 2);
         tile.collide(player);
         assertFalse(tile.isCollideWithTile());
     }
@@ -35,7 +35,7 @@ public class TileTest {
     @Test
     public void testCollideWithTreeTrue(){
         Tile tile = new Tile(7);
-        Player player = new Player(980,760);
+        Player player = new Player(980,760, 2);
         tile.collide(player);
         assertTrue(tile.isCollideWithTile());
     }
@@ -43,7 +43,7 @@ public class TileTest {
     @Test
     public void testCollideWithTreeFalse(){
         Tile tile = new Tile(3);
-        Player player = new Player(980,760);
+        Player player = new Player(980,760, 2);
         tile.collide(player);
         assertFalse(tile.isCollideWithTile());
     }
@@ -51,7 +51,7 @@ public class TileTest {
     @Test
     public void testCollideWithRiverTrue(){
         Tile tile = new Tile(2);
-        Player player = new Player(1668,1190);
+        Player player = new Player(1668,1190, 2);
         tile.collide(player);
         assertTrue(tile.isCollideWithTile());
     }
@@ -59,7 +59,7 @@ public class TileTest {
     @Test
     public void testCollideWithRiverFalse(){
         Tile tile = new Tile(3);
-        Player player = new Player(1668,1668);
+        Player player = new Player(1668,1668, 2);
         tile.collide(player);
         assertFalse(tile.isCollideWithTile());
     }

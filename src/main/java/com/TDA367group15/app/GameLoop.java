@@ -74,7 +74,7 @@ public class GameLoop implements Runnable {
 
     private boolean willPlayerCollideWithEnemy(Direction direction){
         Player player = world.getPlayer();
-        Player copy = new Player(player.getPosition().getX(), player.getPosition().getY());
+        Player copy = new Player(player.getPosition().getX(), player.getPosition().getY(), 2);
         copy.move(direction);
         for(Enemy e : world.getEnemies()) {
             if(copy.collide(e)){
@@ -92,13 +92,13 @@ public class GameLoop implements Runnable {
         int tilePosY = yPos / gameViews.get(0).getTileView().tileSize;
         if (keyH.getDirectionPressed() != null) {
             if (keyH.getDirectionPressed() == Direction.UP) {
-                tilePosY--;
+                tilePosY = (yPos - player.getMovementSpeed())/gameViews.get(0).getTileView().tileSize;
             } else if (keyH.getDirectionPressed() == Direction.DOWN) {
-                tilePosY++;
+                tilePosY = (yPos + player.getMovementSpeed())/gameViews.get(0).getTileView().tileSize;
             } else if (keyH.getDirectionPressed() == Direction.LEFT) {
-                tilePosX--;
+                tilePosX = (xPos - player.getMovementSpeed())/gameViews.get(0).getTileView().tileSize;
             } else {
-                tilePosX++; //RIGHT
+                tilePosX = (xPos + player.getMovementSpeed())/gameViews.get(0).getTileView().tileSize; //RIGHT
             }
         }
 

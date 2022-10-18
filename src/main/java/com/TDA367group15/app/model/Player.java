@@ -4,6 +4,7 @@ public class Player extends Combatable{
     private int xP;
     private int overWorldHealth;
     private int maxHealth = 1;
+    private int movementSpeed;
 
     private int level = 1;
 
@@ -11,12 +12,13 @@ public class Player extends Combatable{
 
 
     public Player(){
-        this(1488,960);
+        this(1488,960,2);
     }
-    public Player(int x, int y){
+    public Player(int x, int y, int speed){
         super(x, y);
         setMaxOverWorldHealth(6);
         setOverWorldHealth(5);
+        this.movementSpeed = speed;
     }
 
     public int getOverWorldHealth() {
@@ -57,4 +59,7 @@ public class Player extends Combatable{
         return level*baseXPToNextLevel;
     }
 
+    public int getMovementSpeed() {
+        return movementSpeed;
+    }
 }
