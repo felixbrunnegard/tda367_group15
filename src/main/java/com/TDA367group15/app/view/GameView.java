@@ -20,13 +20,13 @@ public class GameView extends JPanel {
     private TileView tileView;
 
     private CombatView combatView;
-    private CombatHPView combatHPView;
 
 
     public GameView(World world){
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_ROW));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
+        this.setLayout(null);
         this.world = world;
 
 
@@ -34,8 +34,13 @@ public class GameView extends JPanel {
         hpView = new HPView(world.getPlayer());
         xpView = new XPView(world.getPlayer());
         tileView = new TileView(world.getPlayer());
-        combatView = new CombatView(SCREEN_WIDTH, SCREEN_ROW);
-        combatHPView = new CombatHPView(world.getPlayer(), world.getEnemies().get(0), SCREEN_WIDTH, SCREEN_ROW);
+        combatView = new CombatView(world.getPlayer(), world.getEnemies().get(0), SCREEN_WIDTH, SCREEN_ROW);
+
+        for (int i = 0; i < combatView.getAbilityButtons().size(); i++){
+            this.add(combatView.getAbilityButtons().get(i));
+        }
+
+        combatView.setAbilityButtonsVisibility(false);
 
     }
 
@@ -48,8 +53,8 @@ public class GameView extends JPanel {
         hpView.draw(g2);
         xpView.draw(g2);
         combatView.draw(g2);
-        combatHPView.draw(g2);
 
+        combatView.setAbilityButtonsVisibility(true);
 
 
     }
