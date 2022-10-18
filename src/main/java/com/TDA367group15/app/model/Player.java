@@ -4,9 +4,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Player extends Combatable{
-    private int xp;
+    private int xP;
     private int overWorldHealth;
     private int maxHealth = 1;
+
+    private int level = 1;
+
+    private final int baseXPToNextLevel = 100;
 
 
     public Player(){
@@ -57,6 +61,24 @@ public class Player extends Combatable{
             }
         }
         return false;
+    }
+
+    public int getXP(){
+        return this.xP;
+    }
+    protected void setXP(int xP){
+        this.xP = xP;
+        while(this.xP > getXPToNextLevel()){
+            this.xP -= getXPToNextLevel();
+            level ++;
+        }
+    }
+    public int getLevel(){
+        return this.level;
+    }
+
+    public int getXPToNextLevel(){
+        return level*baseXPToNextLevel;
 
     }
 

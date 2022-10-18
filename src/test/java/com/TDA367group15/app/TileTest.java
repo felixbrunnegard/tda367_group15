@@ -13,7 +13,7 @@ public class TileTest {
     public void testTileID(){
         Tile tile = new Tile(1);
 
-        assertEquals(tile.tileID, 1);
+        assertEquals(tile.getTileNr(), 1);
     }
 
     @Test

@@ -16,8 +16,6 @@ public class SpriteView extends WorldView {
 
     private Player player;
 
-    private Enemy enemy;
-
     private List<Enemy> enemies;
     private BufferedImage boyDown;
     private BufferedImage enemyDown;

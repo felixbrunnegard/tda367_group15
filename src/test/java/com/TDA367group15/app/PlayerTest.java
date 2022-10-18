@@ -56,7 +56,13 @@ public class PlayerTest {
     @Test
     public void TestGetLevel(){
         Player player = new Player();
-        assertEquals(player.getLevel(), 1);
+        assertEquals(player.getLevel(), 10);
+    }
+
+    @Test
+    public void TestGetXP(){
+        Player player = new Player();
+        assertEquals(player.getXP(), 500);
     }
 
     @Test
