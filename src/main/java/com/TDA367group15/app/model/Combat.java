@@ -7,7 +7,7 @@ public class Combat {
 
       //Since player will not be present in code we need to tell the programm that a plyer will be presetn
     private boolean stop;
-    public List<IEnemyDeathListener> listeners;
+    private List<IEnemyDeathListener> listeners;
 
     public void combat(Combatable player, Combatable enemy, IEnemyDeathListener world){
 
