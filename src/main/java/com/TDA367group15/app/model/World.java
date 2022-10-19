@@ -8,6 +8,7 @@ public class World implements IEnemyDeathListener{
     private List<Enemy> enemies;
     private boolean combat;
     private boolean gameOver;
+    private Enemy enemyInCombat;
 
     public World(Player player, List<Enemy> enemies){
         this.player = player;
@@ -41,6 +42,14 @@ public class World implements IEnemyDeathListener{
         if(this.enemies.isEmpty()){
             setGameOver();
         }
+    }
+
+    public Enemy getEnemyInCombat(){
+        return this.enemyInCombat;
+    }
+
+    public void setEnemyInCombat(Enemy enemyInCombat){
+        this.enemyInCombat = enemyInCombat;
     }
 
     //This will be fired of when whe have gone through thelisternes which this class is in combat.

@@ -61,7 +61,6 @@ public class GameView extends JPanel {
             xpView.draw(g2);
         }
         else {
-            System.out.println("Combat");
             combatView.draw(g2);
 
             combatView.setAbilityButtonsVisibility(true);
@@ -76,6 +75,20 @@ public class GameView extends JPanel {
 
     public TileView getTileView(){
         return tileView;
+    }
+
+    public CombatView getCombatView(){
+        return this.combatView;
+    }
+
+    public void setCombatView(Enemy enemyInCombat){
+        combatView = new CombatView(world.getPlayer(), enemyInCombat, SCREEN_WIDTH, SCREEN_ROW);
+
+        for (int i = 0; i < combatView.getAbilityButtons().size(); i++){
+            this.add(combatView.getAbilityButtons().get(i));
+        }
+
+        combatView.setAbilityButtonsVisibility(false);
     }
 
 

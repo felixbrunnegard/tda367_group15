@@ -1,12 +1,9 @@
 package com.TDA367group15.app;
 
+import com.TDA367group15.app.controller.CombatController;
 import com.TDA367group15.app.controller.KeyHandler;
 import com.TDA367group15.app.controller.PlayerController;
-import com.TDA367group15.app.model.Player;
-import com.TDA367group15.app.model.Enemy;
-import com.TDA367group15.app.model.World;
-import com.TDA367group15.app.model.Direction;
-import com.TDA367group15.app.model.Tile;
+import com.TDA367group15.app.model.*;
 import com.TDA367group15.app.view.GameView;
 
 
@@ -18,15 +15,17 @@ public class GameLoop implements Runnable {
     private List<GameView> gameViews;
     public KeyHandler keyH;
     public PlayerController playerC;
+    private CombatController combatController;
 
     private World world;
 
     private Thread gameThread;
 
-    public GameLoop(KeyHandler keyH, PlayerController playerC, World world){
+    public GameLoop(KeyHandler keyH, PlayerController playerC, World world, CombatController combatController){
         this.keyH = keyH;
         this.playerC = playerC;
         this.world = world;
+        this.combatController = combatController;
     }
 
 
@@ -69,7 +68,15 @@ public class GameLoop implements Runnable {
             if (!willPlayerCollideWithTile() && !willPlayerCollideWithEnemy(keyH.getDirectionPressed())) {
                 playerC.actOnMovement(keyH.getDirectionPressed());
             }else if(willPlayerCollideWithEnemy(keyH.getDirectionPressed())){
-                //Combat(world.getPlayer(), world.getEnemies().get(1),world);
+                if (getEnemyCollidedWith(keyH.getDirectionPressed()) != null) {
+                    world.toCombat();
+                    world.setEnemyInCombat(getEnemyCollidedWith(keyH.getDirectionPressed()));
+                    gameViews.get(0).setCombatView(world.getEnemyInCombat());
+                    combatController.setCombatView(gameViews.get(0).getCombatView());
+                    combatController.setCombat(new Combat(world));
+                    combatController.setPlayer(world.getPlayer());
+                    combatController.setEnemy(world.getEnemyInCombat());
+                }
                 //Shift player position up again so it will not collide immediatly again.
 
             }
@@ -86,6 +93,18 @@ public class GameLoop implements Runnable {
             }
         }
         return false;
+    }
+
+    public Enemy getEnemyCollidedWith(Direction direction){
+        Player player = world.getPlayer();
+        Player copy = new Player(player.getPosition().getX(), player.getPosition().getY());
+        copy.move(direction);
+        for(Enemy e : world.getEnemies()) {
+            if(copy.collide(e)){
+                return e;
+            }
+        }
+        return null;
     }
 
     private boolean willPlayerCollideWithTile(){

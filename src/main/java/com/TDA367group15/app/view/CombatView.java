@@ -64,8 +64,8 @@ public class CombatView {
 
     public void setAbilityButtonsName(){
         for (int i = 0; i < abilityButtons.size(); i++){
-            abilityButtons.get(i).setFont(new Font("Arial", Font.PLAIN, 21));
-            abilityButtons.get(i).setText("hej");
+            abilityButtons.get(i).setFont(new Font("Arial", Font.PLAIN, 18));
+            abilityButtons.get(i).setText(player.getAbilities().get(i).getName());
         }
     }
 

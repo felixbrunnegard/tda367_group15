@@ -8,8 +8,6 @@ public abstract class Combatable extends Entity{
     private float hp;
     private int level;
     private int xp;
-    private Enemy enemy;
-    private Player player;
 
     //Make an array with ability objects.
     private List<Ability> abilities = new ArrayList<>();
@@ -24,6 +22,9 @@ public abstract class Combatable extends Entity{
         hp = 100*level;
     }
 
+    public float getMaxHP(){
+        return 100*level;
+    }
     public float getHp(){ return hp; }
     public void setHp(float hp){this.hp = hp;}
 
@@ -49,34 +50,20 @@ public abstract class Combatable extends Entity{
         return attackPoints;
     }
 
-
-    public int chooseAbility(){
-
-        //Get input from player as to which ability in the hashmap they would like to choose.
-        int input = 0; //This will be the input form the player
-
-        return input;
-    }
-
-
     public int chooseRandomAbility(){
 
         Random randomInteger = new Random();
-        int randomAbilityIndex = randomInteger.nextInt();
+        int randomAbilityIndex = randomInteger.nextInt(4);
 
         return randomAbilityIndex;
     }
 
 
-    public void Attack(Combatable enemyOrPlayer){
+    public void Attack(Combatable enemyOrPlayer, int chosenAbility){
 
         float newHp = 0;
 
-        if (enemyOrPlayer == player){
-            newHp = enemyOrPlayer.getHp() - calculateAttack(abilities.get(chooseAbility()));
-        }else {
-            newHp = enemyOrPlayer.getHp() - calculateAttack(abilities.get(chooseRandomAbility()));
-        }
+        newHp = enemyOrPlayer.getHp() - calculateAttack(abilities.get(chosenAbility));
 
         enemyOrPlayer.setHp(newHp);
 

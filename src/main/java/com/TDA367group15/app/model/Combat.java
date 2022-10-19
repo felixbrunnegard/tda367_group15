@@ -6,10 +6,9 @@ import java.util.Random;
 public class Combat {
 
       //Since player will not be present in code we need to tell the programm that a plyer will be presetn
-    private boolean stop;
     private List<IEnemyDeathListener> listeners;
 
-    public void combat(Combatable player, Combatable enemy, IEnemyDeathListener world){
+    public Combat(IEnemyDeathListener world){
 
         this.listeners = new ArrayList<>();
 
@@ -19,7 +18,6 @@ public class Combat {
         int int_random =rand.nextInt(upperbound);
 
         addIEnemyDeathListener(world);
-        fight(player, enemy);
 
     }
 
@@ -30,27 +28,20 @@ public class Combat {
     }
 
 
-    public void fight(Combatable player, Combatable enemy){
+    public void fight(Combatable player, Combatable enemy, int chosenAbility){
 
-        stop = false;
+        player.Attack(enemy, chosenAbility);
 
-        while (stop == false) {
+        if (enemy.getHp() <= 0) {
+            playerWin(player, enemy);
+        }
 
-            player.Attack(enemy);
+        else {
 
-            if (enemy.getHp() <= 0) {
-                stop = true;
-                playerWin(player, enemy);
-                break;
-
-            }
-
-            enemy.Attack(player);
+            enemy.Attack(player, enemy.chooseRandomAbility());
 
             if (player.getHp() < 0) {
-                stop = true;
                 enemyWin(player, enemy);
-                break;
             }
 
         }

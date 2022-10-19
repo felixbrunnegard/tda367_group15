@@ -51,6 +51,7 @@ public class CombatHPView {
         drawEnemyHPBox(g2);
         drawEnemyHPEdge(g2);
         drawEnemyHP(g2);
+        drawEnemyLevel(g2);
 
         drawPlayerHPBoxEdge(g2);
         drawPlayerHPBox(g2);
@@ -76,7 +77,9 @@ public class CombatHPView {
     }
 
     public void drawEnemyLevel(Graphics2D g2){
-
+        g2.setColor(Color.BLACK);
+        g2.setFont(new Font("Arial", Font.PLAIN, 21));
+        g2.drawString("LV " + enemy.getLevel(), enemyHPBoxPosX + 10, enemyHPBoxPosY + 21);
     }
 
     public void drawEnemyHPEdge(Graphics2D g2){
@@ -88,7 +91,7 @@ public class CombatHPView {
     }
 
     public void drawEnemyHP(Graphics2D g2){
-        RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(enemyHPBarPosX, enemyHPBarPosY, HPBarWidth, HPBarHeight, archSize, archSize);
+        RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(enemyHPBarPosX, enemyHPBarPosY, HPBarWidth * (enemy.getHp() / enemy.getMaxHP()), HPBarHeight, archSize, archSize);
 
         g2.setColor(Color.RED);
         g2.fill(HPBarEdge);
@@ -126,7 +129,7 @@ public class CombatHPView {
     }
 
     public void drawPlayerHP(Graphics2D g2){
-        RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(playerHPBarPosX, playerHPBarPosY, HPBarWidth, HPBarHeight, archSize, archSize);
+        RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(playerHPBarPosX, playerHPBarPosY, HPBarWidth * (player.getHp() / player.getMaxHP()), HPBarHeight, archSize, archSize);
 
         g2.setColor(Color.RED);
         g2.fill(HPBarEdge);

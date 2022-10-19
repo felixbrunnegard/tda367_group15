@@ -1,5 +1,6 @@
 package com.TDA367group15.app;
 
+import com.TDA367group15.app.controller.CombatController;
 import com.TDA367group15.app.controller.KeyHandler;
 import com.TDA367group15.app.controller.PlayerController;
 import com.TDA367group15.app.model.Enemy;
@@ -30,14 +31,14 @@ public class App
 
 
         World world = new World(player,enemies );
-        PlayerController playerC = new PlayerController(player);
-        KeyHandler keyH = new KeyHandler();
-        GameLoop gameLoop = new GameLoop(keyH, playerC, world);
-        JFrame window = new JFrame();
-
         GameView gameView = new GameView(world);
         List<GameView> gameViews = new ArrayList<>();
         gameViews.add(gameView);
+        CombatController combatController = new CombatController(gameView.getCombatView());
+        PlayerController playerC = new PlayerController(player);
+        KeyHandler keyH = new KeyHandler();
+        GameLoop gameLoop = new GameLoop(keyH, playerC, world, combatController);
+        JFrame window = new JFrame();
 
 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
