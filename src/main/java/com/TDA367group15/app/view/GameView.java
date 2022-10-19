@@ -1,5 +1,8 @@
 package com.TDA367group15.app.view;
 
+import com.TDA367group15.app.GameLoop;
+import com.TDA367group15.app.model.Enemy;
+import com.TDA367group15.app.model.Player;
 import com.TDA367group15.app.model.World;
 
 import javax.swing.JPanel;
@@ -48,13 +51,21 @@ public class GameView extends JPanel {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
-        tileView.draw(g2);
-        spriteView.draw(g2);
-        hpView.draw(g2);
-        xpView.draw(g2);
-        combatView.draw(g2);
+        if (world.isGameOver()){
+            System.out.println("Game Over");
+        }
+        else if(!world.isCombat()){
+            tileView.draw(g2);
+            spriteView.draw(g2);
+            hpView.draw(g2);
+            xpView.draw(g2);
+        }
+        else {
+            System.out.println("Combat");
+            combatView.draw(g2);
 
-        combatView.setAbilityButtonsVisibility(true);
+            combatView.setAbilityButtonsVisibility(true);
+        }
 
 
     }

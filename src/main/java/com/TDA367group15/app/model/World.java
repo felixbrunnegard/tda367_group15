@@ -2,10 +2,12 @@ package com.TDA367group15.app.model;
 
 import java.util.List;
 
-public class World {
+public class World implements IEnemyDeathListener{
     // only one instance, everyone shares it.
     private Player player;
     private List<Enemy> enemies;
+    private boolean combat;
+    private boolean gameOver;
 
     public World(Player player, List<Enemy> enemies){
         this.player = player;
@@ -37,7 +39,34 @@ public class World {
         this.enemies.remove(enemy);
 
         if(this.enemies.isEmpty()){
-            System.out.println("You won!");
+            setGameOver();
         }
+    }
+
+    //This will be fired of when whe have gone through thelisternes which this class is in combat.
+    @Override
+    public void enemyWasKilled(Enemy enemy){
+        removeEnemy(enemy);
+    }
+
+
+    public boolean isCombat() {
+        return combat;
+    }
+
+    public void toCombat() {
+        this.combat = true;
+    }
+
+    public void toWorld() {
+        this.combat = false;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver() {
+        this.gameOver = true;
     }
 }
