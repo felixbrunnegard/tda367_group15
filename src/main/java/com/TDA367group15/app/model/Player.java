@@ -74,11 +74,23 @@ public class Player extends Combatable{
     }
 
 
-    protected void setMaxOverWorldHealth(int maxHealth){this.maxHealth = maxHealth;}
-    public int getMaxOverWorldHealth() {return maxHealth;}
 
-    protected void setOverWorldHealth(int health){this.overWorldHealth = health;}
-    public int getOverWorldHealth() {return overWorldHealth;}
+    public int getOverWorldHealth() {
+        return overWorldHealth;
+    }
 
-    public void ReduceOverWorldHealth(int damage) {overWorldHealth -= damage;}
+    public int getMaxOverWorldHealth() {
+        return maxHealth;
+    }
+
+    protected void setOverWorldHealth(int health){
+        this.overWorldHealth = health;
+    }
+
+    protected void setMaxOverWorldHealth(int maxHealth){
+        this.maxHealth = maxHealth;
+    }
+
+    public void ReduceOverWorldHealth(int damage) {
+        overWorldHealth -= damage;
 }
