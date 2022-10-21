@@ -34,12 +34,6 @@ public class GameView extends JPanel {
         tileView = new TileView(world.getPlayer());
         combatView = new CombatView(world.getPlayer(), world.getEnemies().get(0), SCREEN_WIDTH, SCREEN_HEIGHT);
 
-        for (int i = 0; i < combatView.getAbilityButtons().size(); i++){
-            this.add(combatView.getAbilityButtons().get(i));
-        }
-
-        combatView.setAbilityButtonsVisibility(false);
-
     }
 
     public void paintComponent(Graphics g){
@@ -51,11 +45,12 @@ public class GameView extends JPanel {
             setFont(g2, text);
         }
 
-        if (world.isVictory()){
+        else if (world.isVictory()){
             String text = "Victory!";
             setFont(g2, text);
         }
         else if(!world.isCombat()){
+            this.removeAll();
             combatView.setAbilityButtonsVisibility(false);
             tileView.draw(g2);
             spriteView.draw(g2);
@@ -63,9 +58,14 @@ public class GameView extends JPanel {
             xpView.draw(g2);
         }
         else {
-            combatView.draw(g2);
+
+
+            for (int i = 0; i < combatView.getAbilityButtons().size(); i++){
+                this.add(combatView.getAbilityButtons().get(i));
+            }
 
             combatView.setAbilityButtonsVisibility(true);
+            combatView.draw(g2);
         }
 
 

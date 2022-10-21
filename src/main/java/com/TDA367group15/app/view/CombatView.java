@@ -85,6 +85,7 @@ public class CombatView {
 
     public void setAbilityButtonsDesign(){
         for (int i = 0; i < abilityButtons.size(); i++){
+            abilityButtons.get(i).setFocusable(false);
             abilityButtons.get(i).setBackground(Color.WHITE);
             abilityButtons.get(i).setBorder(new LineBorder(Color.BLACK));
             abilityButtons.get(i).setFocusPainted(false);

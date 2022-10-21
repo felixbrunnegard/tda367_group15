@@ -82,6 +82,8 @@ public class GameLoop implements Runnable {
                     combatController.setCombat(new Combat(world));
                     combatController.setPlayer(world.getPlayer());
                     combatController.setEnemy(world.getEnemyInCombat());
+                    combatController.setCombatButtons();
+                    combatController.setButtonsAction();
                 }
                 //Shift player position up again so it will not collide immediatly again.
 
