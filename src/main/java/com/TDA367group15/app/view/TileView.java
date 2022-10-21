@@ -10,14 +10,16 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TileView extends WorldView {
+public class TileView{
     private List<Tile> tiles = new ArrayList<>();
     private List<BufferedImage> images = new ArrayList<>();
     private int mapTileNum[][];
-    private Map map = new Map();
     private Player player;
+    private int tileSize;
+    private int screenWidth;
+    private int screenHeight;
 
-    public TileView(Player player){
+    public TileView(Player player, int tileSize, int screenWidth, int screenHeight, int[][] mapTileNum){
 
         this.tiles.add(new Tile(1));
         this.tiles.add(new Tile(2));
@@ -29,9 +31,11 @@ public class TileView extends WorldView {
 
         loadTileImage();
 
-        mapTileNum = map.loadMap("/map.csv");
-
         this.player = player;
+        this.tileSize = tileSize;
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
+        this.mapTileNum = mapTileNum;
     }
 
     public String getTileImageFilePath(Tile tile){
@@ -80,7 +84,6 @@ public class TileView extends WorldView {
         }
     }
 
-    @Override
     public void draw(Graphics2D g2){
 
         int col = 0;
@@ -92,13 +95,13 @@ public class TileView extends WorldView {
 
             int x = col * tileSize;
             int y = row * tileSize;
-            int screenX = x - player.getPosition().getX() + GameView.SCREEN_WIDTH/2;
-            int screenY = y - player.getPosition().getY() + GameView.SCREEN_HEIGHT /2;
+            int screenX = x - player.getPosition().getX() + screenWidth/2;
+            int screenY = y - player.getPosition().getY() + screenHeight /2;
 
-            if (x + tileSize > player.getPosition().getX() - GameView.SCREEN_WIDTH/2 &&
-                x - tileSize < player.getPosition().getX() + GameView.SCREEN_WIDTH/2 &&
-                y + tileSize > player.getPosition().getY() - GameView.SCREEN_HEIGHT /2 &&
-                y - tileSize < player.getPosition().getY() + GameView.SCREEN_HEIGHT /2) {
+            if (x + tileSize > player.getPosition().getX() - screenWidth/2 &&
+                x - tileSize < player.getPosition().getX() + screenWidth/2 &&
+                y + tileSize > player.getPosition().getY() - screenHeight/2 &&
+                y - tileSize < player.getPosition().getY() + screenHeight/2) {
                 g2.drawImage(images.get(tileNum-1), screenX, screenY, tileSize, tileSize, null);
             }
 
@@ -109,9 +112,6 @@ public class TileView extends WorldView {
                 row++;
             }
         }
-    }
-    public int[][] getMapTileNum(){
-        return mapTileNum;
     }
 
 }

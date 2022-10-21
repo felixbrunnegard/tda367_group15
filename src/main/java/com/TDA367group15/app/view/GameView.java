@@ -1,38 +1,37 @@
 package com.TDA367group15.app.view;
 
+import com.TDA367group15.app.GameLoop;
 import com.TDA367group15.app.model.Enemy;
+import com.TDA367group15.app.model.Player;
 import com.TDA367group15.app.model.World;
 
 import javax.swing.JPanel;
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.awt.Graphics;
+import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Font;
 
 public class GameView extends JPanel {
-    public static final int SCREEN_WIDTH = 768;
-    public static final int SCREEN_HEIGHT = 576;
-    private SpriteView spriteView;
+    private final int SCREEN_WIDTH = 768;
+    private final int SCREEN_HEIGHT = 576;
+    private int[][] mapTileNum;
 
-    private HPView hpView;
-    private  XPView xpView;
-
-    private final World world;
-    private TileView tileView;
-
+    private WorldView worldView;
     private CombatView combatView;
+    private final World world;
 
-
-    public GameView(World world){
+    public GameView(World world, int[][] mapTileNum){
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
         this.setLayout(null);
         this.world = world;
+        this.mapTileNum = mapTileNum;
 
+        this.worldView = new WorldView(SCREEN_WIDTH, SCREEN_HEIGHT, world, mapTileNum);
 
-        spriteView = new SpriteView(world.getPlayer(),world.getEnemies());
-        hpView = new HPView(world.getPlayer());
-        xpView = new XPView(world.getPlayer());
-        tileView = new TileView(world.getPlayer());
-        combatView = new CombatView(world.getPlayer(), world.getEnemies().get(0), SCREEN_WIDTH, SCREEN_HEIGHT);
+        this.combatView = new CombatView(world.getPlayer(), world.getEnemies().get(0), SCREEN_WIDTH, SCREEN_HEIGHT);
 
     }
 
@@ -53,10 +52,7 @@ public class GameView extends JPanel {
         else if(!world.isCombat()){
             this.removeAll();
             combatView.setAbilityButtonsVisibility(false);
-            tileView.draw(g2);
-            spriteView.draw(g2);
-            hpView.draw(g2);
-            xpView.draw(g2);
+            worldView.draw(g2);
         }
         else {
 
@@ -86,8 +82,8 @@ public class GameView extends JPanel {
         repaint();
     }
 
-    public TileView getTileView(){
-        return tileView;
+    public WorldView getWorldView(){
+        return this.worldView;
     }
 
     public CombatView getCombatView(){
@@ -102,6 +98,10 @@ public class GameView extends JPanel {
         }
 
         combatView.setAbilityButtonsVisibility(false);
+    }
+
+    public int[][] getMapTileNum(){
+        return mapTileNum;
     }
 
     private int getXCordForCenteredText(Graphics2D g2, String text){

@@ -58,7 +58,7 @@ public abstract class Entity implements ICollidable {
         int xDiff = otherPos.getX()- thisPos.getX();
         int yDiff = otherPos.getY() -thisPos.getY();
 
-        if(Math.abs(xDiff) <= WorldView.tileSize && Math.abs(yDiff) <= WorldView.tileSize){
+        if(Math.abs(xDiff) <= 48 && Math.abs(yDiff) <= 48){
             return true;
         }
         return false;
