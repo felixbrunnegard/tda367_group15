@@ -40,11 +40,13 @@ public class GameView extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         if (world.isGameOver()){
+            this.removeAll();
             String text = "GAME OVER";
             setFont(g2, text);
         }
 
         else if (world.isVictory()){
+            this.removeAll();
             String text = "Victory!";
             setFont(g2, text);
         }
