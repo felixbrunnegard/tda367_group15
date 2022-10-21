@@ -28,7 +28,7 @@ public class Combat {
     }
 
 
-    public void fight(Combatable player, Combatable enemy, int chosenAbility){
+    public void fight(Player player, Combatable enemy, int chosenAbility){
 
         player.Attack(enemy, chosenAbility);
 
@@ -52,7 +52,7 @@ public class Combat {
     public void playerWin(Combatable player, Combatable enemy){
 
        // why do ypu calculate in this way? must you have float xp? are conflict.
-       player.setXp((enemy.getLevel()/5) + player.getXp());
+       player.setXp((enemy.getLevel()*100) + player.getXp());
 
        player.setHp(player.getLevel()*100); //Resets hp
 
@@ -66,9 +66,10 @@ public class Combat {
     }
 
 
-    public void enemyWin( Combatable player, Combatable enemy){
+    public void enemyWin( Player player, Combatable enemy){
 
-        //Reduce overworld health
+        player.ReduceOverWorldHealth(1);
+
     }
 
 }
