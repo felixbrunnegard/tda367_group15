@@ -63,6 +63,12 @@ public class GameLoop implements Runnable {
         }
     }
     private void update(){
+
+        if (world.getPlayer().getOverWorldHealth() <= 0){
+
+            world.setGameOver();
+        }
+
         gameViews.get(0).update();
         if(keyH.getDirectionPressed() != null) {
             if (!willPlayerCollideWithTile() && !willPlayerCollideWithEnemy(keyH.getDirectionPressed())) {
