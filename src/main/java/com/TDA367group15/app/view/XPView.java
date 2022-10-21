@@ -6,19 +6,22 @@ import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.geom.RoundRectangle2D;
 
-public class XPView extends WorldView {
+public class XPView {
     private Player player;
-    private int baseXPRectanglePosX = GameView.SCREEN_WIDTH / 2 - 150;
+    private int screenWidth;
+    private int baseXPRectanglePosX;
     private int baseXPRectanglePosY = 10;
 
     private int baseXPRectangleWidth = 300;
 
-    public XPView(Player player){
+    public XPView(Player player, int screenWidth){
 
         this.player = player;
+        this.screenWidth = screenWidth;
+        this.baseXPRectanglePosX = screenWidth/2 - 150;
 
     }
-    @Override
+
     public void draw(Graphics2D g2) {
         drawRoundRectangleEdge(g2);
         drawRoundRectangleBackground(g2);
@@ -54,7 +57,7 @@ public class XPView extends WorldView {
 
     private void drawLevel(Graphics2D g2) {
         g2.setColor(Color.WHITE);
-        g2.drawString("LV"+ player.getLevel(), GameView.SCREEN_WIDTH/2 + 120, 25);
+        g2.drawString("LV"+ player.getLevel(), screenWidth/2 + 120, 25);
     }
 
 }

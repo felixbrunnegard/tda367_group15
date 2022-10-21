@@ -117,8 +117,8 @@ public class GameLoop implements Runnable {
         Player player = world.getPlayer();
         int xPos = player.getPosition().getX();
         int yPos = player.getPosition().getY();
-        int tilePosX = xPos / gameViews.get(0).getTileView().tileSize;
-        int tilePosY = yPos / gameViews.get(0).getTileView().tileSize;
+        int tilePosX = xPos / gameViews.get(0).getWorldView().getTileSize();
+        int tilePosY = yPos / gameViews.get(0).getWorldView().getTileSize();
         if (keyH.getDirectionPressed() != null) {
             if (keyH.getDirectionPressed() == Direction.UP) {
                 tilePosY--;
@@ -131,7 +131,7 @@ public class GameLoop implements Runnable {
             }
         }
 
-        int nextTile = gameViews.get(0).getTileView().getMapTileNum()[tilePosY][tilePosX];
+        int nextTile = gameViews.get(0).getMapTileNum()[tilePosY][tilePosX];
         Tile tileToCheckCollide = new Tile(nextTile);
         return tileToCheckCollide.collide(player);
     }
