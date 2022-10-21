@@ -10,7 +10,6 @@ import java.awt.Graphics2D;
 import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.Color;
-import java.util.List;
 
 public class GameView extends JPanel {
     public static final int SCREEN_WIDTH = 768;
@@ -23,11 +22,14 @@ public class GameView extends JPanel {
     private final World world;
     private TileView tileView;
 
+    private CombatView combatView;
+
 
     public GameView(World world){
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_ROW));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
+        this.setLayout(null);
         this.world = world;
 
 
@@ -35,6 +37,14 @@ public class GameView extends JPanel {
         hpView = new HPView(world.getPlayer());
         xpView = new XPView(world.getPlayer());
         tileView = new TileView(world.getPlayer());
+        combatView = new CombatView(world.getPlayer(), world.getEnemies().get(0), SCREEN_WIDTH, SCREEN_ROW);
+
+        for (int i = 0; i < combatView.getAbilityButtons().size(); i++){
+            this.add(combatView.getAbilityButtons().get(i));
+        }
+
+        combatView.setAbilityButtonsVisibility(false);
+
     }
 
     public void paintComponent(Graphics g){
@@ -51,7 +61,9 @@ public class GameView extends JPanel {
             xpView.draw(g2);
         }
         else {
-            System.out.println("Combat");
+            combatView.draw(g2);
+
+            combatView.setAbilityButtonsVisibility(true);
         }
 
 
@@ -63,6 +75,20 @@ public class GameView extends JPanel {
 
     public TileView getTileView(){
         return tileView;
+    }
+
+    public CombatView getCombatView(){
+        return this.combatView;
+    }
+
+    public void setCombatView(Enemy enemyInCombat){
+        combatView = new CombatView(world.getPlayer(), enemyInCombat, SCREEN_WIDTH, SCREEN_ROW);
+
+        for (int i = 0; i < combatView.getAbilityButtons().size(); i++){
+            this.add(combatView.getAbilityButtons().get(i));
+        }
+
+        combatView.setAbilityButtonsVisibility(false);
     }
 
 
