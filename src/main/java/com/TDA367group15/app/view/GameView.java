@@ -38,7 +38,6 @@ public class GameView extends JPanel {
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-
         Graphics2D g2 = (Graphics2D) g;
         if (world.isGameOver()){
             String text = "GAME OVER";

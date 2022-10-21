@@ -129,13 +129,13 @@ public class WorldTest {
     }
 
     @Test
-    public void TestIsGameOver(){
+    public void TestIsVictory(){
         player = new Player();
         enemies.add(new Enemy(1,2));
         world = new World(player, enemies);
         world.removeEnemy(enemies.get(0));
 
-        assertTrue(world.isGameOver());
+        assertTrue(world.isVictory());
     }
 
     @Test

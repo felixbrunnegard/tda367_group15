@@ -96,9 +96,9 @@ public class CombatView {
         return abilityButtons;
     }
 
-    public void setAbilityButtonsVisibility(boolean condition){
+    public void setAbilityButtonsVisibility(boolean visibility){
         for (int i = 0; i < getAbilityButtons().size(); i++){
-            getAbilityButtons().get(i).setVisible(condition);
+            getAbilityButtons().get(i).setVisible(visibility);
         }
     }
 
