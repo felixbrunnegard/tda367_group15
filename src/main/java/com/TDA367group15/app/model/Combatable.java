@@ -36,7 +36,6 @@ public abstract class Combatable extends Entity{
 
     public List<Ability> getAbilities() {return abilities;}
 
-
     public void setAbilities(List<Ability> abilities) {
         this.abilities = abilities;
     }
@@ -49,6 +48,7 @@ public abstract class Combatable extends Entity{
 
         return attackPoints;
     }
+
 
     public int chooseRandomAbility(){
 

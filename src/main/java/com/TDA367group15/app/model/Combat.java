@@ -19,6 +19,7 @@ public class Combat {
 
         addIEnemyDeathListener(world);
 
+
     }
 
 
@@ -41,7 +42,8 @@ public class Combat {
             enemy.Attack(player, enemy.chooseRandomAbility());
 
             if (player.getHp() < 0) {
-                enemyWin(player, enemy);
+                enemyWin(player);
+
             }
 
         }
@@ -66,7 +68,7 @@ public class Combat {
     }
 
 
-    public void enemyWin( Player player, Combatable enemy){
+    public void enemyWin( Player player){
 
         player.ReduceOverWorldHealth(1);
 

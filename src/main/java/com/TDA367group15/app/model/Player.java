@@ -20,7 +20,7 @@ public class Player extends Combatable {
         super(x, y);
 
         setMaxOverWorldHealth(6);
-        setOverWorldHealth(5);
+        setOverWorldHealth(6);
 
         //This creates a copy of the abilitylist in combatable then adds abilites to it then sets the list in combatible to the new lsit.
 
@@ -74,7 +74,6 @@ public class Player extends Combatable {
         return level * baseXPToNextLevel;
 
     }
-
 
     public int getOverWorldHealth() {
         return overWorldHealth;
