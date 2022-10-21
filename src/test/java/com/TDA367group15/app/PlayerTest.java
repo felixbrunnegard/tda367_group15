@@ -45,7 +45,7 @@ public class PlayerTest {
     public void TestReduceOverWorldHealth(){
         Player player = new Player();
         player.ReduceOverWorldHealth(1);
-        assertEquals(player.getOverWorldHealth(), 4);
+        assertEquals(5, player.getOverWorldHealth());
     }
     @Test
     public void TestGetMaxHealth(){
@@ -56,13 +56,13 @@ public class PlayerTest {
     @Test
     public void TestGetLevel(){
         Player player = new Player();
-        assertEquals(player.getLevel(), 10);
+        assertEquals(1, player.getLevel());
     }
 
     @Test
     public void TestGetXP(){
         Player player = new Player();
-        assertEquals(player.getXP(), 500);
+        assertEquals(0, player.getXP());
     }
 
     @Test

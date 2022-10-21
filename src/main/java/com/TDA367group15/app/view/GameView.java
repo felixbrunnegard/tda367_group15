@@ -44,14 +44,14 @@ public class GameView extends JPanel {
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-
         Graphics2D g2 = (Graphics2D) g;
         if (world.isGameOver()){
             String text = "GAME OVER";
             setFont(g2, text);
+            combatView.setAbilityButtonsVisibility(true);
         }
 
-        if (world.isVictory()){
+        else if (world.isVictory()){
             String text = "Victory!";
             setFont(g2, text);
         }
@@ -64,7 +64,6 @@ public class GameView extends JPanel {
         }
         else {
             combatView.draw(g2);
-
             combatView.setAbilityButtonsVisibility(true);
         }
 

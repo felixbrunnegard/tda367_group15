@@ -42,7 +42,7 @@ public class Combat {
             enemy.Attack(player, enemy.chooseRandomAbility());
 
             if (player.getHp() < 0) {
-                enemyWin(player);
+                enemyWin(player, enemy);
 
             }
 
@@ -58,7 +58,7 @@ public class Combat {
        player.setHp(player.getLevel()*100); //Resets hp
 
        //This should remove enemy from enemy list
-       //Enemy should not interactable nor visable anymore
+       //Enemy should not interactable nor visible anymore
 
         for (IEnemyDeathListener listener : listeners){
             listener.enemyWasKilled((Enemy) enemy);
@@ -69,9 +69,11 @@ public class Combat {
     }
 
 
-    public void enemyWin( Player player){
+    public void enemyWin(Player player, Combatable enemy){
 
         player.ReduceOverWorldHealth(1);
+        enemy.setHp(100 * enemy.getLevel());
+        player.setHp(100 * player.getLevel());
         listeners.get(0).fightOver();
 
     }
