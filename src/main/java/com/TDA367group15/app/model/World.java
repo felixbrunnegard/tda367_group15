@@ -8,6 +8,7 @@ public class World implements IEnemyDeathListener{
     private List<Enemy> enemies;
     private boolean combat;
     private boolean gameOver;
+    private boolean victory;
     private Enemy enemyInCombat;
 
     public World(Player player, List<Enemy> enemies){
@@ -40,7 +41,7 @@ public class World implements IEnemyDeathListener{
         this.enemies.remove(enemy);
 
         if(this.enemies.isEmpty()){
-            setGameOver();
+            setVictory();
         }
     }
 
@@ -56,6 +57,11 @@ public class World implements IEnemyDeathListener{
     @Override
     public void enemyWasKilled(Enemy enemy){
         removeEnemy(enemy);
+    }
+
+    @Override
+    public void fightOver() {
+        toWorld();        
     }
 
 
@@ -77,5 +83,13 @@ public class World implements IEnemyDeathListener{
 
     public void setGameOver() {
         this.gameOver = true;
+    }
+
+    public boolean isVictory() {
+        return victory;
+    }
+
+    public void setVictory() {
+        this.victory = true;
     }
 }

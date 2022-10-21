@@ -47,7 +47,6 @@ public class Combat {
             }
 
         }
-
     }
 
 
@@ -65,12 +64,15 @@ public class Combat {
             listener.enemyWasKilled((Enemy) enemy);
         }
 
+        listeners.get(0).fightOver();
+
     }
 
 
     public void enemyWin( Player player){
 
         player.ReduceOverWorldHealth(1);
+        listeners.get(0).fightOver();
 
     }
 

@@ -1,6 +1,7 @@
 package com.TDA367group15.app.view;
 
 import com.TDA367group15.app.model.Player;
+import com.TDA367group15.app.model.World;
 
 import java.awt.Graphics2D;
 import java.awt.Color;
@@ -24,7 +25,6 @@ public class XPView extends WorldView {
         drawRoundRectangleBackground(g2);
         drawRoundRectangleXP(g2);
         drawLevel(g2);
-
     }
 
     private void drawRoundRectangleEdge(Graphics2D g2) {

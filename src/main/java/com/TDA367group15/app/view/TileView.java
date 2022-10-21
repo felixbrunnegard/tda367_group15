@@ -93,12 +93,12 @@ public class TileView extends WorldView {
             int x = col * tileSize;
             int y = row * tileSize;
             int screenX = x - player.getPosition().getX() + GameView.SCREEN_WIDTH/2;
-            int screenY = y - player.getPosition().getY() + GameView.SCREEN_ROW /2;
+            int screenY = y - player.getPosition().getY() + GameView.SCREEN_HEIGHT /2;
 
             if (x + tileSize > player.getPosition().getX() - GameView.SCREEN_WIDTH/2 &&
                 x - tileSize < player.getPosition().getX() + GameView.SCREEN_WIDTH/2 &&
-                y + tileSize > player.getPosition().getY() - GameView.SCREEN_ROW/2 &&
-                y - tileSize < player.getPosition().getY() + GameView.SCREEN_ROW/2) {
+                y + tileSize > player.getPosition().getY() - GameView.SCREEN_HEIGHT /2 &&
+                y - tileSize < player.getPosition().getY() + GameView.SCREEN_HEIGHT /2) {
                 g2.drawImage(images.get(tileNum-1), screenX, screenY, tileSize, tileSize, null);
             }
 

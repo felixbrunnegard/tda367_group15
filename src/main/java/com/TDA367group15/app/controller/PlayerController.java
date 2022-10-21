@@ -6,7 +6,7 @@ import com.TDA367group15.app.model.Player;
 
 public class PlayerController {
 
-    Player player;
+    private Player player;
 
 
     public PlayerController(Player player) {

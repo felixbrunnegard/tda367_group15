@@ -13,7 +13,7 @@ public class HPView extends WorldView {
     private Player player;
 
     private int xPos = GameView.SCREEN_WIDTH/2 - 100;
-    private int yPos = GameView.SCREEN_ROW - 50;
+    private int yPos = GameView.SCREEN_HEIGHT - 50;
     private BufferedImage fullHealth;
     private BufferedImage halfHealth;
     private BufferedImage blankHealth;
@@ -36,8 +36,8 @@ public class HPView extends WorldView {
     }
 
     private void drawRoundRectangle(Graphics2D g2) {
-        RoundRectangle2D roundRectangle2D = new RoundRectangle2D.Float(xPos + 26,GameView.SCREEN_ROW - 55 , 150, 55, 25, 25);
-        RoundRectangle2D backgroundToHearts = new RoundRectangle2D.Float(xPos + 28,GameView.SCREEN_ROW - 52 , 145, 50, 25, 25);
+        RoundRectangle2D roundRectangle2D = new RoundRectangle2D.Float(xPos + 26,GameView.SCREEN_HEIGHT - 55 , 150, 55, 25, 25);
+        RoundRectangle2D backgroundToHearts = new RoundRectangle2D.Float(xPos + 28,GameView.SCREEN_HEIGHT - 52 , 145, 50, 25, 25);
 
         g2.setColor(Color.ORANGE);
         g2.fill(roundRectangle2D);
