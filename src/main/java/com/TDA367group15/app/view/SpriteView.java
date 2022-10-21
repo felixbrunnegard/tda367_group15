@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
 import java.awt.Graphics2D;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -44,15 +43,15 @@ public class SpriteView {
         g2.drawImage(boyDown, xPos, yPos,tileSize,tileSize, null);
 
 
-        for (int i = 0; i<5; i++ ){
-            int screenX = enemies.get(i).getPosition().getX() - player.getPosition().getX() + xPos;
-            int screenY = enemies.get(i).getPosition().getY() - player.getPosition().getY() + yPos;
+        for (Enemy enemy : enemies) {
+            int screenX = enemy.getPosition().getX() - player.getPosition().getX() + xPos;
+            int screenY = enemy.getPosition().getY() - player.getPosition().getY() + yPos;
 
-            if (enemies.get(i).getPosition().getX() + tileSize > player.getPosition().getX() - screenWidth/2 &&
-                    enemies.get(i).getPosition().getX() - tileSize < player.getPosition().getX() + screenWidth/2 &&
-                    enemies.get(i).getPosition().getY() + tileSize > player.getPosition().getY() - screenHeight/2 &&
-                    enemies.get(i).getPosition().getY() - tileSize < player.getPosition().getY() + screenHeight/2) {
-                g2.drawImage(enemyDown, screenX, screenY, tileSize,tileSize, null);
+            if (enemy.getPosition().getX() + tileSize > player.getPosition().getX() - screenWidth/2 &&
+                    enemy.getPosition().getX() - tileSize < player.getPosition().getX() + screenWidth/2 &&
+                    enemy.getPosition().getY() + tileSize > player.getPosition().getY() - screenHeight/2 &&
+                    enemy.getPosition().getY() - tileSize < player.getPosition().getY() + screenHeight/2) {
+                g2.drawImage(enemyDown, screenX, screenY, tileSize, tileSize, null);
             }
         }
     }
