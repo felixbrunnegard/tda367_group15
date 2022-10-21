@@ -12,38 +12,31 @@ import java.awt.Dimension;
 import java.awt.Color;
 
 public class GameView extends JPanel {
-    public static final int SCREEN_WIDTH = 768;
-    public static final int SCREEN_ROW = 576;
-    private SpriteView spriteView;
+    private final int SCREEN_WIDTH = 768;
+    private final int SCREEN_ROW = 576;
+    private int[][] mapTileNum;
 
-    private HPView hpView;
-    private  XPView xpView;
-
-    private final World world;
-    private TileView tileView;
-
+    private WorldView worldView;
     private CombatView combatView;
+    private final World world;
 
-
-    public GameView(World world){
+    public GameView(World world, int[][] mapTileNum){
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_ROW));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
         this.setLayout(null);
         this.world = world;
+        this.mapTileNum = mapTileNum;
 
+        this.worldView = new WorldView(SCREEN_WIDTH, SCREEN_ROW, world, mapTileNum);
 
-        spriteView = new SpriteView(world.getPlayer(),world.getEnemies());
-        hpView = new HPView(world.getPlayer());
-        xpView = new XPView(world.getPlayer());
-        tileView = new TileView(world.getPlayer());
-        combatView = new CombatView(world.getPlayer(), world.getEnemies().get(0), SCREEN_WIDTH, SCREEN_ROW);
+        this.combatView = new CombatView(world.getPlayer(), world.getEnemies().get(0), SCREEN_WIDTH, SCREEN_ROW);
 
         for (int i = 0; i < combatView.getAbilityButtons().size(); i++){
             this.add(combatView.getAbilityButtons().get(i));
         }
 
-        combatView.setAbilityButtonsVisibility(false);
+        this.combatView.setAbilityButtonsVisibility(false);
 
     }
 
@@ -55,10 +48,7 @@ public class GameView extends JPanel {
             System.out.println("Game Over");
         }
         else if(!world.isCombat()){
-            tileView.draw(g2);
-            spriteView.draw(g2);
-            hpView.draw(g2);
-            xpView.draw(g2);
+            worldView.draw(g2);
         }
         else {
             combatView.draw(g2);
@@ -73,8 +63,8 @@ public class GameView extends JPanel {
         repaint();
     }
 
-    public TileView getTileView(){
-        return tileView;
+    public WorldView getWorldView(){
+        return this.worldView;
     }
 
     public CombatView getCombatView(){
@@ -89,6 +79,10 @@ public class GameView extends JPanel {
         }
 
         combatView.setAbilityButtonsVisibility(false);
+    }
+
+    public int[][] getMapTileNum(){
+        return mapTileNum;
     }
 
 

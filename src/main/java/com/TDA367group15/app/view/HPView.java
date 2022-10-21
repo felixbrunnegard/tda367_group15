@@ -9,17 +9,25 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class HPView extends WorldView {
+public class HPView {
     private Player player;
+    private int screenWidth;
+    private int screenHeight;
+    private int tileSize;
 
-    private int xPos = GameView.SCREEN_WIDTH/2 - 100;
-    private int yPos = GameView.SCREEN_ROW - 50;
+    private int xPos;
+    private int yPos;
     private BufferedImage fullHealth;
     private BufferedImage halfHealth;
     private BufferedImage blankHealth;
 
-    public HPView(Player player){
+    public HPView(Player player, int screenWidth, int screenHeight, int tileSize){
         this.player = player;
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
+        this.tileSize = tileSize;
+        this.xPos = screenWidth/2 - 100;
+        this.yPos = screenHeight - 50;
 
         try {
             fullHealth = ImageIO.read(getClass().getResourceAsStream("/heart_full.png"));
@@ -29,15 +37,15 @@ public class HPView extends WorldView {
             throw new RuntimeException(e);
         }
     }
-    @Override
+
     public void draw(Graphics2D g2) {
         drawRoundRectangle(g2);
         drawHearts(g2);
     }
 
     private void drawRoundRectangle(Graphics2D g2) {
-        RoundRectangle2D roundRectangle2D = new RoundRectangle2D.Float(xPos + 26,GameView.SCREEN_ROW - 55 , 150, 55, 25, 25);
-        RoundRectangle2D backgroundToHearts = new RoundRectangle2D.Float(xPos + 28,GameView.SCREEN_ROW - 52 , 145, 50, 25, 25);
+        RoundRectangle2D roundRectangle2D = new RoundRectangle2D.Float(xPos + 26,screenHeight - 55 , 150, 55, 25, 25);
+        RoundRectangle2D backgroundToHearts = new RoundRectangle2D.Float(xPos + 28,screenHeight - 52 , 145, 50, 25, 25);
 
         g2.setColor(Color.ORANGE);
         g2.fill(roundRectangle2D);
