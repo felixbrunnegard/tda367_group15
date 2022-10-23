@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 import java.util.List;
 
+/**
+ * This is the object that creates the players HP box and the enemy's HP box in the combat view.
+ */
 public class CombatHPView {
 
     private Player player;
@@ -28,6 +31,14 @@ public class CombatHPView {
 
     private int archSize = 10;
 
+    /**
+     * Constructs the object that contains a players HP box and an enemy's HP box. The constructor scales the size
+     * and position of the HP boxes depending on screen size.
+     * @param player
+     * @param enemy
+     * @param gameWidth
+     * @param gameHeight
+     */
     public CombatHPView(Player player, Enemy enemy, int gameWidth, int gameHeight) {
         this.player = player;
         this.enemy = enemy;
@@ -46,6 +57,10 @@ public class CombatHPView {
         this.HPBarHeight = (int) (HPBoxHeight * 0.2);
     }
 
+    /**
+     * The main draw method that renders the players HP box and the enemy's HP Box.
+     * @param g2
+     */
     public void draw(Graphics2D g2){
         drawEnemyHPBoxEdge(g2);
         drawEnemyHPBox(g2);
@@ -60,6 +75,10 @@ public class CombatHPView {
         drawPlayerLevel(g2);
     }
 
+    /**
+     * Renders the black border of the enemy's HP Box.
+     * @param g2
+     */
     public void drawEnemyHPBoxEdge(Graphics2D g2){
         RoundRectangle2D HPBoxEdge = new RoundRectangle2D.Float(enemyHPBoxPosX-2, enemyHPBoxPosY-2, HPBoxWidth+4, HPBoxHeight+4, archSize, archSize);
 
@@ -68,6 +87,10 @@ public class CombatHPView {
         g2.draw(HPBoxEdge);
     }
 
+    /**
+     * Renders the main white HP box of the enemy.
+     * @param g2
+     */
     public void drawEnemyHPBox(Graphics2D g2){
         RoundRectangle2D HPBox = new RoundRectangle2D.Float(enemyHPBoxPosX, enemyHPBoxPosY, HPBoxWidth, HPBoxHeight, archSize, archSize);
 
@@ -76,12 +99,20 @@ public class CombatHPView {
         g2.draw(HPBox);
     }
 
+    /**
+     * Renders a text on the HP box of the enemy's level.
+     * @param g2
+     */
     public void drawEnemyLevel(Graphics2D g2){
         g2.setColor(Color.BLACK);
         g2.setFont(new Font("Arial", Font.PLAIN, 21));
         g2.drawString("LV " + enemy.getLevel(), enemyHPBoxPosX + 10, enemyHPBoxPosY + 21);
     }
 
+    /**
+     * Renders the black border of the HP bar on enemy's HP box.
+     * @param g2
+     */
     public void drawEnemyHPEdge(Graphics2D g2){
         RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(enemyHPBarPosX-2, enemyHPBarPosY-2, HPBarWidth+4, HPBarHeight+4, archSize, archSize);
 
@@ -90,6 +121,10 @@ public class CombatHPView {
         g2.draw(HPBarEdge);
     }
 
+    /**
+     * Renders the main red HP bar on the enemy's HP box that changes width depending on enemy's HP.
+     * @param g2
+     */
     public void drawEnemyHP(Graphics2D g2){
         RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(enemyHPBarPosX, enemyHPBarPosY, HPBarWidth * (enemy.getHp() / enemy.getMaxHP()), HPBarHeight, archSize, archSize);
 
@@ -98,6 +133,10 @@ public class CombatHPView {
         g2.draw(HPBarEdge);
     }
 
+    /**
+     * Renders the black border of the players HP Box.
+     * @param g2
+     */
     public void drawPlayerHPBoxEdge(Graphics2D g2){
         RoundRectangle2D HPBoxEdge = new RoundRectangle2D.Float(playerHPBoxPosX-2, playerHPBoxPosY-2, HPBoxWidth+4, HPBoxHeight+4, archSize, archSize);
 
@@ -106,6 +145,10 @@ public class CombatHPView {
         g2.draw(HPBoxEdge);
     }
 
+    /**
+     * Renders the main white HP box of the player.
+     * @param g2
+     */
     public void drawPlayerHPBox(Graphics2D g2){
         RoundRectangle2D HPBox = new RoundRectangle2D.Float(playerHPBoxPosX, playerHPBoxPosY, HPBoxWidth, HPBoxHeight, archSize, archSize);
 
@@ -114,12 +157,20 @@ public class CombatHPView {
         g2.draw(HPBox);
     }
 
+    /**
+     * Renders a text on the HP box of the players level.
+     * @param g2
+     */
     public void drawPlayerLevel(Graphics2D g2){
         g2.setColor(Color.BLACK);
         g2.setFont(new Font("Arial", Font.PLAIN, 21));
         g2.drawString("LV " + player.getLevel(), playerHPBoxPosX + 10, playerHPBoxPosY + 21);
     }
 
+    /**
+     * Renders the black border of the HP bar on players HP box.
+     * @param g2
+     */
     public void drawPlayerHPEdge(Graphics2D g2){
         RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(playerHPBarPosX-2, playerHPBarPosY-2, HPBarWidth+4, HPBarHeight+4, archSize, archSize);
 
@@ -128,6 +179,10 @@ public class CombatHPView {
         g2.draw(HPBarEdge);
     }
 
+    /**
+     * Renders the main red HP bar on the enemy's HP box that changes width depending on players HP.
+     * @param g2
+     */
     public void drawPlayerHP(Graphics2D g2){
         RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(playerHPBarPosX, playerHPBarPosY, HPBarWidth * (player.getHp() / player.getMaxHP()), HPBarHeight, archSize, archSize);
 

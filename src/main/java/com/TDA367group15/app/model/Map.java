@@ -7,13 +7,24 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * {@code Map} is a class which contains methods to place all values in a CSV
+ * file into a matrix.
+ */
 public class Map {
 
+    /**
+     * Constructs a map object which contains methods to place values in a CSV file to a matrix.
+     */
     public Map(){
 
     }
 
-
+    /**
+     * Returns a List of ArrayLists which contains the values of a specified CSV file.
+     * @param filePath the filepath to the CSV file.
+     * @return A List of integer ArrayLists.
+     */
     public List<int[]> getWorld(String filePath){
         String line;
         int col;
@@ -40,6 +51,11 @@ public class Map {
 
     }
 
+    /**
+     * Returns a matrix of all the values in a CSV file.
+     * @param filePath The filepath to the CSV file.
+     * @return A matrix containing all values from a CSV file.
+     */
     public int[][] loadMap(String filePath){
         int mapTileNum[][];
         List<int[]> world = getWorld(filePath);
