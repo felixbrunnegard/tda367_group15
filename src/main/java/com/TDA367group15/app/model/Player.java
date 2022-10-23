@@ -16,6 +16,12 @@ public class Player extends Combatable {
         this(1488, 960);
     }
 
+    /**
+     * Creates a new player at the set coordinates
+     * The player will get 4 preset abilites
+     * @param x
+     * @param y
+     */
     public Player(int x, int y) {
         super(x, y);
 
@@ -35,29 +41,15 @@ public class Player extends Combatable {
 
     }
 
-
-    public boolean willPlayerCollideWithEntityInCurrentDirection(Entity entity, Direction direction) {
-        if (collide(entity)) {
-            int xDiff = entity.getPosition().getX() - getPosition().getX();
-            int yDiff = entity.getPosition().getY() - getPosition().getY();
-            //Checks below so that it is still possible to walk away from the enemy
-            if (xDiff < 0 && direction == Direction.LEFT) {
-                return true;
-            } else if (xDiff > 0 && direction == Direction.RIGHT) {
-                return true;
-            } else if (yDiff < 0 && direction == Direction.UP) {
-                return true;
-            } else if (yDiff > 0 && direction == Direction.DOWN) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public int getXP() {
         return this.xP;
     }
 
+    /**
+     * Sets the current experience
+     * If experience exceeds xp to next level then a level up will occur and the xp needed will be subtracted
+     * @param xP new xp to set
+     */
     protected void setXP(int xP) {
         this.xP = xP;
         while (this.xP > getXPToNextLevel()) {
@@ -70,6 +62,10 @@ public class Player extends Combatable {
         return this.level;
     }
 
+    /**
+     * Calculates the xp needed to level up
+     * @return total xp needed to level up
+     */
     public int getXPToNextLevel() {
         return level * baseXPToNextLevel;
 

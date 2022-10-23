@@ -21,11 +21,7 @@ public class Enemy extends Combatable {
 
     }
 
-    @Override
-    public boolean collide(Entity player) {
 
-        return false;
-    }
     public void name(){}
     public void setAbility(){}
     public void setLevel(){}

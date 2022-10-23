@@ -91,18 +91,21 @@ public class GameLoop implements Runnable {
         }
     }
 
+    /**
+     * Uses "getEnemyCollideWith" to see if the player will collide with an enemy in the current direction
+     * @param direction
+     * @return
+     */
     private boolean willPlayerCollideWithEnemy(Direction direction){
-        Player player = world.getPlayer();
-        Player copy = new Player(player.getPosition().getX(), player.getPosition().getY());
-        copy.move(direction);
-        for(Enemy e : world.getEnemies()) {
-            if(copy.collide(e)){
-                return true;
-            }
-        }
-        return false;
+        return getEnemyCollidedWith(direction) != null;
     }
 
+    /**
+     * Checks if the player will collide with an ememy based on the players current direction
+     * This is done by making a copy of the player, moving it in the provided direction and then see if it collides with an enemy
+     * @param direction the direction the player is attempting to move in
+     * @return The enemy the player will collide with, null if it does not collide with an enemy
+     */
     public Enemy getEnemyCollidedWith(Direction direction){
         Player player = world.getPlayer();
         Player copy = new Player(player.getPosition().getX(), player.getPosition().getY());
@@ -115,6 +118,11 @@ public class GameLoop implements Runnable {
         return null;
     }
 
+    /**
+     * Checks if the player will collide with a tile that is not passable
+     * This is done by checking the direction and position of the player and see which the next tile in that direction will be
+     * @return True if collide with a none passable tile
+     */
     private boolean willPlayerCollideWithTile(){
         Player player = world.getPlayer();
         int xPos = player.getPosition().getX();
