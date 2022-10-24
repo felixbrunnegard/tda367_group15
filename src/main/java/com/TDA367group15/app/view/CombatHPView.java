@@ -34,10 +34,10 @@ public class CombatHPView {
     /**
      * Constructs the object that contains a players HP box and an enemy's HP box. The constructor scales the size
      * and position of the HP boxes depending on screen size.
-     * @param player
-     * @param enemy
-     * @param gameWidth
-     * @param gameHeight
+     * @param player The player that should be displayed in combat.
+     * @param enemy The enemy that should be displayed in combat.
+     * @param gameWidth The width of the window
+     * @param gameHeight The height of the window.
      */
     public CombatHPView(Player player, Enemy enemy, int gameWidth, int gameHeight) {
         this.player = player;
