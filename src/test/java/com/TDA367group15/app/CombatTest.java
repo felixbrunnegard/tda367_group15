@@ -38,14 +38,11 @@ public class CombatTest {
 
     }
 
-    
 
     @Test
     public void enemyAttackIsRandom(){
 
     }
-
-
 
 
 }

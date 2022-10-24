@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Enemy extends Combatable {
-    private int pointerP;
 
     public Enemy(Integer posX, Integer posY) {
         super(posX,posY);
@@ -32,6 +31,7 @@ public class Enemy extends Combatable {
 
         return randomAbilityIndex;
     }
+
 
     public void name(){}
     public void setAbility(){}
