@@ -11,6 +11,9 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The combat view that will be rendered in the main {@link GameView} object when a player gets into combat.
+ */
 public class CombatView {
 
     private BufferedImage image;
@@ -31,6 +34,14 @@ public class CombatView {
     private int abilityButtonsPosX = 400;
     private int abilityButtonsPosY = 400;
 
+    /**
+     * Constructs the main combat view object with a {@link Player} object and a {@link Enemy} object
+     * that will be present in combat.
+     * @param player The player that will be in combat.
+     * @param enemy The enemy that will be in combat.
+     * @param width The width of the window.
+     * @param height The height of the window.
+     */
     public CombatView(Player player, Enemy enemy, int width, int height) {
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/combat.png"));
@@ -45,11 +56,19 @@ public class CombatView {
         setAbilityButtons();
     }
 
+    /**
+     * The main draw method of the combat view object which renders the background of the fighting scene and
+     * the HP boxes of the player and enemy.
+     * @param g2
+     */
     public void draw(Graphics2D g2){
         g2.drawImage(image, 0, 0, width, height, null);
         combatHPView.draw(g2);
     }
 
+    /**
+     * Adds the buttons that the player will use to fight to a List and calls other methods to customise the buttons.
+     */
     public void setAbilityButtons(){
         abilityButtons.add(firstAbility);
         abilityButtons.add(secondAbility);
@@ -62,6 +81,9 @@ public class CombatView {
 
     }
 
+    /**
+     * Sets the text to be displayed on the buttons to the ability names of the player.
+     */
     public void setAbilityButtonsName(){
         for (int i = 0; i < abilityButtons.size(); i++){
             abilityButtons.get(i).setFont(new Font("Arial", Font.PLAIN, 18));
@@ -69,6 +91,9 @@ public class CombatView {
         }
     }
 
+    /**
+     * Sets where the buttons should be placed on the screen.
+     */
     public void setAbilityButtonsPosition(){
         int xPos = 0;
 
@@ -83,6 +108,9 @@ public class CombatView {
         }
     }
 
+    /**
+     * Sets the design of the buttons.
+     */
     public void setAbilityButtonsDesign(){
         for (int i = 0; i < abilityButtons.size(); i++){
             abilityButtons.get(i).setFocusable(false);
@@ -92,10 +120,18 @@ public class CombatView {
         }
     }
 
+    /**
+     * Returns the list of the buttons.
+     * @return A list of buttons.
+     */
     public List<JButton> getAbilityButtons(){
         return abilityButtons;
     }
 
+    /**
+     * Sets whether the buttons should be visible on screen.
+     * @param visibility A boolean true or false to specify if the buttons should show or not.
+     */
     public void setAbilityButtonsVisibility(boolean visibility){
         for (int i = 0; i < getAbilityButtons().size(); i++){
             getAbilityButtons().get(i).setVisible(visibility);

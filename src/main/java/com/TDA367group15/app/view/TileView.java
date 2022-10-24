@@ -10,6 +10,9 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The tile view class which renders the map and specifies the design of each tile.
+ */
 public class TileView{
     private List<Tile> tiles = new ArrayList<>();
     private List<BufferedImage> images = new ArrayList<>();
@@ -19,6 +22,14 @@ public class TileView{
     private int screenWidth;
     private int screenHeight;
 
+    /**
+     * Constructs the tile view by creating the graphics of the tiles and assigning the map to the object.
+     * @param player The player in the world.
+     * @param tileSize The size of each tile.
+     * @param screenWidth The width of the screen.
+     * @param screenHeight The height of the screen.
+     * @param mapTileNum The map of the world.
+     */
     public TileView(Player player, int tileSize, int screenWidth, int screenHeight, int[][] mapTileNum){
 
         this.tiles.add(new Tile(1));
@@ -38,6 +49,11 @@ public class TileView{
         this.mapTileNum = mapTileNum;
     }
 
+    /**
+     * Returns the name of a specified tile's image.
+     * @param tile The tile which image should be returned.
+     * @return A string of the image name.
+     */
     public String getTileImageFilePath(Tile tile){
         String fileName;
 
@@ -71,6 +87,9 @@ public class TileView{
         return fileName;
     }
 
+    /**
+     * Adds all tile images to a list.
+     */
     public void loadTileImage(){
         BufferedImage image;
 
@@ -84,6 +103,11 @@ public class TileView{
         }
     }
 
+    /**
+     * The main draw method that renders the map depending on the players position. Each tile is specified by the
+     * value in a matrix. The method only renders the tiles directly around the player.
+     * @param g2
+     */
     public void draw(Graphics2D g2){
 
         int col = 0;
