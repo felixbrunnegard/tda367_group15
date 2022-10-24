@@ -5,7 +5,6 @@ import java.util.Random;
 
 public class Combat {
 
-      //Since player will not be present in code we need to tell the programm that a plyer will be presetn
     private List<IEnemyDeathListener> listeners;
 
     public Combat(IEnemyDeathListener world){
@@ -19,17 +18,14 @@ public class Combat {
 
         addIEnemyDeathListener(world);
 
-
     }
 
-
-    // We also need to add World class to listerners. This is funky.
     public void addIEnemyDeathListener(IEnemyDeathListener listener){
         listeners.add(listener);
     }
 
 
-    public void fight(Player player, Combatable enemy, int chosenAbility){
+    public void fight(Player player, Enemy enemy, int chosenAbility){
 
         player.Attack(enemy, chosenAbility);
 

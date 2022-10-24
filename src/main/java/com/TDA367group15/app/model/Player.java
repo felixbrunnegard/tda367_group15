@@ -7,7 +7,6 @@ public class Player extends Combatable {
     private int maxHealth = 1;
     private final int baseXPToNextLevel = 100;
 
-
     public Player() {
         this(1488, 960);
     }
@@ -18,13 +17,19 @@ public class Player extends Combatable {
      * @param x
      * @param y
      */
+
+
     public Player(int x, int y) {
         super(x, y);
 
         setMaxOverWorldHealth(6);
         setOverWorldHealth(6);
 
-        //This creates a copy of the abilitylist in combatable then adds abilites to it then sets the list in combatible to the new lsit.
+        /**
+         * This creates a new ability list in and then overwrites the old presumably empty list with this list.
+         * This is done so if the previous list was something should not be this will change it completely
+         * which is preferable seeing as the abilities' player starts of with should always be absolute.
+         * */
 
         ArrayList<Ability> newAbilityList = new ArrayList<Ability>(getAbilities());
 
