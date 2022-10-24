@@ -59,7 +59,7 @@ public class XPView {
      * @param g2
      */
     private void drawRoundRectangleXP(Graphics2D g2) {
-        float width = baseXPRectangleWidth * ((float)player.getXP() / (float)player.getXPToNextLevel());
+        float width = baseXPRectangleWidth * ((float)player.getXp() / (float)player.getXPToNextLevel());
         float posX = baseXPRectanglePosX + (baseXPRectangleWidth - width);
 
         RoundRectangle2D roundRectangle2D2 = new RoundRectangle2D.Float(posX, baseXPRectanglePosY, width, 20, 25, 25);

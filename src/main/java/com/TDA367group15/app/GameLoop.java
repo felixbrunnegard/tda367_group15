@@ -94,7 +94,7 @@ public class GameLoop implements Runnable {
     /**
      * Uses "getEnemyCollideWith" to see if the player will collide with an enemy in the current direction
      * @param direction
-     * @return
+     * @return true if player will collide with an enemy
      */
     private boolean willPlayerCollideWithEnemy(Direction direction){
         return getEnemyCollidedWith(direction) != null;

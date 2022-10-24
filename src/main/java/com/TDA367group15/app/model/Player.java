@@ -3,12 +3,8 @@ package com.TDA367group15.app.model;
 import java.util.ArrayList;
 
 public class Player extends Combatable {
-    private int xP;
     private int overWorldHealth;
     private int maxHealth = 1;
-
-    private int level = 1;
-
     private final int baseXPToNextLevel = 100;
 
 
@@ -41,25 +37,20 @@ public class Player extends Combatable {
 
     }
 
-    public int getXP() {
-        return this.xP;
-    }
 
+    @Override
     /**
      * Sets the current experience
      * If experience exceeds xp to next level then a level up will occur and the xp needed will be subtracted
      * @param xP new xp to set
      */
-    protected void setXP(int xP) {
-        this.xP = xP;
-        while (this.xP > getXPToNextLevel()) {
-            this.xP -= getXPToNextLevel();
-            level++;
+    public void setXp(int xP) {
+        super.setXp(xP);
+        while (getXp() >= getXPToNextLevel()) {
+           super.setXp(getXp() - getXPToNextLevel());
+            setLevel(getLevel()+1);
+            setHp(getMaxHP());
         }
-    }
-
-    public int getLevel() {
-        return this.level;
     }
 
     /**
@@ -67,7 +58,7 @@ public class Player extends Combatable {
      * @return total xp needed to level up
      */
     public int getXPToNextLevel() {
-        return level * baseXPToNextLevel;
+        return getLevel() * baseXPToNextLevel;
 
     }
 
