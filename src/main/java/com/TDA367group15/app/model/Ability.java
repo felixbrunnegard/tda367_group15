@@ -19,6 +19,12 @@ public class Ability {
         return name;
     }
 
+
+    /**
+     * This method calculates the attack points to later subtract.
+     * @param level
+     * @return
+     */
     public float calculateAttack(int level){
 
         float attackPoints = 0;

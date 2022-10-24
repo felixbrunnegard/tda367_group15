@@ -39,7 +39,11 @@ public abstract class Combatable extends Entity{
         this.abilities = abilities;
     }
 
-
+    /**
+     * This method subtracts the hp of the combatable entity that is given as an argument.
+     * @param enemyOrPlayer
+     * @param chosenAbility
+     */
     public void Attack(Combatable enemyOrPlayer, int chosenAbility){
 
         float newHp = 0;
