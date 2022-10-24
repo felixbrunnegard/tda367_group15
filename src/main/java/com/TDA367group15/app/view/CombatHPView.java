@@ -129,6 +129,8 @@ public class CombatHPView {
     }
 
     public void drawPlayerHP(Graphics2D g2){
+        float foo = player.getHp();
+        float foo2= player.getMaxHP();
         RoundRectangle2D HPBarEdge = new RoundRectangle2D.Float(playerHPBarPosX, playerHPBarPosY, HPBarWidth * (player.getHp() / player.getMaxHP()), HPBarHeight, archSize, archSize);
 
         g2.setColor(Color.RED);

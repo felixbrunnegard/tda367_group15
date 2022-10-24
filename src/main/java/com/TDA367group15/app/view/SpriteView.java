@@ -36,12 +36,15 @@ public class SpriteView {
         this.screenHeight = screenHeight;
     }
 
+    /**
+     * Draws the player and enemies
+     * @param g2
+     */
     public void draw(Graphics2D g2){
         int xPos = screenWidth/2 - tileSize/2;
         int yPos = screenHeight /2 - tileSize/2;
 
         g2.drawImage(boyDown, xPos, yPos,tileSize,tileSize, null);
-
 
         for (Enemy enemy : enemies) {
             int screenX = enemy.getPosition().getX() - player.getPosition().getX() + xPos;

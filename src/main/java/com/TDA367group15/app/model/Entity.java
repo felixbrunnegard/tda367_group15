@@ -12,8 +12,6 @@ public abstract class Entity implements ICollidable {
 
     private final static int MOVEMENT_SPEED = 2; //denpendcy injection för static variabel
 
-    //TODO: Do we need size of entity or width and height
-
     private Direction lookingDirection;  // direction player looks at
 
     // entity starts at position 0 or a certain position
@@ -31,6 +29,10 @@ public abstract class Entity implements ICollidable {
         return position;
     }
 
+    /**
+     * Moves the entity in the direction provided according to the set MOVEMENT_SPEED
+     * @param d Direction to move in
+     */
     public void move(Direction d){
         if (d == Direction.UP){
             position.moveY(-MOVEMENT_SPEED);
@@ -47,7 +49,9 @@ public abstract class Entity implements ICollidable {
     }
 
     /**
-     * Calculates if this entity collides with another
+     * Calculates if this entity collides (overlap) with another
+     * @param otherEntity Entity check collision with
+     * @return True if entities overlap
      */
     @Override
     public boolean collide(Entity otherEntity){
@@ -64,6 +68,14 @@ public abstract class Entity implements ICollidable {
         return false;
     }
 
+    /**
+     * Generates a random string with the length provided
+     * Only contains characters:
+     * 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%&
+     *
+     * @param len length of the string to generate
+     * @return randomized string
+     */
     public static String generateName(int len) {
         String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
                 + "lmnopqrstuvwxyz!@#$%&";
