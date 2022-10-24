@@ -24,7 +24,15 @@ public class Combat {
         listeners.add(listener);
     }
 
-
+    /**
+     * The fight method is in effect a turn where both player and enemy attacks
+     * each other using either a random ability in the case of enemy or for player an ability
+     * chosen by the user of the program.
+     *
+     * @param player
+     * @param enemy
+     * @param chosenAbility
+     */
     public void fight(Player player, Enemy enemy, int chosenAbility){
 
         player.Attack(enemy, chosenAbility);
@@ -46,9 +54,17 @@ public class Combat {
     }
 
 
+    /**
+     *
+     * This method awards the player with xp relating to the level of the enemy defeated.
+     * It later restes the local combat hp for the player so that palyer has full hp for the next fight.
+     *
+     * @param player
+     * @param enemy
+     */
+
     public void playerWin(Combatable player, Combatable enemy){
 
-       // why do ypu calculate in this way? must you have float xp? are conflict.
        player.setXp((enemy.getLevel()*100) + player.getXp());
 
        player.setHp(player.getLevel()*100); //Resets hp
