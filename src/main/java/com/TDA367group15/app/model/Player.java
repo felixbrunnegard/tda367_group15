@@ -3,18 +3,21 @@ package com.TDA367group15.app.model;
 import java.util.ArrayList;
 
 public class Player extends Combatable {
-    private int xP;
     private int overWorldHealth;
     private int maxHealth = 1;
-
-    private int level = 1;
-
     private final int baseXPToNextLevel = 100;
-
 
     public Player() {
         this(1488, 960);
     }
+
+    /**
+     * Creates a new player at the set coordinates
+     * The player will get 4 preset abilites
+     * @param x
+     * @param y
+     */
+
 
     public Player(int x, int y) {
         super(x, y);
@@ -22,7 +25,11 @@ public class Player extends Combatable {
         setMaxOverWorldHealth(6);
         setOverWorldHealth(6);
 
-        //This creates a copy of the abilitylist in combatable then adds abilites to it then sets the list in combatible to the new lsit.
+        /**
+         * This creates a new ability list in and then overwrites the old presumably empty list with this list.
+         * This is done so if the previous list was something should not be this will change it completely
+         * which is preferable seeing as the abilities' player starts of with should always be absolute.
+         * */
 
         ArrayList<Ability> newAbilityList = new ArrayList<Ability>(getAbilities());
 
@@ -36,42 +43,27 @@ public class Player extends Combatable {
     }
 
 
-    public boolean willPlayerCollideWithEntityInCurrentDirection(Entity entity, Direction direction) {
-        if (collide(entity)) {
-            int xDiff = entity.getPosition().getX() - getPosition().getX();
-            int yDiff = entity.getPosition().getY() - getPosition().getY();
-            //Checks below so that it is still possible to walk away from the enemy
-            if (xDiff < 0 && direction == Direction.LEFT) {
-                return true;
-            } else if (xDiff > 0 && direction == Direction.RIGHT) {
-                return true;
-            } else if (yDiff < 0 && direction == Direction.UP) {
-                return true;
-            } else if (yDiff > 0 && direction == Direction.DOWN) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public int getXP() {
-        return this.xP;
-    }
-
-    protected void setXP(int xP) {
-        this.xP = xP;
-        while (this.xP > getXPToNextLevel()) {
-            this.xP -= getXPToNextLevel();
-            level++;
+    @Override
+    /**
+     * Sets the current experience
+     * If experience exceeds xp to next level then a level up will occur and the xp needed will be subtracted
+     * @param xP new xp to set
+     */
+    public void setXp(int xP) {
+        super.setXp(xP);
+        while (getXp() >= getXPToNextLevel()) {
+           super.setXp(getXp() - getXPToNextLevel());
+            setLevel(getLevel()+1);
+            setHp(getMaxHP());
         }
     }
 
-    public int getLevel() {
-        return this.level;
-    }
-
+    /**
+     * Calculates the xp needed to level up
+     * @return total xp needed to level up
+     */
     public int getXPToNextLevel() {
-        return level * baseXPToNextLevel;
+        return getLevel() * baseXPToNextLevel;
 
     }
 

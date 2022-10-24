@@ -62,7 +62,7 @@ public class PlayerTest {
     @Test
     public void TestGetXP(){
         Player player = new Player();
-        assertEquals(0, player.getXP());
+        assertEquals(0, player.getXp());
     }
 
     @Test

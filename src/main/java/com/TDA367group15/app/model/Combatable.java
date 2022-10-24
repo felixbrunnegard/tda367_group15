@@ -1,7 +1,7 @@
 package com.TDA367group15.app.model;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
 
 public abstract class Combatable extends Entity{
 
@@ -9,7 +9,8 @@ public abstract class Combatable extends Entity{
     private int level;
     private int xp;
 
-    //Make an array with ability objects.
+    // The following arraylist is the list of instances of the class ability.
+    // The arraylist contains all the abilities each respective Combatable is to be able to use
     private List<Ability> abilities = new ArrayList<>();
 
     public Combatable(){
@@ -22,9 +23,8 @@ public abstract class Combatable extends Entity{
         hp = 100*level;
     }
 
-    public float getMaxHP(){
-        return 100*level;
-    }
+    public float getMaxHP(){return 100*level;}
+
     public float getHp(){ return hp; }
     public void setHp(float hp){this.hp = hp;}
 
@@ -35,27 +35,8 @@ public abstract class Combatable extends Entity{
     public void setXp(int xp) {this.xp = xp;}
 
     public List<Ability> getAbilities() {return abilities;}
-
     public void setAbilities(List<Ability> abilities) {
         this.abilities = abilities;
-    }
-
-
-    public float calculateAttack(Ability ability){
-
-        float attackPoints = 0;
-        attackPoints = ability.attackPower * level;
-
-        return attackPoints;
-    }
-
-
-    public int chooseRandomAbility(){
-
-        Random randomInteger = new Random();
-        int randomAbilityIndex = randomInteger.nextInt(4);
-
-        return randomAbilityIndex;
     }
 
 
@@ -63,7 +44,7 @@ public abstract class Combatable extends Entity{
 
         float newHp = 0;
 
-        newHp = enemyOrPlayer.getHp() - calculateAttack(abilities.get(chosenAbility));
+        newHp = enemyOrPlayer.getHp() - abilities.get(chosenAbility).calculateAttack(level);
 
         enemyOrPlayer.setHp(newHp);
 

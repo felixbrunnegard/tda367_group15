@@ -1,6 +1,9 @@
 package com.TDA367group15.app.model;
 
-//https://noobtuts.com/java/vector2-class
+/**
+ * Class similar to a Vector2
+ * This is only a holder for X and Y coordinates
+ */
 public class Position {
 
     private int x;

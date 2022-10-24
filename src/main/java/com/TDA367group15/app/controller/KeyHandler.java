@@ -10,7 +10,6 @@ public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, escapePressed;
 
 
-
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -69,7 +68,11 @@ public class KeyHandler implements KeyListener {
 
     }
 
-    
+
+    /**
+     * Returns the direction the player should face based on their last button press.
+     * @return the relevant direction if there is one, otherwise returns null.
+     */
     public Direction getDirectionPressed() {
         if(upPressed) {
             return Direction.UP;

@@ -43,6 +43,10 @@ public class HPView {
         drawHearts(g2);
     }
 
+    /**
+     * Draws the orange background behind the hearts
+     * @param g2
+     */
     private void drawRoundRectangle(Graphics2D g2) {
         RoundRectangle2D roundRectangle2D = new RoundRectangle2D.Float(xPos + 26,screenHeight - 55 , 150, 55, 25, 25);
         RoundRectangle2D backgroundToHearts = new RoundRectangle2D.Float(xPos + 28,screenHeight - 52 , 145, 50, 25, 25);
@@ -56,8 +60,12 @@ public class HPView {
         g2.draw(backgroundToHearts);
     }
 
+    /**
+     * Draws the hearts based on the player health and maxHp
+     * @param g2
+     */
     private void drawHearts(Graphics2D g2) {
-        int maxHP =player.getMaxOverWorldHealth();
+        int maxHP = player.getMaxOverWorldHealth();
         int hp = player.getOverWorldHealth();
 
         for(int i = 1; i <= maxHP; i += 2){
