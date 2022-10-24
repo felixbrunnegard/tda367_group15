@@ -1,6 +1,7 @@
 package com.TDA367group15.app.model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Enemy extends Combatable {
     private int pointerP;
@@ -8,8 +9,11 @@ public class Enemy extends Combatable {
     public Enemy(Integer posX, Integer posY) {
         super(posX,posY);
 
-        //This creates a copy of the abilitylist in combatable then adds abilites to it then sets the list in combatible to the new lsit.
-
+        /**
+         * This creates a new ability list in and then overwrites the old presumably empty list with this list.
+         * This is done so if the previous list was something should not be this will change it completely
+         * which is preferable seeing as the abilities' enemy starts of with should always be absolute.
+         * */
         ArrayList<Ability> newAbilityList = new ArrayList<Ability>(getAbilities());
 
         newAbilityList.add(new Ability("clawAttack", 10, 0, 90));
@@ -21,6 +25,13 @@ public class Enemy extends Combatable {
 
     }
 
+    public int chooseRandomAbility(){
+
+        Random randomInteger = new Random();
+        int randomAbilityIndex = randomInteger.nextInt(4);
+
+        return randomAbilityIndex;
+    }
 
     public void name(){}
     public void setAbility(){}

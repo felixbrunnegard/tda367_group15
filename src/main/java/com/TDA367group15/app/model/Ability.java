@@ -14,7 +14,17 @@ public class Ability {
         this.accuracy = accuracy;
     }
 
+
     public String getName(){
         return name;
     }
+
+    public float calculateAttack(int level){
+
+        float attackPoints = 0;
+        attackPoints = this.attackPower * level;
+
+        return attackPoints;
+    }
+
 }
